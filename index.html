@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebKilat Studio - Jasa Pembuatan Website Murah, Cepat & Profesional</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#090d16',
+                            950: '#05070c',
+                        },
+                        brand: {
+                            blue: '#0ea5e9',    /* Neon Blue */
+                            green: '#10b981',   /* Emerald Green */
+                            darkblue: '#0284c7',
+                        }
+                    },
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'sans-serif'],
+                        'sans': ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #05070c;
+            color: #f8fafc;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #05070c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0ea5e9;
+            border-radius: 4px;
+        }
+        .hero-glow {
+            background: radial-gradient(circle at 50% 25%, rgba(14, 165, 233, 0.18) 0%, rgba(5, 7, 12, 0.95) 70%);
+        }
+        .card-glass {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .badge-pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.03); }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-blue selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-dark-900/85 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-blue to-brand-green flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-blue/30 group-hover:scale-105 transition">
+                    <i class="fa-solid fa-bolt-lightning"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold font-display tracking-wider text-white">Web<span class="text-brand-green">Kilat</span></span>
+                    <span class="block text-[9px] tracking-widest uppercase text-slate-400 font-semibold">Jasa Pembuatan Web Murah</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#features" class="text-slate-300 hover:text-brand-blue transition">Keunggulan</a>
+                <a href="#portfolio" class="text-slate-300 hover:text-brand-blue transition">Portofolio</a>
+                <a href="#pricing" class="text-slate-300 hover:text-brand-blue transition">Paket Harga</a>
+                <a href="#testimonials" class="text-slate-300 hover:text-brand-blue transition">Testimoni</a>
+                <a href="#contact" class="text-slate-300 hover:text-brand-blue transition">Kontak</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="#contact" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-blue to-brand-green text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-brand-green/30 hover:scale-105 transition duration-300 flex items-center space-x-2">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                    <span>Pesan Sekarang</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-btn" class="md:hidden text-white focus:outline-none text-2xl p-2">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-900 border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
+            <a href="#features" class="block py-2 text-slate-300 hover:text-brand-blue font-medium">Keunggulan</a>
+            <a href="#portfolio" class="block py-2 text-slate-300 hover:text-brand-blue font-medium">Portofolio</a>
+            <a href="#pricing" class="block py-2 text-slate-300 hover:text-brand-blue font-medium">Paket Harga</a>
+            <a href="#testimonials" class="block py-2 text-slate-300 hover:text-brand-blue font-medium">Testimoni</a>
+            <a href="#contact" class="block py-2 text-slate-300 hover:text-brand-blue font-medium">Kontak</a>
+            <div class="pt-2">
+                <a href="#contact" class="block text-center w-full py-3 rounded-full bg-gradient-to-r from-brand-blue to-brand-green text-white font-bold text-xs uppercase tracking-wider">
+                    Pesan Sekarang via WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden hero-glow">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-brand-blue/15 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-brand-green/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 text-center lg:text-left">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-green/10 border border-brand-green/30 text-brand-green text-xs sm:text-sm font-medium mb-6 badge-pulse">
+                    <i class="fa-solid fa-fire text-brand-green"></i>
+                    <span>Promo Spesial: Pembuatan Website Mulai Dari Rp 500rb Saja!</span>
+                </div>
+                
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase leading-none">
+                    Jasa Pembuatan Website <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-green">Murah & Profesional</span>
+                </h1>
+                
+                <p class="max-w-xl mx-auto lg:mx-0 text-base sm:text-lg text-slate-300 mb-10 font-normal leading-relaxed">
+                    Tingkatkan kredibilitas usaha, UMKM, atau toko online Anda dengan website modern berkecepatan kilat, mobile responsive, dan ramah SEO Google. Tanpa ribet, langsung online!
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                    <a href="#pricing" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-brand-blue to-brand-green text-white font-bold text-xs uppercase tracking-wider shadow-xl shadow-brand-green/30 hover:scale-105 transition duration-300 flex items-center justify-center space-x-2">
+                        <span>Lihat Paket Harga (Mulai 500rb)</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 rounded-full card-glass text-white font-bold text-xs uppercase tracking-wider hover:bg-slate-800 transition duration-300 flex items-center justify-center space-x-2">
+                        <span>Lihat Portofolio Web</span>
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-3 gap-6 pt-10 mt-10 border-t border-white/10 text-center lg:text-left">
+                    <div>
+                        <h4 class="text-2xl sm:text-3xl font-bold text-white font-display">250+</h4>
+                        <p class="text-xs text-slate-400 mt-1">Web UMKM Selesai</p>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl sm:text-3xl font-bold text-white font-display">1-3 Hari</h4>
+                        <p class="text-xs text-slate-400 mt-1">Pengerjaan Kilat</p>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl sm:text-3xl font-bold text-white font-display">100%</h4>
+                        <p class="text-xs text-slate-400 mt-1">Bergaransi & Support</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Illustration Card -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden card-glass p-6 shadow-2xl flex flex-col justify-between group border border-brand-blue/30">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-blue/10 to-transparent pointer-events-none"></div>
+                    <div class="flex items-center justify-between z-10 border-b border-white/10 pb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                        </div>
+                        <span class="text-[10px] text-slate-400 uppercase tracking-widest font-mono">webkilat.id/demo</span>
+                    </div>
+                    <div class="my-auto py-8 text-center z-10">
+                        <div class="w-20 h-20 mx-auto rounded-2xl bg-brand-blue/20 border border-brand-blue/40 flex items-center justify-center text-brand-blue text-3xl mb-6 shadow-inner animate-pulse">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Website Siap Pakai</h3>
+                        <p class="text-xs text-slate-300 px-4">Sudah termasuk domain, hosting gratis (pilihan), desain profesional, dan tombol order WhatsApp.</p>
+                    </div>
+                    <div class="z-10 bg-dark-950/80 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-shield-halved text-brand-green text-lg"></i>
+                            <div class="text-left">
+                                <span class="block text-xs font-bold text-white">Gratis Domain & SSL</span>
+                                <span class="block text-[10px] text-slate-400">Aman & Terpercaya</span>
+                            </div>
+                        </div>
+                        <span class="text-xs text-brand-green font-bold bg-brand-green/10 px-2.5 py-1 rounded-md">Termurah</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-24 bg-dark-900/60 relative border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-green text-xs font-bold uppercase tracking-widest bg-brand-green/10 px-3 py-1 rounded-full border border-brand-green/30">Keunggulan WebKilat</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-white mt-4 mb-4">Kenapa Harus Pilih Jasa Kami?</h2>
+                <p class="text-slate-300 text-sm sm:text-base">Meskipun harga terjangkau, kualitas dan performa website tetap menjadi prioritas utama kami untuk kemajuan bisnis Anda.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="card-glass rounded-3xl p-6 group hover:border-brand-blue/60 transition duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-blue/10 border border-brand-blue/30 text-brand-blue flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-gift"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Gratis Domain & Hosting</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">Tidak perlu pusing memikirkan biaya server tahun pertama. Kami sediakan gratis domain (.my.id / .com) dan hosting pilihan pada paket tertentu.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="card-glass rounded-3xl p-6 group hover:border-brand-blue/60 transition duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-green/10 border border-brand-green/30 text-brand-green flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-gauge-high"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Pengerjaan Kilat</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">Waktu adalah uang. Tim kami berpengalaman menyelesaikan website dalam kurun waktu 1 sampai 3 hari kerja saja setelah materi lengkap diterima.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="card-glass rounded-3xl p-6 group hover:border-brand-blue/60 transition duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-blue/10 border border-brand-blue/30 text-brand-blue flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-magnifying-glass-arrow-right"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">SEO Friendly</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">Struktur kode bersih dan dioptimalkan agar mudah terindeks oleh mesin pencari Google, membantu mendatangkan calon pembeli organik.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="card-glass rounded-3xl p-6 group hover:border-brand-blue/60 transition duration-300">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-green/10 border border-brand-green/30 text-brand-green flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">100% Mobile Responsive</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">Tampilan website dijamin rapi dan sempurna di semua perangkat, baik diakses lewat HP Android, iPhone, Tablet, maupun komputer laptop.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-24 bg-dark-950 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-green text-xs font-bold uppercase tracking-widest bg-brand-green/10 px-3 py-1 rounded-full border border-brand-green/30">Portofolio Kami</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-white mt-4 mb-4">Contoh Website Yang Telah Kami Buat</h2>
+                <p class="text-slate-300 text-sm sm:text-base">Berbagai macam jenis website yang siap membantu melipatgandakan omset dan branding bisnis Anda.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+                <button onclick="filterPortfolio('all')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-blue text-white transition shadow-md shadow-brand-blue/30" data-filter="all">Semua</button>
+                <button onclick="filterPortfolio('umkm')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider card-glass text-slate-300 hover:text-white transition" data-filter="umkm">Website UMKM</button>
+                <button onclick="filterPortfolio('toko')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider card-glass text-slate-300 hover:text-white transition" data-filter="toko">Toko Online</button>
+                <button onclick="filterPortfolio('company')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider card-glass text-slate-300 hover:text-white transition" data-filter="company">Company Profile</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Item 1 -->
+                <div class="portfolio-item card-glass rounded-3xl overflow-hidden group border border-white/10" data-category="umkm">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://placehold.co/600x400/0f172a/0ea5e9?text=Kuliner+Nusantara" alt="Kuliner Nusantara" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-brand-blue text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full">Website UMKM</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Kedai Kopi & Kuliner Lokal</h3>
+                        <p class="text-xs text-slate-300 mb-4 leading-relaxed">Landing page interaktif untuk promosi kuliner lengkap dengan daftar menu dan tombol pesan WhatsApp.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs">
+                            <span class="text-slate-400">Paket: Paket Basic (500rb)</span>
+                            <span class="text-brand-green font-bold flex items-center space-x-1"><span>Live Demo</span> <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="portfolio-item card-glass rounded-3xl overflow-hidden group border border-white/10" data-category="toko">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://placehold.co/600x400/0f172a/10b981?text=Fashion+Store" alt="Fashion Store" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-brand-green text-slate-950 font-bold text-[10px] uppercase px-3 py-1 rounded-full">Toko Online</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Boutique & Fashion Store</h3>
+                        <p class="text-xs text-slate-300 mb-4 leading-relaxed">Katalog produk fashion lengkap dengan kategori, keranjang belanja, dan integrasi order otomatis via WhatsApp.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs">
+                            <span class="text-slate-400">Paket: Paket Toko Online</span>
+                            <span class="text-brand-green font-bold flex items-center space-x-1"><span>Live Demo</span> <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="portfolio-item card-glass rounded-3xl overflow-hidden group border border-white/10" data-category="company">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://placehold.co/600x400/0f172a/0284c7?text=Kontraktor+Profesional" alt="Kontraktor" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-sky-600 text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full">Company Profile</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">PT Konstruksi Mandiri Sejahtera</h3>
+                        <p class="text-xs text-slate-300 mb-4 leading-relaxed">Profil perusahaan jasa konstruksi dengan galeri proyek, layanan, dan formulir konsultasi klien.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs">
+                            <span class="text-slate-400">Paket: Paket UMKM</span>
+                            <span class="text-brand-green font-bold flex items-center space-x-1"><span>Live Demo</span> <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="portfolio-item card-glass rounded-3xl overflow-hidden group border border-white/10" data-category="umkm">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://placehold.co/600x400/0f172a/10b981?text=Skincare+Organic" alt="Skincare" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-brand-green text-slate-950 font-bold text-[10px] uppercase px-3 py-1 rounded-full">Website UMKM</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Glowing Skincare Serum</h3>
+                        <p class="text-xs text-slate-300 mb-4 leading-relaxed">Landing page produk kecantikan dengan testimoni pelanggan dan tombol flash sale.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs">
+                            <span class="text-slate-400">Paket: Paket Basic</span>
+                            <span class="text-brand-green font-bold flex items-center space-x-1"><span>Live Demo</span> <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="portfolio-item card-glass rounded-3xl overflow-hidden group border border-white/10" data-category="toko">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://placehold.co/600x400/0f172a/0ea5e9?text=Elektronik+Gadget" alt="Elektronik" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-brand-blue text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full">Toko Online</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Gadget & Accessories Shop</h3>
+                        <p class="text-xs text-slate-300 mb-4 leading-relaxed">Toko online aksesoris gadget dengan filter produk lengkap dan sistem transaksi ringkas.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs">
+                            <span class="text-slate-400">Paket: Paket Toko Online</span>
+                            <span class="text-brand-green font-bold flex items-center space-x-1"><span>Live Demo</span> <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="portfolio-item card-glass rounded-3xl overflow-hidden group border border-white/10" data-category="company">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://placehold.co/600x400/0f172a/0284c7?text=Travel+Umroh" alt="Travel Umroh" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-4 left-4 bg-sky-600 text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full">Company Profile</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Travel Umroh & Haji Berkah</h3>
+                        <p class="text-xs text-slate-300 mb-4 leading-relaxed">Website travel haji umroh dengan jadwal keberangkatan, galeri hotel, dan form pendaftaran online.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs">
+                            <span class="text-slate-400">Paket: Paket UMKM</span>
+                            <span class="text-brand-green font-bold flex items-center space-x-1"><span>Live Demo</span> <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 bg-dark-900/60 relative border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-green text-xs font-bold uppercase tracking-widest bg-brand-green/10 px-3 py-1 rounded-full border border-brand-green/30">Daftar Paket Harga</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-white mt-4 mb-4">Pilih Paket Website Sesuai Kebutuhanmu</h2>
+                <p class="text-slate-300 text-sm sm:text-base">Harga transparan, tanpa biaya bulanan tersembunyi. Sekali bayar, website aktif dan siap mendatangkan cuan.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                <!-- Basic Plan -->
+                <div class="card-glass rounded-3xl p-8 flex flex-col justify-between border border-white/10 hover:border-brand-blue/50 transition">
+                    <div>
+                        <span class="text-xs uppercase font-bold text-brand-blue tracking-wider">Mulai Usaha Online</span>
+                        <h3 class="text-2xl font-bold text-white mt-1 mb-2">Paket Basic</h3>
+                        <p class="text-xs text-slate-400 mb-6">Cocok untuk UMKM pemula, portofolio pribadi, atau promosi produk tunggal.</p>
+                        
+                        <div class="mb-6 pb-6 border-b border-white/10">
+                            <span class="text-3xl font-extrabold text-white font-display">Rp 500rb</span>
+                            <span class="text-xs text-slate-400 block mt-1">Sekali bayar (Tanpa biaya bulanan)</span>
+                        </div>
+
+                        <ul class="space-y-3 text-xs text-slate-300 mb-8">
+                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> 1 Halaman Landing Page Responsif</li>
+                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Desain Modern & Cepat</li>
+                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Tombol Order WhatsApp Langsung</li>
+                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Gratis Domain .my.id (1 Tahun)</li>
+                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Pengerjaan 1-2 Hari</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="w-full py-3 rounded-xl card-glass text-white font-bold text-xs uppercase tracking-wider text-center hover:bg-brand-blue hover:border-brand-blue transition">Pilih Paket Basic</a>
+                </div>
+
+                <!-- UMKM Plan (Featured) -->
+                <div class="card-glass rounded-3xl p-8 flex flex-col justify-between border-2 border-brand-green relative shadow-2xl bg-slate-900/85">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-blue to-brand-green text-slate-950 font-extrabold text-[10px] uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">
+                        Paling Laris & Rekomendasi
+                    </div>
+                    <div>
+                        <span class="text-xs uppercase font-bold text-brand-green tracking-wider">Bisnis & Perusahaan</span>
+                        <h3 class="text-2xl font-bold text-white mt-1 mb-2">Paket UMKM</h3>
+                        <p class="text-xs text-slate-300 mb-6">Solusi lengkap untuk company profile atau usaha yang ingin tampil lebih profesional.</p>
+                        
+                        <div class="mb-6 pb-6 border-b border-white/10">
+                            <span class="text-3xl font-extrabold text-white font-display">Rp 1.2 Juta</span>
+                            <span class="text-xs text-slate-400 block mt-1">Sekali bayar (Full Hak Akses)</span>
+                        </div>
+
+                        <ul class="space-y-3 text-xs text-slate-300 mb-8">
+                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Hingga 5 Halaman (Home, About, Services, Gallery, Contact)</li>
+                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Desain Premium & Elegan</li>
+                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Optimasi SEO Dasar Google</li>
+                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Gratis Domain .com / .my.id (1 Tahun)</li>
+                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Integrasi Google Maps & Sosial Media</li>
+                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Pengerjaan 2-3 Hari</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-blue to-brand-green text-slate-950 font-extrabold text-xs uppercase tracking-wider text-center shadow-lg shadow-brand-green/30 hover:scale-[1.02] transition">Pilih Paket UMKM</a>
+                </div>
+
+                <!-- E-Commerce Plan -->
+                <div class="card-glass rounded-3xl p-8 flex flex-col justify-between border border-white/10 hover:border-brand-blue/50 transition">
+                    <div>
+                        <span class="text-xs uppercase font-bold text-brand-blue tracking-wider">Jualan Online Otomatis</span>
+                        <h3 class="text-2xl font-bold text-white mt-1 mb-2">Paket Toko Online</h3>
+                        <p class="text-xs text-slate-400 mb-6">Website khusus e-commerce katalog produk dengan sistem keranjang belanja praktis.</p>
+                        
+                        <div class="mb-6 pb-6 border-b border-white/10">
+                            <span class="text-3xl font-extrabold text-white font-display">Rp 2.5 Juta</span>
+                            <span class="text-xs text-slate-400 block mt-1">Full fitur siap jualan</span>
+                        </div>
+
+                        <ul class="space-y-3 text-xs text-slate-300 mb-8">
+                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Katalog Produk Tak Terbatas</li>
+                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Keranjang & Checkout WhatsApp</li>
+                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Dashboard Admin Mudah Kelola Produk</li>
+                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Gratis Domain & Hosting (1 Tahun)</li>
+                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Panduan / Tutorial Penggunaan Admin</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="w-full py-3 rounded-xl card-glass text-white font-bold text-xs uppercase tracking-wider text-center hover:bg-brand-blue hover:border-brand-blue transition">Pilih Paket Toko Online</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="py-24 bg-dark-950 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-green text-xs font-bold uppercase tracking-widest bg-brand-green/10 px-3 py-1 rounded-full border border-brand-green/30">Testimoni Klien</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-white mt-4 mb-4">Apa Kata Klien Yang Telah Order?</h2>
+                <p class="text-slate-300 text-sm sm:text-base">Kepuasan ratusan pemilik UMKM dan pebisnis adalah bukti nyata kualitas pelayanan kami.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testi 1 -->
+                <div class="card-glass rounded-3xl p-6 relative border border-white/10 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-1 text-amber-400 text-xs mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-6 italic">
+                            "Awalnya ragu karena harganya murah banget cuma 500rb, eh ternyata hasilnya luar biasa rapi dan cepat jadi dalam 2 hari. Mantap WebKilat!"
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-4 pt-4 border-t border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-brand-blue/20 border border-brand-blue text-brand-blue flex items-center justify-center font-bold text-sm">
+                            DR
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Dedi Rahmat</h4>
+                            <p class="text-[10px] text-slate-400">Owner Kedai Kopi Lokal</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testi 2 -->
+                <div class="card-glass rounded-3xl p-6 relative border border-white/10 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-1 text-amber-400 text-xs mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-6 italic">
+                            "Paket UMKM-nya sangat worth it. Company profile toko saya jadi terlihat profesional di mata klien korporat. Pelayanannya juga sangat ramah."
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-4 pt-4 border-t border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-brand-green/20 border border-brand-green text-brand-green flex items-center justify-center font-bold text-sm">
+                            SN
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Siti Nurhaliza</h4>
+                            <p class="text-[10px] text-slate-400">Founder Catering Berkah</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testi 3 -->
+                <div class="card-glass rounded-3xl p-6 relative border border-white/10 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-1 text-amber-400 text-xs mb-4">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-6 italic">
+                            "Toko online saya jadi gampang dikelola dan pesanan makin sering masuk lewat WhatsApp. Terima kasih banyak tim WebKilat Studio!"
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-4 pt-4 border-t border-white/10">
+                        <div class="w-10 h-10 rounded-full bg-sky-500/20 border border-sky-400 text-sky-400 flex items-center justify-center font-bold text-sm">
+                            AH
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Ahmad Hidayat</h4>
+                            <p class="text-[10px] text-slate-400">Owner Fashion Store</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-dark-900/60 relative border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-brand-green text-xs font-bold uppercase tracking-widest bg-brand-green/10 px-3 py-1 rounded-full border border-brand-green/35">Pesan & Konsultasi</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-4 mb-6 leading-tight">
+                        Wujudkan Website Impian Anda Hari Ini Juga!
+                    </h2>
+                    <p class="text-slate-300 text-sm sm:text-base mb-8 leading-relaxed">
+                        Punya pertanyaan seputar pembuatan website atau ingin langsung memesan paket? Isi formulir di samping, sistem akan otomatis menghubungkan Anda dengan admin kami via WhatsApp.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4 text-slate-300 text-sm">
+                            <div class="w-10 h-10 rounded-xl bg-brand-blue/10 border border-brand-blue/30 text-brand-blue flex items-center justify-center">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </div>
+                            <span>+62 812-9876-5432 (WhatsApp Admin Utama)</span>
+                        </div>
+                        <div class="flex items-center space-x-4 text-slate-300 text-sm">
+                            <div class="w-10 h-10 rounded-xl bg-brand-green/10 border border-brand-green/30 text-brand-green flex items-center justify-center">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <span>support@webkilat.id</span>
+                        </div>
+                        <div class="flex items-center space-x-4 text-slate-300 text-sm">
+                            <div class="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/30 text-sky-400 flex items-center justify-center">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <span>Jam Operasional: Senin - Sabtu (08.00 - 21.00 WIB)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Form -->
+                <div class="card-glass rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/10">
+                    <form id="order-form" onsubmit="handleOrderSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-slate-300 mb-1 font-semibold">Nama Lengkap:</label>
+                            <input type="text" id="o-name" required class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-white/10 text-white focus:outline-none focus:border-brand-blue text-sm" placeholder="Contoh: Rian Pratama">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-slate-300 mb-1 font-semibold">Nomor WhatsApp:</label>
+                            <input type="text" id="o-phone" required class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-white/10 text-white focus:outline-none focus:border-brand-blue text-sm" placeholder="Contoh: 08123456789">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-slate-300 mb-1 font-semibold">Pilih Paket Website:</label>
+                            <select id="o-package" class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-white/10 text-white focus:outline-none focus:border-brand-blue text-sm">
+                                <option value="Paket Basic - Landing Page (Rp 500rb)">Paket Basic - Landing Page (Rp 500rb)</option>
+                                <option value="Paket UMKM - Company Profile (Rp 1.2 Juta)">Paket UMKM - Company Profile (Rp 1.2 Juta)</option>
+                                <option value="Paket Toko Online - E-Commerce (Rp 2.5 Juta)">Paket Toko Online - E-Commerce (Rp 2.5 Juta)</option>
+                                <option value="Konsultasi Custom Website">Konsultasi Custom Website</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-slate-300 mb-1 font-semibold">Catatan / Nama Usaha:</label>
+                            <textarea id="o-msg" rows="4" required class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-white/10 text-white focus:outline-none focus:border-brand-blue text-sm" placeholder="Tuliskan nama usaha atau domain yang diinginkan..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-blue to-brand-green text-slate-950 font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-brand-green/30 hover:scale-[1.02] transition duration-300 flex items-center justify-center space-x-2">
+                            <i class="fa-brands fa-whatsapp text-base"></i>
+                            <span>Kirim Pesan via WhatsApp Sekarang</span>
+                        </button>
+                    </form>
+                    <div id="order-success" class="hidden mt-4 p-4 rounded-xl card-glass border border-brand-green/40 text-brand-green text-xs text-center">
+                        <i class="fa-solid fa-circle-check text-brand-green mr-2 text-sm"></i> Terima kasih! Pesan Anda telah disiapkan untuk dikirim ke WhatsApp Admin WebKilat.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark-950 border-t border-white/10 py-12 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-white/5">
+                <div class="md:col-span-1 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-blue to-brand-green flex items-center justify-center text-white font-bold text-xl">
+                            <i class="fa-solid fa-bolt-lightning"></i>
+                        </div>
+                        <div>
+                            <span class="text-xl font-bold font-display tracking-wider text-white">Web<span class="text-brand-green">Kilat</span></span>
+                            <span class="block text-[9px] tracking-widest uppercase text-slate-400 font-semibold">Jasa Pembuatan Web Murah</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Solusi jasa pembuatan website murah, cepat, dan profesional untuk seluruh UMKM dan pebisnis di Indonesia.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4">Paket Pilihan</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#pricing" class="hover:text-brand-blue transition">Paket Basic (500rb)</a></li>
+                        <li><a href="#pricing" class="hover:text-brand-blue transition">Paket UMKM (1.2 Juta)</a></li>
+                        <li><a href="#pricing" class="hover:text-brand-blue transition">Paket Toko Online</a></li>
+                        <li><a href="#pricing" class="hover:text-brand-blue transition">Custom Website</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4">Navigasi Utama</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#features" class="hover:text-brand-blue transition">Keunggulan</a></li>
+                        <li><a href="#portfolio" class="hover:text-brand-blue transition">Portofolio Klien</a></li>
+                        <li><a href="#testimonials" class="hover:text-brand-blue transition">Testimoni</a></li>
+                        <li><a href="#contact" class="hover:text-brand-blue transition">Kontak WhatsApp</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4">Media Sosial</h4>
+                    <div class="flex items-center space-x-3 text-white text-lg">
+                        <a href="#" class="w-10 h-10 rounded-xl card-glass flex items-center justify-center hover:bg-brand-blue transition"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl card-glass flex items-center justify-center hover:bg-brand-blue transition"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl card-glass flex items-center justify-center hover:bg-brand-green transition"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p>&copy; 2026 WebKilat Studio. All Rights Reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-brand-blue transition">Kebijakan Privasi</a>
+                    <a href="#" class="hover:text-brand-blue transition">Syarat & Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Portfolio filtering logic
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                if(btn.getAttribute('data-filter') === category) {
+                    btn.classList.add('bg-brand-blue', 'text-white', 'shadow-md', 'shadow-brand-blue/30');
+                    btn.classList.remove('card-glass', 'text-slate-300');
+                } else {
+                    btn.classList.remove('bg-brand-blue', 'text-white', 'shadow-md', 'shadow-brand-blue/30');
+                    btn.classList.add('card-glass', 'text-slate-300');
+                }
+            });
+
+            items.forEach(item => {
+                if(category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // WhatsApp order form simulator handler
+        function handleOrderSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('o-name').value;
+            const phone = document.getElementById('o-phone').value;
+            const pkg = document.getElementById('o-package').value;
+            const msg = document.getElementById('o-msg').value;
+
+            if(name && phone && pkg && msg) {
+                const successBox = document.getElementById('order-success');
+                successBox.classList.remove('hidden');
+                
+                // Construct WhatsApp prefilled message
+                const waMessage = `Halo WebKilat Studio, saya ${name} (${phone}). Saya ingin memesan ${pkg}. Catatan/Usaha: ${msg}`;
+                const encodedMessage = encodeURIComponent(waMessage);
+                
+                setTimeout(() => {
+                    window.open(`https://wa.me/6281298765432?text=${encodedMessage}`, '_blank');
+                    document.getElementById('order-form').reset();
+                    successBox.classList.add('hidden');
+                }, 1500);
+            }
+        }
+    </script>
+</body>
+</html>
