@@ -98,17 +98,17 @@
                 </div>
             </div>
 
-            <!-- Kanan Header -->
+            <!-- Kanan Header (Sosial Media Diperbarui) -->
             <div class="hidden md:flex items-center space-x-6">
                 <div class="flex items-center space-x-2 text-sm font-semibold">
                     <span class="border-b-2 border-white pb-0.5">ID</span>
                     <span class="text-blue-200">EN</span>
                 </div>
                 <div class="flex space-x-3 text-lg">
-                    <a href="#" class="hover:text-gray-200"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#" class="hover:text-gray-200"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="hover:text-gray-200"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" class="hover:text-gray-200"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://twitter.com/EriHusyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200" title="Twitter @Eri Husyaeri"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/EriHusyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200" title="Instagram @Eri Husyaeri"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/EriHusyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200" title="Facebook @Eri Husyaeri"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.youtube.com/@eri_husyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200" title="YouTube @eri_husyaeri"><i class="fa-brands fa-youtube"></i></a>
                 </div>
             </div>
             
@@ -146,7 +146,7 @@
             
             <!-- Slide 1 -->
             <div class="slide absolute inset-0 w-full h-full opacity-100">
-                <img src="/bacround.jpeg" alt="Background Jasa Web 1" class="w-full h-full object-cover" />
+                <img src="/background.jpeg" alt="Background Jasa Web 1" class="w-full h-full object-cover" />
             </div>
 
             <!-- Slide 2 -->
@@ -329,7 +329,7 @@
                     // Kelas untuk Tab Tidak Aktif (Kuning)
                     let zIndex = 30 - i; // Mengatur z-index agar tab bertumpuk dengan benar
                     tab.className = `hero-tab tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer hover:bg-yellow-400 transition relative z-[${zIndex}]`;
-                    if (i === 3) tab.classList.add('hidden', 'md:block'); // Sembunyikan tab ke-4 di mobile sesuai desain
+                    if (i === 3) tab.classList.add('hidden', 'md:block'); // Sembunyikan tab ke-4 di mobile
                 }
             });
         }
