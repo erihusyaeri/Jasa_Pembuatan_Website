@@ -4,25 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebKilat Studio - Jasa Pembuatan Website Murah & Profesional</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        dark: {
-                            900: '#090d16',
-                            950: '#05070c',
+                        cream: {
+                            50: '#fcfbf9',
+                            100: '#f9f6f0', /* Latar Belakang Utama */
+                            200: '#f0eade', /* Latar Belakang Sekunder */
+                            300: '#e3d7c5',
                         },
                         brand: {
-                            blue: '#0ea5e9',    /* Neon Blue */
-                            green: '#10b981',   /* Emerald Green */
+                            orange: '#ea580c',  /* Orange 600 */
+                            amber: '#d97706',   /* Amber 600 */
+                            green: '#10b981',   /* Emerald Green untuk icon sukses/WA */
+                        },
+                        stone: {
+                            800: '#292524', /* Teks Utama */
+                            600: '#57534e', /* Teks Paragraf */
+                            500: '#78716c', /* Teks Redup */
                         }
                     },
                     fontFamily: {
@@ -37,8 +45,8 @@
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #05070c;
-            color: #f8fafc;
+            background-color: #f9f6f0;
+            color: #292524;
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Space Grotesk', sans-serif;
@@ -47,19 +55,20 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #05070c;
+            background: #f9f6f0;
         }
         ::-webkit-scrollbar-thumb {
-            background: #0ea5e9;
+            background: #ea580c;
             border-radius: 4px;
         }
         .hero-glow {
-            background: radial-gradient(circle at 50% 25%, rgba(14, 165, 233, 0.15) 0%, rgba(5, 7, 12, 0.95) 70%);
+            background: radial-gradient(circle at 50% 25%, rgba(234, 88, 12, 0.08) 0%, rgba(249, 246, 240, 0.95) 70%);
         }
-        .card-glass {
-            background: rgba(15, 23, 42, 0.7);
+        .card-light {
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
         .badge-pulse {
             animation: pulse 2s infinite;
@@ -70,48 +79,48 @@
         }
     </style>
 </head>
-<body class="antialiased selection:bg-brand-blue selection:text-white">
+<body class="antialiased selection:bg-brand-orange selection:text-white">
 
-    <header class="fixed top-0 left-0 right-0 z-50 bg-dark-900/85 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-cream-100/90 backdrop-blur-md border-b border-black/5 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center space-x-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-blue to-brand-green flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-blue/30 group-hover:scale-105 transition">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-orange to-brand-amber flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-orange/20 group-hover:scale-105 transition">
                     <i class="fa-solid fa-bolt-lightning"></i>
                 </div>
                 <div>
-                    <span class="text-xl font-bold font-display tracking-wider text-white">Web<span class="text-brand-green">Kilat</span></span>
-                    <span class="block text-[9px] tracking-widest uppercase text-slate-400 font-semibold">Jasa Pembuatan Web</span>
+                    <span class="text-xl font-bold font-display tracking-wider text-stone-800">Web<span class="text-brand-orange">Kilat</span></span>
+                    <span class="block text-[9px] tracking-widest uppercase text-stone-500 font-semibold">Jasa Pembuatan Web</span>
                 </div>
             </a>
 
             <!-- Desktop Nav -->
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="#beranda" class="text-slate-300 hover:text-brand-blue transition">Beranda</a>
-                <a href="#layanan" class="text-slate-300 hover:text-brand-blue transition">Layanan</a>
-                <a href="#harga" class="text-slate-300 hover:text-brand-blue transition">Harga</a>
+                <a href="#beranda" class="text-stone-600 hover:text-brand-orange transition">Beranda</a>
+                <a href="#layanan" class="text-stone-600 hover:text-brand-orange transition">Layanan</a>
+                <a href="#harga" class="text-stone-600 hover:text-brand-orange transition">Harga</a>
             </nav>
 
             <!-- CTA Button Navbar -->
             <div class="hidden md:flex items-center space-x-4">
-                <a href="https://wa.me/6282216479053" target="_blank" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-blue to-brand-green text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-brand-green/30 hover:scale-105 transition duration-300 flex items-center space-x-2">
+                <a href="https://wa.me/6282216479053" target="_blank" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-orange to-brand-amber text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-brand-orange/30 hover:scale-105 transition duration-300 flex items-center space-x-2">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                     <span>Hubungi Kami</span>
                 </a>
             </div>
 
             <!-- Mobile Menu Toggle -->
-            <button id="menu-btn" class="md:hidden text-white focus:outline-none text-2xl p-2">
+            <button id="menu-btn" class="md:hidden text-stone-800 focus:outline-none text-2xl p-2">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
 
         <!-- Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-dark-900 border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
-            <a href="#beranda" class="block py-2 text-slate-300 hover:text-brand-blue font-medium">Beranda</a>
-            <a href="#layanan" class="block py-2 text-slate-300 hover:text-brand-blue font-medium">Layanan</a>
-            <a href="#harga" class="block py-2 text-slate-300 hover:text-brand-blue font-medium">Harga</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-cream-100 border-b border-black/5 px-4 pt-2 pb-6 space-y-3 shadow-lg">
+            <a href="#beranda" class="block py-2 text-stone-600 hover:text-brand-orange font-medium">Beranda</a>
+            <a href="#layanan" class="block py-2 text-stone-600 hover:text-brand-orange font-medium">Layanan</a>
+            <a href="#harga" class="block py-2 text-stone-600 hover:text-brand-orange font-medium">Harga</a>
             <div class="pt-2">
-                <a href="https://wa.me/6282216479053" target="_blank" class="block text-center w-full py-3 rounded-full bg-gradient-to-r from-brand-blue to-brand-green text-white font-bold text-xs uppercase tracking-wider">
+                <a href="https://wa.me/6282216479053" target="_blank" class="block text-center w-full py-3 rounded-full bg-gradient-to-r from-brand-orange to-brand-amber text-white font-bold text-xs uppercase tracking-wider shadow-md">
                     Hubungi Kami
                 </a>
             </div>
@@ -119,178 +128,178 @@
     </header>
 
     <section id="beranda" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden hero-glow">
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-brand-blue/20 rounded-full blur-[140px] pointer-events-none"></div>
-        
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-brand-orange/10 rounded-full blur-[140px] pointer-events-none"></div>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
-            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-green/10 border border-brand-green/30 text-brand-green text-xs sm:text-sm font-medium mb-8 badge-pulse mx-auto">
-                <i class="fa-solid fa-fire text-brand-green"></i>
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-orange-100 border border-orange-200 text-brand-orange text-xs sm:text-sm font-medium mb-8 badge-pulse mx-auto">
+                <i class="fa-solid fa-fire text-brand-orange"></i>
                 <span>Promo Spesial: Pembuatan Website Mulai Dari Rp 500rb Saja!</span>
             </div>
-            
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase leading-tight max-w-5xl mx-auto">
+
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-stone-900 mb-6 uppercase leading-tight max-w-5xl mx-auto">
                 Jasa Pembuatan Website <br class="hidden sm:block">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-green">Murah & Profesional</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-amber">Murah & Profesional</span>
             </h1>
-            
-            <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 mb-10 font-normal leading-relaxed">
+
+            <p class="max-w-2xl mx-auto text-base sm:text-lg text-stone-600 mb-10 font-normal leading-relaxed">
                 Tingkatkan kredibilitas usaha, UMKM, atau toko online Anda dengan website modern berkecepatan kilat, mobile responsive, dan ramah SEO Google. Tanpa ribet, langsung online!
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://wa.me/6282216479053" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-brand-blue to-brand-green text-white font-bold text-sm uppercase tracking-wider shadow-xl shadow-brand-green/30 hover:scale-105 transition duration-300 flex items-center justify-center space-x-2">
+                <a href="https://wa.me/6282216479053" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-brand-orange to-brand-amber text-white font-bold text-sm uppercase tracking-wider shadow-xl shadow-brand-orange/30 hover:scale-105 transition duration-300 flex items-center justify-center space-x-2">
                     <i class="fa-brands fa-whatsapp text-lg"></i>
                     <span>Pesan Sekarang</span>
                 </a>
-                <a href="#harga" class="w-full sm:w-auto px-8 py-4 rounded-full card-glass text-white font-bold text-sm uppercase tracking-wider hover:bg-slate-800 transition duration-300 flex items-center justify-center space-x-2">
+                <a href="#harga" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white border border-stone-200 text-stone-800 font-bold text-sm uppercase tracking-wider hover:bg-stone-50 hover:shadow-md transition duration-300 flex items-center justify-center space-x-2">
                     <span>Lihat Harga</span>
-                    <i class="fa-solid fa-arrow-down"></i>
+                    <i class="fa-solid fa-arrow-down text-brand-orange"></i>
                 </a>
             </div>
 
             <!-- Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-16 mt-16 border-t border-white/10 text-center max-w-4xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-16 mt-16 border-t border-stone-200 text-center max-w-4xl mx-auto">
                 <div>
-                    <h4 class="text-3xl font-bold text-white font-display">250+</h4>
-                    <p class="text-xs text-slate-400 mt-1">Klien Puas</p>
+                    <h4 class="text-3xl font-bold text-stone-800 font-display">250+</h4>
+                    <p class="text-xs text-stone-500 mt-1 uppercase font-semibold tracking-wider">Klien Puas</p>
                 </div>
                 <div>
-                    <h4 class="text-3xl font-bold text-white font-display">1-3 Hari</h4>
-                    <p class="text-xs text-slate-400 mt-1">Pengerjaan Kilat</p>
+                    <h4 class="text-3xl font-bold text-stone-800 font-display">1-3 Hari</h4>
+                    <p class="text-xs text-stone-500 mt-1 uppercase font-semibold tracking-wider">Pengerjaan Kilat</p>
                 </div>
                 <div>
-                    <h4 class="text-3xl font-bold text-white font-display">SEO</h4>
-                    <p class="text-xs text-slate-400 mt-1">Friendly Design</p>
+                    <h4 class="text-3xl font-bold text-stone-800 font-display">SEO</h4>
+                    <p class="text-xs text-stone-500 mt-1 uppercase font-semibold tracking-wider">Friendly Design</p>
                 </div>
                 <div>
-                    <h4 class="text-3xl font-bold text-white font-display">100%</h4>
-                    <p class="text-xs text-slate-400 mt-1">Support Garansi</p>
+                    <h4 class="text-3xl font-bold text-stone-800 font-display">100%</h4>
+                    <p class="text-xs text-stone-500 mt-1 uppercase font-semibold tracking-wider">Support Garansi</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="layanan" class="py-24 bg-dark-900/60 relative border-t border-white/10">
+    <section id="layanan" class="py-24 bg-cream-200/60 relative border-t border-stone-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-brand-green text-xs font-bold uppercase tracking-widest bg-brand-green/10 px-3 py-1 rounded-full border border-brand-green/30">Layanan Kami</span>
-                <h2 class="text-3xl sm:text-5xl font-bold text-white mt-4 mb-4">Keunggulan Jasa WebKami</h2>
-                <p class="text-slate-300 text-sm sm:text-base">Kami memberikan kualitas terbaik dengan harga yang bersahabat untuk mendongkrak bisnis Anda.</p>
+                <span class="text-brand-orange text-xs font-bold uppercase tracking-widest bg-orange-100 px-3 py-1 rounded-full border border-orange-200">Layanan Kami</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-stone-900 mt-4 mb-4">Keunggulan Jasa WebKami</h2>
+                <p class="text-stone-600 text-sm sm:text-base">Kami memberikan kualitas terbaik dengan harga yang bersahabat untuk mendongkrak bisnis Anda.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="card-glass rounded-3xl p-6 group hover:border-brand-blue/60 transition duration-300">
-                    <div class="w-14 h-14 rounded-2xl bg-brand-blue/10 border border-brand-blue/30 text-brand-blue flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                <div class="card-light rounded-3xl p-6 group hover:border-brand-orange/50 transition duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-orange-100 border border-orange-200 text-brand-orange flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
                         <i class="fa-solid fa-mobile-screen-button"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Desain Responsif</h3>
-                    <p class="text-xs text-slate-300 leading-relaxed">Tampilan website dijamin rapi dan sempurna di semua perangkat, baik HP, Tablet, maupun Komputer.</p>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">Desain Responsif</h3>
+                    <p class="text-xs text-stone-600 leading-relaxed">Tampilan website dijamin rapi dan sempurna di semua perangkat, baik HP, Tablet, maupun Komputer.</p>
                 </div>
 
-                <div class="card-glass rounded-3xl p-6 group hover:border-brand-green/60 transition duration-300">
-                    <div class="w-14 h-14 rounded-2xl bg-brand-green/10 border border-brand-green/30 text-brand-green flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                <div class="card-light rounded-3xl p-6 group hover:border-brand-amber/50 transition duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-100 border border-amber-200 text-brand-amber flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
                         <i class="fa-solid fa-gauge-high"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Performa Cepat</h3>
-                    <p class="text-xs text-slate-300 leading-relaxed">Website dioptimasi untuk kecepatan loading kilat, memberikan pengalaman terbaik untuk pengunjung Anda.</p>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">Performa Cepat</h3>
+                    <p class="text-xs text-stone-600 leading-relaxed">Website dioptimasi untuk kecepatan loading kilat, memberikan pengalaman terbaik untuk pengunjung Anda.</p>
                 </div>
 
-                <div class="card-glass rounded-3xl p-6 group hover:border-brand-blue/60 transition duration-300">
-                    <div class="w-14 h-14 rounded-2xl bg-brand-blue/10 border border-brand-blue/30 text-brand-blue flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                <div class="card-light rounded-3xl p-6 group hover:border-brand-orange/50 transition duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-orange-100 border border-orange-200 text-brand-orange flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
                         <i class="fa-solid fa-magnifying-glass-arrow-right"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">SEO Friendly</h3>
-                    <p class="text-xs text-slate-300 leading-relaxed">Struktur kode bersih agar mudah terindeks oleh mesin pencari Google, mendatangkan traffic organik.</p>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">SEO Friendly</h3>
+                    <p class="text-xs text-stone-600 leading-relaxed">Struktur kode bersih agar mudah terindeks oleh mesin pencari Google, mendatangkan traffic organik.</p>
                 </div>
 
-                <div class="card-glass rounded-3xl p-6 group hover:border-brand-green/60 transition duration-300">
-                    <div class="w-14 h-14 rounded-2xl bg-brand-green/10 border border-brand-green/30 text-brand-green flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                <div class="card-light rounded-3xl p-6 group hover:border-brand-amber/50 transition duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-100 border border-amber-200 text-brand-amber flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
                         <i class="fa-solid fa-headset"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Bantuan & Support</h3>
-                    <p class="text-xs text-slate-300 leading-relaxed">Jangan khawatir jika ada kendala, tim kami siap membantu Anda kapanpun Anda butuhkan via WhatsApp.</p>
+                    <h3 class="text-xl font-bold text-stone-800 mb-2">Bantuan & Support</h3>
+                    <p class="text-xs text-stone-600 leading-relaxed">Jangan khawatir jika ada kendala, tim kami siap membantu Anda kapanpun Anda butuhkan via WhatsApp.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="harga" class="py-24 bg-dark-950 relative border-t border-white/10">
+    <section id="harga" class="py-24 bg-cream-100 relative border-t border-stone-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-brand-green text-xs font-bold uppercase tracking-widest bg-brand-green/10 px-3 py-1 rounded-full border border-brand-green/30">Daftar Harga</span>
-                <h2 class="text-3xl sm:text-5xl font-bold text-white mt-4 mb-4">Pilih Paket Sesuai Kebutuhan</h2>
-                <p class="text-slate-300 text-sm sm:text-base">Harga transparan, pembayaran sekali di awal. Dapatkan website berkualitas tanpa biaya bulanan yang mahal.</p>
+                <span class="text-brand-orange text-xs font-bold uppercase tracking-widest bg-orange-100 px-3 py-1 rounded-full border border-orange-200">Daftar Harga</span>
+                <h2 class="text-3xl sm:text-5xl font-bold text-stone-900 mt-4 mb-4">Pilih Paket Sesuai Kebutuhan</h2>
+                <p class="text-stone-600 text-sm sm:text-base">Harga transparan, pembayaran sekali di awal. Dapatkan website berkualitas tanpa biaya bulanan yang mahal.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
                 <!-- Paket Basic -->
-                <div class="card-glass rounded-3xl p-8 flex flex-col justify-between border border-white/10 hover:border-brand-blue/50 transition">
+                <div class="card-light rounded-3xl p-8 flex flex-col justify-between border border-black/5 hover:border-brand-orange/30 hover:shadow-xl transition duration-300 bg-white">
                     <div>
-                        <span class="text-xs uppercase font-bold text-brand-blue tracking-wider">Landing Page</span>
-                        <h3 class="text-2xl font-bold text-white mt-1 mb-2">Paket Basic</h3>
-                        <p class="text-xs text-slate-400 mb-6">Cocok untuk promosi satu produk atau portofolio pribadi.</p>
-                        
-                        <div class="mb-6 pb-6 border-b border-white/10">
-                            <span class="text-3xl font-extrabold text-white font-display">Rp 500rb</span>
+                        <span class="text-xs uppercase font-bold text-brand-orange tracking-wider">Landing Page</span>
+                        <h3 class="text-2xl font-bold text-stone-800 mt-1 mb-2">Paket Basic</h3>
+                        <p class="text-xs text-stone-500 mb-6">Cocok untuk promosi satu produk atau portofolio pribadi.</p>
+
+                        <div class="mb-6 pb-6 border-b border-stone-100">
+                            <span class="text-3xl font-extrabold text-stone-900 font-display">Rp 500rb</span>
                         </div>
 
-                        <ul class="space-y-3 text-xs text-slate-300 mb-8">
+                        <ul class="space-y-3 text-xs text-stone-600 mb-8 font-medium">
                             <li><i class="fa-solid fa-check text-brand-green mr-2"></i> 1 Halaman Responsif</li>
                             <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Tombol Chat WhatsApp</li>
                             <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Gratis Domain .my.id (1 Tahun)</li>
                             <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Pengerjaan 1-2 Hari</li>
                         </ul>
                     </div>
-                    <a href="https://wa.me/6282216479053" target="_blank" class="w-full py-3 rounded-xl card-glass text-white font-bold text-xs uppercase tracking-wider text-center hover:bg-brand-blue transition flex items-center justify-center space-x-2">
+                    <a href="https://wa.me/6282216479053" target="_blank" class="w-full py-3 rounded-xl border border-brand-orange text-brand-orange font-bold text-xs uppercase tracking-wider text-center hover:bg-brand-orange hover:text-white transition flex items-center justify-center space-x-2">
                         <i class="fa-brands fa-whatsapp text-sm"></i> <span>Pesan Sekarang</span>
                     </a>
                 </div>
 
                 <!-- Paket UMKM -->
-                <div class="card-glass rounded-3xl p-8 flex flex-col justify-between border-2 border-brand-green relative shadow-2xl bg-slate-900/85 scale-105 z-10">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-blue to-brand-green text-slate-950 font-extrabold text-[10px] uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">
+                <div class="rounded-3xl p-8 flex flex-col justify-between border-2 border-brand-orange relative shadow-2xl bg-orange-50/50 scale-105 z-10 backdrop-blur-sm">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-orange to-brand-amber text-white font-extrabold text-[10px] uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">
                         Paling Laris
                     </div>
                     <div>
-                        <span class="text-xs uppercase font-bold text-brand-green tracking-wider">Company Profile</span>
-                        <h3 class="text-2xl font-bold text-white mt-1 mb-2">Paket UMKM</h3>
-                        <p class="text-xs text-slate-300 mb-6">Solusi lengkap untuk perusahaan atau bisnis skala menengah.</p>
-                        
-                        <div class="mb-6 pb-6 border-b border-white/10">
-                            <span class="text-3xl font-extrabold text-white font-display">Rp 1.2 Juta</span>
+                        <span class="text-xs uppercase font-bold text-brand-amber tracking-wider">Company Profile</span>
+                        <h3 class="text-2xl font-bold text-stone-900 mt-1 mb-2">Paket UMKM</h3>
+                        <p class="text-xs text-stone-600 mb-6">Solusi lengkap untuk perusahaan atau bisnis skala menengah.</p>
+
+                        <div class="mb-6 pb-6 border-b border-orange-200">
+                            <span class="text-3xl font-extrabold text-stone-900 font-display">Rp 1.2 Juta</span>
                         </div>
 
-                        <ul class="space-y-3 text-xs text-slate-300 mb-8">
-                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Hingga 5 Halaman</li>
-                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Desain Premium</li>
-                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Gratis Domain .com (1 Tahun)</li>
-                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Integrasi Google Maps & Sosmed</li>
-                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Pengerjaan 2-3 Hari</li>
+                        <ul class="space-y-3 text-xs text-stone-700 mb-8 font-medium">
+                            <li><i class="fa-solid fa-check text-brand-orange mr-2 text-lg"></i> Hingga 5 Halaman</li>
+                            <li><i class="fa-solid fa-check text-brand-orange mr-2 text-lg"></i> Desain Premium</li>
+                            <li><i class="fa-solid fa-check text-brand-orange mr-2 text-lg"></i> Gratis Domain .com (1 Tahun)</li>
+                            <li><i class="fa-solid fa-check text-brand-orange mr-2 text-lg"></i> Integrasi Google Maps & Sosmed</li>
+                            <li><i class="fa-solid fa-check text-brand-orange mr-2 text-lg"></i> Pengerjaan 2-3 Hari</li>
                         </ul>
                     </div>
-                    <a href="https://wa.me/6282216479053" target="_blank" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-blue to-brand-green text-slate-950 font-extrabold text-xs uppercase tracking-wider text-center shadow-lg shadow-brand-green/30 hover:scale-[1.02] transition flex items-center justify-center space-x-2">
+                    <a href="https://wa.me/6282216479053" target="_blank" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-orange to-brand-amber text-white font-extrabold text-xs uppercase tracking-wider text-center shadow-lg shadow-brand-orange/30 hover:scale-[1.02] transition flex items-center justify-center space-x-2">
                         <i class="fa-brands fa-whatsapp text-sm"></i> <span>Pesan Sekarang</span>
                     </a>
                 </div>
 
                 <!-- Paket Toko Online -->
-                <div class="card-glass rounded-3xl p-8 flex flex-col justify-between border border-white/10 hover:border-brand-blue/50 transition">
+                <div class="card-light rounded-3xl p-8 flex flex-col justify-between border border-black/5 hover:border-brand-amber/30 hover:shadow-xl transition duration-300 bg-white">
                     <div>
-                        <span class="text-xs uppercase font-bold text-brand-blue tracking-wider">E-Commerce</span>
-                        <h3 class="text-2xl font-bold text-white mt-1 mb-2">Paket Toko Online</h3>
-                        <p class="text-xs text-slate-400 mb-6">Website khusus e-commerce dengan sistem keranjang belanja.</p>
-                        
-                        <div class="mb-6 pb-6 border-b border-white/10">
-                            <span class="text-3xl font-extrabold text-white font-display">Rp 2.5 Juta</span>
+                        <span class="text-xs uppercase font-bold text-brand-amber tracking-wider">E-Commerce</span>
+                        <h3 class="text-2xl font-bold text-stone-800 mt-1 mb-2">Paket Toko Online</h3>
+                        <p class="text-xs text-stone-500 mb-6">Website khusus e-commerce dengan sistem keranjang belanja.</p>
+
+                        <div class="mb-6 pb-6 border-b border-stone-100">
+                            <span class="text-3xl font-extrabold text-stone-900 font-display">Rp 2.5 Juta</span>
                         </div>
 
-                        <ul class="space-y-3 text-xs text-slate-300 mb-8">
+                        <ul class="space-y-3 text-xs text-stone-600 mb-8 font-medium">
                             <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Katalog Produk Tidak Terbatas</li>
                             <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Keranjang & Checkout Otomatis</li>
                             <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Dashboard Admin Pengelola</li>
                             <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Gratis Domain & Hosting (1 Tahun)</li>
                         </ul>
                     </div>
-                    <a href="https://wa.me/6282216479053" target="_blank" class="w-full py-3 rounded-xl card-glass text-white font-bold text-xs uppercase tracking-wider text-center hover:bg-brand-blue transition flex items-center justify-center space-x-2">
+                    <a href="https://wa.me/6282216479053" target="_blank" class="w-full py-3 rounded-xl border border-brand-amber text-brand-amber font-bold text-xs uppercase tracking-wider text-center hover:bg-brand-amber hover:text-white transition flex items-center justify-center space-x-2">
                         <i class="fa-brands fa-whatsapp text-sm"></i> <span>Pesan Sekarang</span>
                     </a>
                 </div>
@@ -298,56 +307,56 @@
         </div>
     </section>
 
-    <section class="py-16 bg-gradient-to-br from-brand-blue/20 to-brand-green/20 relative border-t border-b border-white/10">
+    <section class="py-16 bg-gradient-to-br from-orange-100/60 to-amber-100/60 relative border-t border-b border-orange-200/50">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-            <h2 class="text-2xl sm:text-4xl font-bold text-white mb-6">Siap Go Digital Hari Ini?</h2>
-            <p class="text-slate-300 mb-8">Hubungi tim kami sekarang juga untuk konsultasi gratis. Kami siap mewujudkan website impian untuk bisnis Anda.</p>
-            <a href="https://wa.me/6282216479053" target="_blank" class="inline-flex px-8 py-4 rounded-full bg-gradient-to-r from-brand-blue to-brand-green text-white font-bold text-sm uppercase tracking-wider shadow-xl shadow-brand-green/30 hover:scale-105 transition duration-300 items-center space-x-2">
+            <h2 class="text-2xl sm:text-4xl font-bold text-stone-900 mb-6">Siap Go Digital Hari Ini?</h2>
+            <p class="text-stone-600 mb-8 font-medium">Hubungi tim kami sekarang juga untuk konsultasi gratis. Kami siap mewujudkan website impian untuk bisnis Anda.</p>
+            <a href="https://wa.me/6282216479053" target="_blank" class="inline-flex px-8 py-4 rounded-full bg-gradient-to-r from-brand-orange to-brand-amber text-white font-bold text-sm uppercase tracking-wider shadow-xl shadow-brand-orange/30 hover:scale-105 transition duration-300 items-center space-x-2">
                 <i class="fa-brands fa-whatsapp text-xl"></i>
                 <span>Hubungi Kami via WhatsApp</span>
             </a>
         </div>
     </section>
 
-    <footer class="bg-dark-950 py-12 text-slate-400 text-sm">
+    <footer class="bg-cream-200 py-12 border-t border-stone-200 text-stone-600 text-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-12 border-b border-white/5">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-12 border-b border-stone-300/50">
                 <div class="space-y-4">
                     <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-blue to-brand-green flex items-center justify-center text-white font-bold text-xl">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-orange to-brand-amber flex items-center justify-center text-white font-bold text-xl shadow-md">
                             <i class="fa-solid fa-bolt-lightning"></i>
                         </div>
                         <div>
-                            <span class="text-xl font-bold font-display tracking-wider text-white">Web<span class="text-brand-green">Kilat</span></span>
+                            <span class="text-xl font-bold font-display tracking-wider text-stone-800">Web<span class="text-brand-orange">Kilat</span></span>
                         </div>
                     </div>
-                    <p class="text-xs text-slate-400 leading-relaxed max-w-xs">
+                    <p class="text-xs text-stone-500 leading-relaxed max-w-xs font-medium">
                         Solusi jasa pembuatan website murah, cepat, dan profesional untuk seluruh UMKM dan pebisnis di Indonesia.
                     </p>
                 </div>
                 <div>
-                    <h4 class="text-white font-bold text-sm mb-4">Navigasi Utama</h4>
-                    <ul class="space-y-2 text-xs">
-                        <li><a href="#beranda" class="hover:text-brand-blue transition">Beranda</a></li>
-                        <li><a href="#layanan" class="hover:text-brand-blue transition">Layanan</a></li>
-                        <li><a href="#harga" class="hover:text-brand-blue transition">Harga & Paket</a></li>
+                    <h4 class="text-stone-900 font-bold text-sm mb-4">Navigasi Utama</h4>
+                    <ul class="space-y-2 text-xs font-medium text-stone-500">
+                        <li><a href="#beranda" class="hover:text-brand-orange transition">Beranda</a></li>
+                        <li><a href="#layanan" class="hover:text-brand-orange transition">Layanan</a></li>
+                        <li><a href="#harga" class="hover:text-brand-orange transition">Harga & Paket</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-white font-bold text-sm mb-4">Kontak Kami</h4>
-                    <ul class="space-y-3 text-xs">
+                    <h4 class="text-stone-900 font-bold text-sm mb-4">Kontak Kami</h4>
+                    <ul class="space-y-3 text-xs font-medium text-stone-500">
                         <li class="flex items-center space-x-2">
                             <i class="fa-brands fa-whatsapp text-brand-green text-lg"></i>
-                            <a href="https://wa.me/6282216479053" target="_blank" class="hover:text-white transition">+62 822-1647-9053</a>
+                            <a href="https://wa.me/6282216479053" target="_blank" class="hover:text-brand-orange transition">+62 822-1647-9053</a>
                         </li>
                         <li class="flex items-center space-x-2">
-                            <i class="fa-regular fa-clock text-brand-blue text-lg"></i>
+                            <i class="fa-regular fa-clock text-brand-orange text-lg"></i>
                             <span>Senin - Sabtu (08.00 - 21.00 WIB)</span>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="pt-8 text-center text-xs text-slate-500">
+            <div class="pt-8 text-center text-xs font-medium text-stone-500">
                 <p>&copy; 2026 WebKilat Studio. All Rights Reserved.</p>
             </div>
         </div>
