@@ -74,6 +74,14 @@
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.8; transform: scale(1.03); }
         }
+        
+        /* CSS Khusus Slider */
+        .slide {
+            transition: opacity 0.7s ease-in-out;
+        }
+        .dot {
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-brand-orange selection:text-white">
@@ -125,46 +133,107 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="beranda" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-stone-900">
+    <!-- Hero Section dengan Slider -->
+    <section id="beranda" class="relative min-h-screen overflow-hidden bg-stone-900 group">
         
-        <!-- Background Image Container -->
-        <div class="absolute inset-0 w-full h-full z-0">
-            <!-- Path diperbarui menggunakan slash (/) di awal agar dibaca absolute oleh Vercel -->
-            <img src="/bacround.jpeg" alt="Hero Background" class="absolute inset-0 w-full h-full object-cover object-center" />
-            
-            <!-- Overlay Gelap agar teks mudah dibaca -->
+        <!-- Slide 1 (Menggunakan gambar Anda) -->
+        <div class="slide absolute inset-0 w-full h-full opacity-100 z-10 flex items-center justify-center pt-16">
+            <img src="/background.jpeg" alt="Hero Background 1" class="absolute inset-0 w-full h-full object-cover object-center" />
             <div class="absolute inset-0 bg-stone-900/60 backdrop-blur-[2px]"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full text-center">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-orange/20 border border-brand-orange/50 text-orange-400 text-xs sm:text-sm font-medium mb-8 badge-pulse mx-auto backdrop-blur-md">
+                    <i class="fa-solid fa-fire text-brand-orange"></i>
+                    <span class="text-white">Promo Spesial: Pembuatan Website Mulai Dari Rp 500rb Saja!</span>
+                </div>
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase leading-tight max-w-5xl mx-auto drop-shadow-lg">
+                    Jasa Pembuatan Website <br class="hidden sm:block">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-amber">Murah & Profesional</span>
+                </h1>
+                <p class="max-w-2xl mx-auto text-base sm:text-lg text-cream-100 mb-10 font-normal leading-relaxed drop-shadow-md">
+                    Tingkatkan kredibilitas usaha, UMKM, atau toko online Anda dengan website modern berkecepatan kilat.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://wa.me/6282216479053" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-brand-orange to-brand-amber text-white font-bold text-sm uppercase tracking-wider shadow-xl shadow-brand-orange/30 hover:scale-105 transition duration-300 flex items-center justify-center space-x-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Pesan Sekarang</span>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
-            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-orange/20 border border-brand-orange/50 text-orange-400 text-xs sm:text-sm font-medium mb-8 badge-pulse mx-auto backdrop-blur-md">
-                <i class="fa-solid fa-fire text-brand-orange"></i>
-                <span class="text-white">Promo Spesial: Pembuatan Website Mulai Dari Rp 500rb Saja!</span>
+        <!-- Slide 2 -->
+        <div class="slide absolute inset-0 w-full h-full opacity-0 z-0 flex items-center justify-center pt-16">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80" alt="Hero Background 2" class="absolute inset-0 w-full h-full object-cover object-center" />
+            <div class="absolute inset-0 bg-stone-900/70 backdrop-blur-[2px]"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full text-center">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-orange/20 border border-brand-orange/50 text-orange-400 text-xs sm:text-sm font-medium mb-8 badge-pulse mx-auto backdrop-blur-md">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <span class="text-white">Tampilan Sempurna di Semua Perangkat</span>
+                </div>
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase leading-tight max-w-5xl mx-auto drop-shadow-lg">
+                    Desain Modern & <br class="hidden sm:block">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-amber">Mobile Responsive</span>
+                </h1>
+                <p class="max-w-2xl mx-auto text-base sm:text-lg text-cream-100 mb-10 font-normal leading-relaxed drop-shadow-md">
+                    Kami memastikan website Anda terlihat memukau dan berfungsi optimal baik di HP, Tablet, maupun Komputer.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#layanan" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-sm uppercase tracking-wider hover:bg-white/20 hover:shadow-md transition duration-300 flex items-center justify-center space-x-2">
+                        <span>Pelajari Lebih Lanjut</span>
+                        <i class="fa-solid fa-arrow-down text-brand-orange"></i>
+                    </a>
+                </div>
             </div>
+        </div>
 
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase leading-tight max-w-5xl mx-auto drop-shadow-lg">
-                Jasa Pembuatan Website <br class="hidden sm:block">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-amber">Murah & Profesional</span>
-            </h1>
-
-            <p class="max-w-2xl mx-auto text-base sm:text-lg text-cream-100 mb-10 font-normal leading-relaxed drop-shadow-md">
-                Tingkatkan kredibilitas usaha, UMKM, atau toko online Anda dengan website modern berkecepatan kilat, mobile responsive, dan ramah SEO Google. Tanpa ribet, langsung online!
-            </p>
-
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://wa.me/6282216479053" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-brand-orange to-brand-amber text-white font-bold text-sm uppercase tracking-wider shadow-xl shadow-brand-orange/30 hover:scale-105 transition duration-300 flex items-center justify-center space-x-2">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>Pesan Sekarang</span>
-                </a>
-                <a href="#harga" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-sm uppercase tracking-wider hover:bg-white/20 hover:shadow-md transition duration-300 flex items-center justify-center space-x-2">
-                    <span>Lihat Harga</span>
-                    <i class="fa-solid fa-arrow-down text-brand-orange"></i>
-                </a>
+        <!-- Slide 3 -->
+        <div class="slide absolute inset-0 w-full h-full opacity-0 z-0 flex items-center justify-center pt-16">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Hero Background 3" class="absolute inset-0 w-full h-full object-cover object-center" />
+            <div class="absolute inset-0 bg-stone-900/70 backdrop-blur-[2px]"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full text-center">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-orange/20 border border-brand-orange/50 text-orange-400 text-xs sm:text-sm font-medium mb-8 badge-pulse mx-auto backdrop-blur-md">
+                    <i class="fa-solid fa-rocket"></i>
+                    <span class="text-white">Siap Mendominasi Mesin Pencari</span>
+                </div>
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase leading-tight max-w-5xl mx-auto drop-shadow-lg">
+                    Optimasi SEO & <br class="hidden sm:block">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-amber">Performa Kilat</span>
+                </h1>
+                <p class="max-w-2xl mx-auto text-base sm:text-lg text-cream-100 mb-10 font-normal leading-relaxed drop-shadow-md">
+                    Struktur kode bersih dan kecepatan loading kilat untuk mendatangkan traffic organik ke bisnis Anda.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#harga" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-brand-orange to-brand-amber text-white font-bold text-sm uppercase tracking-wider shadow-xl shadow-brand-orange/30 hover:scale-105 transition duration-300 flex items-center justify-center space-x-2">
+                        <span>Lihat Paket Harga</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
+        </div>
 
-            <!-- Stats Statistik -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-16 mt-16 border-t border-white/20 text-center max-w-4xl mx-auto drop-shadow-md">
+        <!-- Slider Controls (Panah Kiri Kanan) -->
+        <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 text-white hover:bg-brand-orange/80 transition backdrop-blur-sm opacity-0 group-hover:opacity-100">
+            <i class="fa-solid fa-chevron-left text-xl"></i>
+        </button>
+        <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 text-white hover:bg-brand-orange/80 transition backdrop-blur-sm opacity-0 group-hover:opacity-100">
+            <i class="fa-solid fa-chevron-right text-xl"></i>
+        </button>
+
+        <!-- Slider Indicators (Titik Bawah) -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex space-x-3">
+            <button class="dot w-8 h-2.5 rounded-full bg-brand-orange transition" onclick="goToSlide(0)"></button>
+            <button class="dot w-3 h-2.5 rounded-full bg-white/50 hover:bg-white/80 transition" onclick="goToSlide(1)"></button>
+            <button class="dot w-3 h-2.5 rounded-full bg-white/50 hover:bg-white/80 transition" onclick="goToSlide(2)"></button>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-stone-900 border-t border-white/10 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 py-12 text-center max-w-4xl mx-auto">
                 <div>
                     <h4 class="text-3xl font-bold text-white font-display">250+</h4>
                     <p class="text-xs text-cream-200 mt-1 uppercase font-semibold tracking-wider">Klien Puas</p>
@@ -373,7 +442,9 @@
         </div>
     </footer>
 
+    <!-- Script Logika -->
     <script>
+        // Logika Mobile Menu
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -386,6 +457,65 @@
                 mobileMenu.classList.add('hidden');
             });
         });
+
+        // Logika Hero Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = slides.length;
+        let slideInterval;
+
+        function showSlide(index) {
+            // Sembunyikan semua slide dan reset dot
+            slides.forEach((slide) => {
+                slide.classList.remove('opacity-100', 'z-10');
+                slide.classList.add('opacity-0', 'z-0');
+            });
+            dots.forEach((dot) => {
+                dot.classList.remove('w-8', 'bg-brand-orange');
+                dot.classList.add('w-3', 'bg-white/50');
+            });
+
+            // Tampilkan slide target
+            slides[index].classList.remove('opacity-0', 'z-0');
+            slides[index].classList.add('opacity-100', 'z-10');
+            dots[index].classList.remove('w-3', 'bg-white/50');
+            dots[index].classList.add('w-8', 'bg-brand-orange');
+            
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            showSlide((currentSlide + 1) % totalSlides);
+        }
+
+        function prevSlide() {
+            showSlide((currentSlide - 1 + totalSlides) % totalSlides);
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+            resetInterval();
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        // Event Listeners untuk Panah
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            nextSlide();
+            resetInterval();
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            prevSlide();
+            resetInterval();
+        });
+
+        // Auto slide setiap 5 detik
+        slideInterval = setInterval(nextSlide, 5000);
     </script>
 </body>
 </html>
