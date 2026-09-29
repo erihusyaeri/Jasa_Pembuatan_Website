@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebKilat Studio - Jasa Pembuatan Website Murah & Profesional</title>
+    <title>WebKilat Studio - Jasa Pembuatan Website</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -18,24 +16,17 @@
                     colors: {
                         cream: {
                             50: '#fcfbf9',
-                            100: '#f9f6f0',
-                            200: '#f0eade',
-                            300: '#e3d7c5',
+                            100: '#f9f6f0', /* Latar Belakang Utama */
                         },
-                        brand: {
-                            orange: '#ea580c',
-                            amber: '#d97706',
-                            green: '#10b981',
-                        },
-                        stone: {
-                            800: '#292524',
-                            600: '#57534e',
-                            500: '#78716c',
+                        itb: {
+                            header: '#539ed6', /* Biru Header */
+                            tabActive: '#1d4d82', /* Biru Gelap Tab */
+                            tabInactive: '#e9da8b', /* Kuning Tab */
+                            infobar: '#007bb5', /* Biru Baris Bawah Hero */
                         }
                     },
                     fontFamily: {
-                        'display': ['Space Grotesk', 'sans-serif'],
-                        'sans': ['Plus Jakarta Sans', 'sans-serif'],
+                        'sans': ['Open Sans', 'sans-serif'], /* Meniru font clean/akademis */
                     }
                 }
             }
@@ -44,444 +35,271 @@
 
     <style>
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Open Sans', sans-serif;
             background-color: #f9f6f0;
-            color: #292524;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f9f6f0;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #ea580c;
-            border-radius: 4px;
-        }
-        .card-light {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-        }
-        .badge-pulse {
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.03); }
+            color: #333333;
         }
         
-        /* CSS Khusus Slider */
-        .slide {
-            transition: opacity 0.7s ease-in-out;
+        /* Modifikasi bentuk tab agar mirip referensi ITB */
+        .tab-active {
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+            border-bottom-right-radius: 1.5rem;
         }
-        .dot {
-            transition: all 0.3s ease;
+        .tab-inactive {
+            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+            margin-left: -1rem;
+            padding-left: 2rem;
+            border-bottom-right-radius: 1.5rem;
+        }
+        
+        /* Slider Styling */
+        .slide {
+            transition: opacity 0.5s ease-in-out;
         }
     </style>
 </head>
-<body class="antialiased selection:bg-brand-orange selection:text-white">
+<body class="antialiased">
 
-    <!-- Header / Navbar -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-cream-100/90 backdrop-blur-md border-b border-black/5 transition-all duration-300 shadow-sm" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center space-x-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-orange to-brand-amber flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-orange/20 group-hover:scale-105 transition">
-                    <i class="fa-solid fa-bolt-lightning"></i>
-                </div>
-                <div>
-                    <span class="text-xl font-bold font-display tracking-wider text-stone-800">Web<span class="text-brand-orange">Kilat</span></span>
-                    <span class="block text-[9px] tracking-widest uppercase text-stone-500 font-semibold">Jasa Pembuatan Web</span>
-                </div>
-            </a>
-
-            <!-- Desktop Nav -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="#beranda" class="text-stone-600 hover:text-brand-orange transition">Beranda</a>
-                <a href="#layanan" class="text-stone-600 hover:text-brand-orange transition">Layanan</a>
-                <a href="#harga" class="text-stone-600 hover:text-brand-orange transition">Harga</a>
-            </nav>
-
-            <!-- CTA Button Navbar -->
-            <div class="hidden md:flex items-center space-x-4">
-                <a href="https://wa.me/6282216479053" target="_blank" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-orange to-brand-amber text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-brand-orange/30 hover:scale-105 transition duration-300 flex items-center space-x-2">
-                    <i class="fa-brands fa-whatsapp text-sm"></i>
-                    <span>Hubungi Kami</span>
-                </a>
-            </div>
-
-            <!-- Mobile Menu Toggle -->
-            <button id="menu-btn" class="md:hidden text-stone-800 focus:outline-none text-2xl p-2">
-                <i class="fa-solid fa-bars"></i>
+    <!-- Top Bar (Meniru baris paling atas) -->
+    <div class="bg-gray-800 text-gray-300 text-[11px] py-1.5 px-4 hidden md:flex justify-between items-center z-50 relative">
+        <div class="flex space-x-4 max-w-7xl mx-auto w-full px-4">
+            <a href="#" class="hover:text-white">Beranda</a>
+            <a href="#" class="hover:text-white">Tentang Kami</a>
+            <a href="#" class="hover:text-white">Layanan</a>
+            <a href="#" class="hover:text-white">Portofolio</a>
+            <a href="#" class="hover:text-white">Kontak</a>
+        </div>
+        <div class="flex space-x-2 mr-8">
+            <input type="text" placeholder="Search..." class="bg-gray-700 text-white px-2 py-0.5 rounded text-xs border-none outline-none">
+            <button class="bg-orange-500 text-white px-3 py-0.5 rounded">Search</button>
+            <button class="bg-blue-600 text-white px-3 py-0.5 rounded flex items-center space-x-1">
+                <i class="fa-solid fa-user text-[10px]"></i> <span>Login</span>
             </button>
         </div>
+    </div>
 
-        <!-- Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-cream-100 border-b border-black/5 px-4 pt-2 pb-6 space-y-3 shadow-lg">
-            <a href="#beranda" class="block py-2 text-stone-600 hover:text-brand-orange font-medium">Beranda</a>
-            <a href="#layanan" class="block py-2 text-stone-600 hover:text-brand-orange font-medium">Layanan</a>
-            <a href="#harga" class="block py-2 text-stone-600 hover:text-brand-orange font-medium">Harga</a>
-            <div class="pt-2">
-                <a href="https://wa.me/6282216479053" target="_blank" class="block text-center w-full py-3 rounded-full bg-gradient-to-r from-brand-orange to-brand-amber text-white font-bold text-xs uppercase tracking-wider shadow-md">
-                    Hubungi Kami
-                </a>
+    <!-- Main Header (Meniru header biru muda ITB) -->
+    <header class="bg-itb-header text-white py-4 shadow-md relative z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <!-- Logo Area -->
+            <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-itb-header shadow-inner">
+                    <i class="fa-solid fa-bolt-lightning text-2xl"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-semibold tracking-wide">WebKilat Studio</span>
+                    <span class="text-xs text-blue-100">Jasa Pembuatan Website Profesional</span>
+                </div>
             </div>
+
+            <!-- Kanan Header (Bahasa & Sosial Media) -->
+            <div class="hidden md:flex items-center space-x-6">
+                <div class="flex items-center space-x-2 text-sm font-semibold">
+                    <span class="border-b-2 border-white pb-0.5">ID</span>
+                    <span class="text-blue-200">EN</span>
+                </div>
+                <div class="flex space-x-3 text-lg">
+                    <a href="#" class="hover:text-gray-200"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="hover:text-gray-200"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-gray-200"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-gray-200"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu Btn -->
+            <button class="md:hidden text-white text-2xl"><i class="fa-solid fa-bars"></i></button>
         </div>
     </header>
 
-    <!-- Hero Section dengan Slider -->
-    <section id="beranda" class="relative min-h-screen overflow-hidden bg-stone-900 group">
+    <!-- TAB BUTTONS & HERO SLIDER SECTION -->
+    <main class="relative bg-cream-100">
         
-        <!-- Slide 1 (Menggunakan gambar Anda) -->
-        <div class="slide absolute inset-0 w-full h-full opacity-100 z-10 flex items-center justify-center pt-16">
-            <img src="/background.jpeg" alt="Hero Background 1" class="absolute inset-0 w-full h-full object-cover object-center" />
-            <div class="absolute inset-0 bg-stone-900/60 backdrop-blur-[2px]"></div>
+        <!-- Tab Buttons (Meniru tombol-tombol di atas hero) -->
+        <div class="w-full bg-itb-header">
+            <div class="max-w-7xl mx-auto flex flex-wrap items-end relative z-30 overflow-hidden">
+                <!-- Tab Aktif (Biru Gelap) -->
+                <div class="tab-active bg-itb-tabActive text-white font-bold text-sm sm:text-lg px-8 py-3 pb-4 cursor-pointer hover:bg-blue-900 transition z-40">
+                    WebKilat <br class="hidden sm:block"> Studio
+                </div>
+                
+                <!-- Tab Tidak Aktif (Kuning) -->
+                <div class="tab-inactive bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer hover:bg-yellow-400 transition z-30">
+                    Desain <br> Responsif
+                </div>
+                <div class="tab-inactive bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer hover:bg-yellow-400 transition z-20">
+                    Performa <br> Cepat
+                </div>
+                <div class="tab-inactive bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer hover:bg-yellow-400 transition z-10 hidden md:block">
+                    Optimasi <br> SEO Google
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Image Area (Meniru gambar full width dengan panah) -->
+        <div class="relative w-full h-[300px] md:h-[500px] bg-gray-900 overflow-hidden group z-10 -mt-2">
             
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full text-center">
-                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-orange/20 border border-brand-orange/50 text-orange-400 text-xs sm:text-sm font-medium mb-8 badge-pulse mx-auto backdrop-blur-md">
-                    <i class="fa-solid fa-fire text-brand-orange"></i>
-                    <span class="text-white">Promo Spesial: Pembuatan Website Mulai Dari Rp 500rb Saja!</span>
-                </div>
-                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase leading-tight max-w-5xl mx-auto drop-shadow-lg">
-                    Jasa Pembuatan Website <br class="hidden sm:block">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-amber">Murah & Profesional</span>
-                </h1>
-                <p class="max-w-2xl mx-auto text-base sm:text-lg text-cream-100 mb-10 font-normal leading-relaxed drop-shadow-md">
-                    Tingkatkan kredibilitas usaha, UMKM, atau toko online Anda dengan website modern berkecepatan kilat.
-                </p>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="https://wa.me/6282216479053" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-brand-orange to-brand-amber text-white font-bold text-sm uppercase tracking-wider shadow-xl shadow-brand-orange/30 hover:scale-105 transition duration-300 flex items-center justify-center space-x-2">
-                        <i class="fa-brands fa-whatsapp text-lg"></i>
-                        <span>Pesan Sekarang</span>
-                    </a>
-                </div>
+            <!-- Slide 1 (Menggunakan background.jpeg milik Anda) -->
+            <div class="slide absolute inset-0 w-full h-full opacity-100">
+                <img src="/bacround.jpeg" alt="Background Jasa Web 1" class="w-full h-full object-cover" />
+            </div>
+
+            <!-- Slide 2 (Placeholder) -->
+            <div class="slide absolute inset-0 w-full h-full opacity-0">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80" alt="Background Jasa Web 2" class="w-full h-full object-cover" />
+            </div>
+
+            <!-- Slide 3 (Placeholder) -->
+            <div class="slide absolute inset-0 w-full h-full opacity-0">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Background Jasa Web 3" class="w-full h-full object-cover" />
+            </div>
+
+            <!-- Panah Navigasi Slider -->
+            <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-3xl opacity-70 hover:opacity-100 transition z-20">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-3xl opacity-70 hover:opacity-100 transition z-20">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <!-- Titik-Titik Bawah (Pagination) -->
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+                <button class="dot w-3 h-3 rounded-full border-2 border-white bg-transparent" onclick="goToSlide(0)"></button>
+                <button class="dot w-3 h-3 rounded-full border-2 border-white bg-white opacity-50" onclick="goToSlide(1)"></button>
+                <button class="dot w-3 h-3 rounded-full border-2 border-white bg-white opacity-50" onclick="goToSlide(2)"></button>
             </div>
         </div>
 
-        <!-- Slide 2 -->
-        <div class="slide absolute inset-0 w-full h-full opacity-0 z-0 flex items-center justify-center pt-16">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80" alt="Hero Background 2" class="absolute inset-0 w-full h-full object-cover object-center" />
-            <div class="absolute inset-0 bg-stone-900/70 backdrop-blur-[2px]"></div>
+        <!-- Info Bar (Meniru baris biru berisi ikon & teks di bawah slider) -->
+        <div class="bg-itb-infobar w-full">
+            <div class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-white">
+                
+                <div class="flex items-center space-x-4 border-r border-blue-400/30 pr-4 last:border-0 md:last:border-r-0">
+                    <i class="fa-brands fa-whatsapp text-3xl"></i>
+                    <div>
+                        <h4 class="font-bold text-sm md:text-base">Konsultasi Gratis</h4>
+                        <p class="text-xs text-blue-100 hidden sm:block">Hubungi kami kapan saja via WA</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4 border-r border-blue-400/30 pr-4 last:border-0 md:last:border-r-0">
+                    <i class="fa-solid fa-clock-rotate-left text-3xl"></i>
+                    <div>
+                        <h4 class="font-bold text-sm md:text-base">Pengerjaan Kilat</h4>
+                        <p class="text-xs text-blue-100 hidden sm:block">Website online dalam 1-3 hari</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4 border-r border-blue-400/30 pr-4 last:border-0 md:last:border-r-0">
+                    <i class="fa-solid fa-shield-halved text-3xl"></i>
+                    <div>
+                        <h4 class="font-bold text-sm md:text-base">Garansi 100%</h4>
+                        <p class="text-xs text-blue-100 hidden sm:block">Aman dari error & bugs</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <i class="fa-solid fa-headset text-3xl"></i>
+                    <div>
+                        <h4 class="font-bold text-sm md:text-base">Support Bantuan</h4>
+                        <p class="text-xs text-blue-100 hidden sm:block">Layanan purna jual selamanya</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Konten Berita / Paket Layanan (Meniru 4 kartu di bawah info bar) -->
+    <section class="max-w-7xl mx-auto px-4 py-16 bg-cream-100">
+        <h2 class="text-2xl text-gray-700 font-semibold mb-6 border-b border-gray-300 pb-2">Paket Layanan / Berita</h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full text-center">
-                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-orange/20 border border-brand-orange/50 text-orange-400 text-xs sm:text-sm font-medium mb-8 badge-pulse mx-auto backdrop-blur-md">
-                    <i class="fa-solid fa-mobile-screen"></i>
-                    <span class="text-white">Tampilan Sempurna di Semua Perangkat</span>
+            <!-- Kartu 1 -->
+            <div class="bg-white group cursor-pointer shadow-sm hover:shadow-md transition">
+                <div class="h-40 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket Basic" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                 </div>
-                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase leading-tight max-w-5xl mx-auto drop-shadow-lg">
-                    Desain Modern & <br class="hidden sm:block">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-amber">Mobile Responsive</span>
-                </h1>
-                <p class="max-w-2xl mx-auto text-base sm:text-lg text-cream-100 mb-10 font-normal leading-relaxed drop-shadow-md">
-                    Kami memastikan website Anda terlihat memukau dan berfungsi optimal baik di HP, Tablet, maupun Komputer.
-                </p>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="#layanan" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-sm uppercase tracking-wider hover:bg-white/20 hover:shadow-md transition duration-300 flex items-center justify-center space-x-2">
-                        <span>Pelajari Lebih Lanjut</span>
-                        <i class="fa-solid fa-arrow-down text-brand-orange"></i>
-                    </a>
+                <div class="p-4">
+                    <span class="text-red-600 text-xs font-semibold block mb-1">Paket Basic</span>
+                    <span class="text-gray-400 text-[11px] block mb-2">Rp 500.000</span>
+                    <h3 class="text-sm font-semibold text-gray-800 leading-snug hover:text-blue-600">Pembuatan Landing Page responsif untuk promosi satu produk.</h3>
                 </div>
             </div>
+
+            <!-- Kartu 2 -->
+            <div class="bg-white group cursor-pointer shadow-sm hover:shadow-md transition">
+                <div class="h-40 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket UMKM" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <span class="text-red-600 text-xs font-semibold block mb-1">Paket UMKM</span>
+                    <span class="text-gray-400 text-[11px] block mb-2">Rp 1.200.000</span>
+                    <h3 class="text-sm font-semibold text-gray-800 leading-snug hover:text-blue-600">Company Profile lengkap hingga 5 halaman + Gratis Domain .com.</h3>
+                </div>
+            </div>
+
+            <!-- Kartu 3 -->
+            <div class="bg-white group cursor-pointer shadow-sm hover:shadow-md transition">
+                <div class="h-40 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket Toko Online" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <span class="text-red-600 text-xs font-semibold block mb-1">E-Commerce</span>
+                    <span class="text-gray-400 text-[11px] block mb-2">Rp 2.500.000</span>
+                    <h3 class="text-sm font-semibold text-gray-800 leading-snug hover:text-blue-600">Sistem Toko Online lengkap dengan keranjang belanja otomatis.</h3>
+                </div>
+            </div>
+
+            <!-- Kartu 4 -->
+            <div class="bg-white group cursor-pointer shadow-sm hover:shadow-md transition">
+                <div class="h-40 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Promo" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <span class="text-red-600 text-xs font-semibold block mb-1">Promo Bulan Ini</span>
+                    <span class="text-gray-400 text-[11px] block mb-2">Terbatas</span>
+                    <h3 class="text-sm font-semibold text-gray-800 leading-snug hover:text-blue-600">Diskon 20% untuk pembuatan website Corporate. Pesan sekarang!</h3>
+                </div>
+            </div>
+
         </div>
-
-        <!-- Slide 3 -->
-        <div class="slide absolute inset-0 w-full h-full opacity-0 z-0 flex items-center justify-center pt-16">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Hero Background 3" class="absolute inset-0 w-full h-full object-cover object-center" />
-            <div class="absolute inset-0 bg-stone-900/70 backdrop-blur-[2px]"></div>
-            
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full text-center">
-                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-orange/20 border border-brand-orange/50 text-orange-400 text-xs sm:text-sm font-medium mb-8 badge-pulse mx-auto backdrop-blur-md">
-                    <i class="fa-solid fa-rocket"></i>
-                    <span class="text-white">Siap Mendominasi Mesin Pencari</span>
-                </div>
-                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase leading-tight max-w-5xl mx-auto drop-shadow-lg">
-                    Optimasi SEO & <br class="hidden sm:block">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-amber">Performa Kilat</span>
-                </h1>
-                <p class="max-w-2xl mx-auto text-base sm:text-lg text-cream-100 mb-10 font-normal leading-relaxed drop-shadow-md">
-                    Struktur kode bersih dan kecepatan loading kilat untuk mendatangkan traffic organik ke bisnis Anda.
-                </p>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="#harga" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-brand-orange to-brand-amber text-white font-bold text-sm uppercase tracking-wider shadow-xl shadow-brand-orange/30 hover:scale-105 transition duration-300 flex items-center justify-center space-x-2">
-                        <span>Lihat Paket Harga</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slider Controls (Panah Kiri Kanan) -->
-        <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 text-white hover:bg-brand-orange/80 transition backdrop-blur-sm opacity-0 group-hover:opacity-100">
-            <i class="fa-solid fa-chevron-left text-xl"></i>
-        </button>
-        <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center rounded-full bg-black/30 text-white hover:bg-brand-orange/80 transition backdrop-blur-sm opacity-0 group-hover:opacity-100">
-            <i class="fa-solid fa-chevron-right text-xl"></i>
-        </button>
-
-        <!-- Slider Indicators (Titik Bawah) -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex space-x-3">
-            <button class="dot w-8 h-2.5 rounded-full bg-brand-orange transition" onclick="goToSlide(0)"></button>
-            <button class="dot w-3 h-2.5 rounded-full bg-white/50 hover:bg-white/80 transition" onclick="goToSlide(1)"></button>
-            <button class="dot w-3 h-2.5 rounded-full bg-white/50 hover:bg-white/80 transition" onclick="goToSlide(2)"></button>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="bg-stone-900 border-t border-white/10 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 py-12 text-center max-w-4xl mx-auto">
-                <div>
-                    <h4 class="text-3xl font-bold text-white font-display">250+</h4>
-                    <p class="text-xs text-cream-200 mt-1 uppercase font-semibold tracking-wider">Klien Puas</p>
-                </div>
-                <div>
-                    <h4 class="text-3xl font-bold text-white font-display">1-3 Hari</h4>
-                    <p class="text-xs text-cream-200 mt-1 uppercase font-semibold tracking-wider">Pengerjaan Kilat</p>
-                </div>
-                <div>
-                    <h4 class="text-3xl font-bold text-white font-display">SEO</h4>
-                    <p class="text-xs text-cream-200 mt-1 uppercase font-semibold tracking-wider">Friendly Design</p>
-                </div>
-                <div>
-                    <h4 class="text-3xl font-bold text-white font-display">100%</h4>
-                    <p class="text-xs text-cream-200 mt-1 uppercase font-semibold tracking-wider">Support Garansi</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Content Sections dengan Tema Krem -->
-    <section id="layanan" class="py-24 bg-cream-200/60 relative border-t border-stone-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-brand-orange text-xs font-bold uppercase tracking-widest bg-orange-100 px-3 py-1 rounded-full border border-orange-200">Layanan Kami</span>
-                <h2 class="text-3xl sm:text-5xl font-bold text-stone-900 mt-4 mb-4">Keunggulan Jasa WebKami</h2>
-                <p class="text-stone-600 text-sm sm:text-base">Kami memberikan kualitas terbaik dengan harga yang bersahabat untuk mendongkrak bisnis Anda.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="card-light rounded-3xl p-6 group hover:border-brand-orange/50 transition duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="w-14 h-14 rounded-2xl bg-orange-100 border border-orange-200 text-brand-orange flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
-                        <i class="fa-solid fa-mobile-screen-button"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-stone-800 mb-2">Desain Responsif</h3>
-                    <p class="text-xs text-stone-600 leading-relaxed">Tampilan website dijamin rapi dan sempurna di semua perangkat, baik HP, Tablet, maupun Komputer.</p>
-                </div>
-
-                <div class="card-light rounded-3xl p-6 group hover:border-brand-amber/50 transition duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="w-14 h-14 rounded-2xl bg-amber-100 border border-amber-200 text-brand-amber flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
-                        <i class="fa-solid fa-gauge-high"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-stone-800 mb-2">Performa Cepat</h3>
-                    <p class="text-xs text-stone-600 leading-relaxed">Website dioptimasi untuk kecepatan loading kilat, memberikan pengalaman terbaik untuk pengunjung Anda.</p>
-                </div>
-
-                <div class="card-light rounded-3xl p-6 group hover:border-brand-orange/50 transition duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="w-14 h-14 rounded-2xl bg-orange-100 border border-orange-200 text-brand-orange flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
-                        <i class="fa-solid fa-magnifying-glass-arrow-right"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-stone-800 mb-2">SEO Friendly</h3>
-                    <p class="text-xs text-stone-600 leading-relaxed">Struktur kode bersih agar mudah terindeks oleh mesin pencari Google, mendatangkan traffic organik.</p>
-                </div>
-
-                <div class="card-light rounded-3xl p-6 group hover:border-brand-amber/50 transition duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="w-14 h-14 rounded-2xl bg-amber-100 border border-amber-200 text-brand-amber flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
-                        <i class="fa-solid fa-headset"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-stone-800 mb-2">Bantuan & Support</h3>
-                    <p class="text-xs text-stone-600 leading-relaxed">Jangan khawatir jika ada kendala, tim kami siap membantu Anda kapanpun Anda butuhkan via WhatsApp.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Harga Section -->
-    <section id="harga" class="py-24 bg-cream-100 relative border-t border-stone-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-brand-orange text-xs font-bold uppercase tracking-widest bg-orange-100 px-3 py-1 rounded-full border border-orange-200">Daftar Harga</span>
-                <h2 class="text-3xl sm:text-5xl font-bold text-stone-900 mt-4 mb-4">Pilih Paket Sesuai Kebutuhan</h2>
-                <p class="text-stone-600 text-sm sm:text-base">Harga transparan, pembayaran sekali di awal. Dapatkan website berkualitas tanpa biaya bulanan yang mahal.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-                <!-- Paket Basic -->
-                <div class="card-light rounded-3xl p-8 flex flex-col justify-between border border-black/5 hover:border-brand-orange/30 hover:shadow-xl transition duration-300 bg-white">
-                    <div>
-                        <span class="text-xs uppercase font-bold text-brand-orange tracking-wider">Landing Page</span>
-                        <h3 class="text-2xl font-bold text-stone-800 mt-1 mb-2">Paket Basic</h3>
-                        <p class="text-xs text-stone-500 mb-6">Cocok untuk promosi satu produk atau portofolio pribadi.</p>
-
-                        <div class="mb-6 pb-6 border-b border-stone-100">
-                            <span class="text-3xl font-extrabold text-stone-900 font-display">Rp 500rb</span>
-                        </div>
-
-                        <ul class="space-y-3 text-xs text-stone-600 mb-8 font-medium">
-                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> 1 Halaman Responsif</li>
-                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Tombol Chat WhatsApp</li>
-                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Gratis Domain .my.id (1 Tahun)</li>
-                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Pengerjaan 1-2 Hari</li>
-                        </ul>
-                    </div>
-                    <a href="https://wa.me/6282216479053" target="_blank" class="w-full py-3 rounded-xl border border-brand-orange text-brand-orange font-bold text-xs uppercase tracking-wider text-center hover:bg-brand-orange hover:text-white transition flex items-center justify-center space-x-2">
-                        <i class="fa-brands fa-whatsapp text-sm"></i> <span>Pesan Sekarang</span>
-                    </a>
-                </div>
-
-                <!-- Paket UMKM -->
-                <div class="rounded-3xl p-8 flex flex-col justify-between border-2 border-brand-orange relative shadow-2xl bg-orange-50/50 scale-105 z-10 backdrop-blur-sm">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-orange to-brand-amber text-white font-extrabold text-[10px] uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">
-                        Paling Laris
-                    </div>
-                    <div>
-                        <span class="text-xs uppercase font-bold text-brand-amber tracking-wider">Company Profile</span>
-                        <h3 class="text-2xl font-bold text-stone-900 mt-1 mb-2">Paket UMKM</h3>
-                        <p class="text-xs text-stone-600 mb-6">Solusi lengkap untuk perusahaan atau bisnis skala menengah.</p>
-
-                        <div class="mb-6 pb-6 border-b border-orange-200">
-                            <span class="text-3xl font-extrabold text-stone-900 font-display">Rp 1.2 Juta</span>
-                        </div>
-
-                        <ul class="space-y-3 text-xs text-stone-700 mb-8 font-medium">
-                            <li><i class="fa-solid fa-check text-brand-orange mr-2 text-lg"></i> Hingga 5 Halaman</li>
-                            <li><i class="fa-solid fa-check text-brand-orange mr-2 text-lg"></i> Desain Premium</li>
-                            <li><i class="fa-solid fa-check text-brand-orange mr-2 text-lg"></i> Gratis Domain .com (1 Tahun)</li>
-                            <li><i class="fa-solid fa-check text-brand-orange mr-2 text-lg"></i> Integrasi Google Maps & Sosmed</li>
-                            <li><i class="fa-solid fa-check text-brand-orange mr-2 text-lg"></i> Pengerjaan 2-3 Hari</li>
-                        </ul>
-                    </div>
-                    <a href="https://wa.me/6282216479053" target="_blank" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-orange to-brand-amber text-white font-extrabold text-xs uppercase tracking-wider text-center shadow-lg shadow-brand-orange/30 hover:scale-[1.02] transition flex items-center justify-center space-x-2">
-                        <i class="fa-brands fa-whatsapp text-sm"></i> <span>Pesan Sekarang</span>
-                    </a>
-                </div>
-
-                <!-- Paket Toko Online -->
-                <div class="card-light rounded-3xl p-8 flex flex-col justify-between border border-black/5 hover:border-brand-amber/30 hover:shadow-xl transition duration-300 bg-white">
-                    <div>
-                        <span class="text-xs uppercase font-bold text-brand-amber tracking-wider">E-Commerce</span>
-                        <h3 class="text-2xl font-bold text-stone-800 mt-1 mb-2">Paket Toko Online</h3>
-                        <p class="text-xs text-stone-500 mb-6">Website khusus e-commerce dengan sistem keranjang belanja.</p>
-
-                        <div class="mb-6 pb-6 border-b border-stone-100">
-                            <span class="text-3xl font-extrabold text-stone-900 font-display">Rp 2.5 Juta</span>
-                        </div>
-
-                        <ul class="space-y-3 text-xs text-stone-600 mb-8 font-medium">
-                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Katalog Produk Tidak Terbatas</li>
-                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Keranjang & Checkout Otomatis</li>
-                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Dashboard Admin Pengelola</li>
-                            <li><i class="fa-solid fa-check text-brand-green mr-2"></i> Gratis Domain & Hosting (1 Tahun)</li>
-                        </ul>
-                    </div>
-                    <a href="https://wa.me/6282216479053" target="_blank" class="w-full py-3 rounded-xl border border-brand-amber text-brand-amber font-bold text-xs uppercase tracking-wider text-center hover:bg-brand-amber hover:text-white transition flex items-center justify-center space-x-2">
-                        <i class="fa-brands fa-whatsapp text-sm"></i> <span>Pesan Sekarang</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="py-16 bg-gradient-to-br from-orange-100/60 to-amber-100/60 relative border-t border-b border-orange-200/50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-            <h2 class="text-2xl sm:text-4xl font-bold text-stone-900 mb-6">Siap Go Digital Hari Ini?</h2>
-            <p class="text-stone-600 mb-8 font-medium">Hubungi tim kami sekarang juga untuk konsultasi gratis. Kami siap mewujudkan website impian untuk bisnis Anda.</p>
-            <a href="https://wa.me/6282216479053" target="_blank" class="inline-flex px-8 py-4 rounded-full bg-gradient-to-r from-brand-orange to-brand-amber text-white font-bold text-sm uppercase tracking-wider shadow-xl shadow-brand-orange/30 hover:scale-105 transition duration-300 items-center space-x-2">
-                <i class="fa-brands fa-whatsapp text-xl"></i>
-                <span>Hubungi Kami via WhatsApp</span>
+        
+        <div class="mt-8 text-center">
+            <a href="https://wa.me/6282216479053" class="inline-block bg-blue-600 text-white font-semibold px-6 py-2 rounded hover:bg-blue-700 transition shadow">
+                Hubungi Kami Sekarang
             </a>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-cream-200 py-12 border-t border-stone-200 text-stone-600 text-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-12 border-b border-stone-300/50">
-                <div class="space-y-4">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-orange to-brand-amber flex items-center justify-center text-white font-bold text-xl shadow-md">
-                            <i class="fa-solid fa-bolt-lightning"></i>
-                        </div>
-                        <div>
-                            <span class="text-xl font-bold font-display tracking-wider text-stone-800">Web<span class="text-brand-orange">Kilat</span></span>
-                        </div>
-                    </div>
-                    <p class="text-xs text-stone-500 leading-relaxed max-w-xs font-medium">
-                        Solusi jasa pembuatan website murah, cepat, dan profesional untuk seluruh UMKM dan pebisnis di Indonesia.
-                    </p>
-                </div>
-                <div>
-                    <h4 class="text-stone-900 font-bold text-sm mb-4">Navigasi Utama</h4>
-                    <ul class="space-y-2 text-xs font-medium text-stone-500">
-                        <li><a href="#beranda" class="hover:text-brand-orange transition">Beranda</a></li>
-                        <li><a href="#layanan" class="hover:text-brand-orange transition">Layanan</a></li>
-                        <li><a href="#harga" class="hover:text-brand-orange transition">Harga & Paket</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-stone-900 font-bold text-sm mb-4">Kontak Kami</h4>
-                    <ul class="space-y-3 text-xs font-medium text-stone-500">
-                        <li class="flex items-center space-x-2">
-                            <i class="fa-brands fa-whatsapp text-brand-green text-lg"></i>
-                            <a href="https://wa.me/6282216479053" target="_blank" class="hover:text-brand-orange transition">+62 822-1647-9053</a>
-                        </li>
-                        <li class="flex items-center space-x-2">
-                            <i class="fa-regular fa-clock text-brand-orange text-lg"></i>
-                            <span>Senin - Sabtu (08.00 - 21.00 WIB)</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="pt-8 text-center text-xs font-medium text-stone-500">
-                <p>&copy; 2026 WebKilat Studio. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Script Logika -->
+    <!-- Script Javascript untuk Slider Logika ITB -->
     <script>
-        // Logika Mobile Menu
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // Logika Hero Slider
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const dots = document.querySelectorAll('.dot');
         const totalSlides = slides.length;
         let slideInterval;
 
-        function showSlide(index) {
-            // Sembunyikan semua slide dan reset dot
-            slides.forEach((slide) => {
-                slide.classList.remove('opacity-100', 'z-10');
-                slide.classList.add('opacity-0', 'z-0');
+        function updateDots(index) {
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.remove('bg-white', 'opacity-50');
+                    dot.classList.add('bg-transparent'); // Lingkaran kosong (border putih) untuk yang aktif
+                } else {
+                    dot.classList.remove('bg-transparent');
+                    dot.classList.add('bg-white', 'opacity-50'); // Lingkaran putih solid (opacity 50%) untuk tidak aktif
+                }
             });
-            dots.forEach((dot) => {
-                dot.classList.remove('w-8', 'bg-brand-orange');
-                dot.classList.add('w-3', 'bg-white/50');
-            });
+        }
 
-            // Tampilkan slide target
-            slides[index].classList.remove('opacity-0', 'z-0');
-            slides[index].classList.add('opacity-100', 'z-10');
-            dots[index].classList.remove('w-3', 'bg-white/50');
-            dots[index].classList.add('w-8', 'bg-brand-orange');
-            
+        function showSlide(index) {
+            slides.forEach((slide) => {
+                slide.classList.remove('opacity-100');
+                slide.classList.add('opacity-0');
+            });
+            slides[index].classList.remove('opacity-0');
+            slides[index].classList.add('opacity-100');
+            updateDots(index);
             currentSlide = index;
         }
 
@@ -503,7 +321,6 @@
             slideInterval = setInterval(nextSlide, 5000);
         }
 
-        // Event Listeners untuk Panah
         document.getElementById('nextBtn').addEventListener('click', () => {
             nextSlide();
             resetInterval();
@@ -514,7 +331,7 @@
             resetInterval();
         });
 
-        // Auto slide setiap 5 detik
+        // Initialize Auto Slide
         slideInterval = setInterval(nextSlide, 5000);
     </script>
 </body>
