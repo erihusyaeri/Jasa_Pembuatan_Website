@@ -17,7 +17,9 @@
             theme: {
                 extend: {
                     colors: {
-                        cream: { 100: '#f9f6f0' },
+                        cream: {
+                            100: '#f9f6f0',
+                        },
                         itb: {
                             header: '#539ed6', 
                             tabActive: '#1d4d82', 
@@ -34,11 +36,30 @@
     </script>
 
     <style>
-        body { font-family: 'Open Sans', sans-serif; background-color: #f9f6f0; color: #333333; }
-        .tab-active-shape { clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%); border-bottom-right-radius: 1.5rem; }
-        .tab-inactive-shape { clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%); margin-left: -1rem; padding-left: 2rem; border-bottom-right-radius: 1.5rem; }
-        .slide { transition: opacity 0.5s ease-in-out; }
-        .modal-enter { animation: fadeIn 0.3s ease-out forwards; }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f9f6f0;
+            color: #333333;
+        }
+        
+        .tab-active-shape {
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+            border-bottom-right-radius: 1.5rem;
+        }
+        .tab-inactive-shape {
+            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+            margin-left: -1rem;
+            padding-left: 2rem;
+            border-bottom-right-radius: 1.5rem;
+        }
+        
+        .slide {
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .modal-enter {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.95); }
             to { opacity: 1; transform: scale(1); }
@@ -65,9 +86,10 @@
         </div>
     </div>
 
-    <!-- Main Header -->
+    <!-- Main Header (Sticky Navigation) -->
     <header class="bg-itb-header text-white py-4 shadow-md sticky top-0 md:relative z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <!-- Logo Area -->
             <a href="#beranda" class="flex items-center space-x-4 focus:outline-none">
                 <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-itb-header shadow-inner">
                     <i class="fa-solid fa-bolt-lightning text-2xl animate-pulse"></i>
@@ -78,8 +100,9 @@
                 </div>
             </a>
 
-            <!-- Desktop Nav -->
+            <!-- Menu Kanan & Sosial Media Desktop -->
             <div class="hidden md:flex items-center space-x-6">
+                <!-- Menu Link Utama di Header (Desktop) -->
                 <nav class="flex space-x-4 text-sm font-semibold mr-4">
                     <a href="#beranda" class="hover:text-blue-900 transition">Beranda</a>
                     <a href="#tentang-kami" class="hover:text-blue-900 transition">Tentang Kami</a>
@@ -87,68 +110,145 @@
                     <a href="#portofolio" class="hover:text-blue-900 transition">Portofolio</a>
                     <a href="#kontak" class="hover:text-blue-900 transition">Kontak</a>
                 </nav>
+                <div class="flex items-center space-x-2 text-sm font-semibold border-l border-white/30 pl-4">
+                    <span class="border-b-2 border-white pb-0.5">ID</span>
+                    <span class="text-blue-200 cursor-pointer hover:text-white transition">EN</span>
+                </div>
                 <div class="flex space-x-3 text-lg">
-                    <a href="#" class="hover:text-gray-200 transition"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="#" class="hover:text-gray-200 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://twitter.com/EriHusyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/EriHusyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/EriHusyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.youtube.com/@eri_husyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition"><i class="fa-brands fa-youtube"></i></a>
                 </div>
             </div>
             
+            <!-- Tombol Hamburger (Mobile) -->
             <button id="mobile-toggle" class="md:hidden text-white text-2xl p-2 rounded focus:outline-none hover:bg-white/20 transition">
                 <i id="mobile-icon" class="fa-solid fa-bars"></i>
             </button>
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-blue-700 shadow-xl border-t border-blue-400/40 px-4 pt-3 pb-6 flex-col">
+        <!-- Dropdown Menu Mobile -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-blue-700 shadow-xl border-t border-blue-400/40 px-4 pt-3 pb-6 flex-col max-h-[85vh] overflow-y-auto">
             <nav class="flex flex-col space-y-1 mb-4 font-semibold text-sm">
-                <a href="#beranda" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition"><i class="fa-solid fa-house w-5"></i> Beranda</a>
-                <a href="#tentang-kami" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition"><i class="fa-solid fa-circle-info w-5"></i> Tentang Kami</a>
-                <a href="#layanan" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition"><i class="fa-solid fa-screwdriver-wrench w-5"></i> Layanan & Blog</a>
-                <a href="#portofolio" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition"><i class="fa-solid fa-images w-5"></i> Portofolio</a>
-                <a href="#kontak" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition"><i class="fa-solid fa-address-book w-5"></i> Kontak</a>
-                <a href="admin.html" class="py-3 px-3 rounded bg-blue-900 hover:bg-blue-950 transition flex items-center space-x-3 text-yellow-300"><i class="fa-solid fa-lock w-5"></i> Panel Admin</a>
+                <a href="#beranda" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition flex items-center space-x-3"><i class="fa-solid fa-house w-5"></i> <span>Beranda</span></a>
+                <a href="#tentang-kami" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition flex items-center space-x-3"><i class="fa-solid fa-circle-info w-5"></i> <span>Tentang Kami</span></a>
+                <a href="#layanan" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition flex items-center space-x-3"><i class="fa-solid fa-screwdriver-wrench w-5"></i> <span>Layanan & Blog</span></a>
+                <a href="#portofolio" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition flex items-center space-x-3"><i class="fa-solid fa-images w-5"></i> <span>Portofolio</span></a>
+                <a href="#kontak" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition flex items-center space-x-3"><i class="fa-solid fa-address-book w-5"></i> <span>Kontak</span></a>
+                <a href="admin.html" class="mobile-nav-link py-3 px-3 rounded bg-blue-900 hover:bg-blue-950 transition flex items-center space-x-3 text-yellow-300"><i class="fa-solid fa-lock w-5"></i> <span>Panel Admin</span></a>
             </nav>
-            <div class="flex space-x-2 pt-3 border-t border-blue-500/50">
-                <input type="text" id="mobile-search" placeholder="Cari..." class="w-full bg-blue-900/60 text-white px-3 py-2 rounded text-sm outline-none">
-                <button id="mobile-search-btn" class="bg-orange-500 text-white px-4 py-2 rounded text-sm font-semibold hover:bg-orange-600">Search</button>
+
+            <!-- Search Mobile -->
+            <div class="flex flex-col space-y-3 pt-3 border-t border-blue-500/50">
+                <div class="flex space-x-2">
+                    <input type="text" id="mobile-search" placeholder="Cari layanan/artikel..." class="w-full bg-blue-900/60 text-white placeholder-blue-200 px-3 py-2 rounded text-sm outline-none border border-blue-400/40">
+                    <button id="mobile-search-btn" class="bg-orange-500 text-white px-4 py-2 rounded text-sm font-semibold hover:bg-orange-600 transition">Search</button>
+                </div>
+            </div>
+
+            <!-- Sosmed & Bahasa Mobile -->
+            <div class="flex items-center justify-between pt-4 mt-4 border-t border-blue-500/50">
+                <div class="flex items-center space-x-3 text-sm font-semibold">
+                    <span class="border-b-2 border-white pb-0.5">ID</span>
+                    <span class="text-blue-200">EN</span>
+                </div>
+                <div class="flex space-x-4 text-xl">
+                    <a href="https://twitter.com/EriHusyaeri" target="_blank" class="hover:text-gray-200"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/EriHusyaeri" target="_blank" class="hover:text-gray-200"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/EriHusyaeri" target="_blank" class="hover:text-gray-200"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.youtube.com/@eri_husyaeri" target="_blank" class="hover:text-gray-200"><i class="fa-brands fa-youtube"></i></a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- SECTION: BERANDA -->
+    <!-- SECTION: BERANDA (MAIN SLIDER & TABS) -->
     <section id="beranda" class="relative bg-cream-100 z-10 scroll-mt-24">
+        <!-- Tab Container -->
         <div class="w-full bg-itb-header">
             <div class="max-w-7xl mx-auto flex flex-wrap items-end relative z-30 overflow-hidden">
-                <button data-index="0" class="tab-btn tab-active-shape bg-itb-tabActive text-white font-bold text-sm sm:text-lg px-8 py-3 pb-4 cursor-pointer relative" style="z-index: 40;">Eri Web <br class="hidden sm:block"> Kilat</button>
-                <button data-index="1" class="tab-btn tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer relative" style="z-index: 30;">Desain <br> Responsif</button>
+                <button data-index="0" class="tab-btn tab-active-shape bg-itb-tabActive text-white font-bold text-sm sm:text-lg px-8 py-3 pb-4 cursor-pointer transition relative" style="z-index: 40;">
+                    Eri Web <br class="hidden sm:block"> Kilat Studio
+                </button>
+                <button data-index="1" class="tab-btn tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer transition relative" style="z-index: 30;">
+                    Desain <br> Responsif
+                </button>
+                <button data-index="2" class="tab-btn tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer transition relative" style="z-index: 20;">
+                    Performa <br> Cepat
+                </button>
+                <button data-index="3" class="tab-btn tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer transition relative hidden md:block" style="z-index: 10;">
+                    Optimasi <br> SEO Google
+                </button>
             </div>
         </div>
 
+        <!-- Slider Image Container -->
         <div class="relative w-full h-[300px] md:h-[500px] bg-gray-900 overflow-hidden -mt-2">
-            <div class="slide absolute inset-0 w-full h-full opacity-100"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&w=2000&q=80" class="w-full h-full object-cover" /></div>
-            <div class="slide absolute inset-0 w-full h-full opacity-0"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&w=2000&q=80" class="w-full h-full object-cover" /></div>
-            
-            <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-3xl opacity-70 hover:opacity-100 z-20"><i class="fa-solid fa-chevron-left"></i></button>
-            <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-3xl opacity-70 hover:opacity-100 z-20"><i class="fa-solid fa-chevron-right"></i></button>
+            <!-- Slide 1 -->
+            <div class="slide absolute inset-0 w-full h-full opacity-100">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&w=2000&q=80" alt="Background Jasa Web 1" class="w-full h-full object-cover" />
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide absolute inset-0 w-full h-full opacity-0">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80" alt="Background Jasa Web 2" class="w-full h-full object-cover" />
+            </div>
+            <!-- Slide 3 -->
+            <div class="slide absolute inset-0 w-full h-full opacity-0">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Background Jasa Web 3" class="w-full h-full object-cover" />
+            </div>
+            <!-- Slide 4 -->
+            <div class="slide absolute inset-0 w-full h-full opacity-0">
+                <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80" alt="Background Jasa Web 4" class="w-full h-full object-cover" />
+            </div>
+
+            <!-- Navigasi Slider -->
+            <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-3xl opacity-70 hover:opacity-100 transition z-20">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-3xl opacity-70 hover:opacity-100 transition z-20">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <!-- Titik (Dots) Navigasi -->
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+                <button data-index="0" class="dot w-3 h-3 rounded-full border-2 border-white bg-transparent"></button>
+                <button data-index="1" class="dot w-3 h-3 rounded-full border-2 border-white bg-white opacity-50"></button>
+                <button data-index="2" class="dot w-3 h-3 rounded-full border-2 border-white bg-white opacity-50"></button>
+                <button data-index="3" class="dot w-3 h-3 rounded-full border-2 border-white bg-white opacity-50"></button>
+            </div>
         </div>
 
+        <!-- Info Bar Bawah Slider -->
         <div class="bg-itb-infobar w-full">
             <div class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-white">
                 <div class="flex items-center space-x-4 border-r border-blue-400/30 pr-4 last:border-0 md:last:border-r-0">
                     <i class="fa-brands fa-whatsapp text-3xl animate-pulse"></i>
-                    <div><h4 class="font-bold text-sm md:text-base">Konsultasi Gratis</h4></div>
+                    <div>
+                        <h4 class="font-bold text-sm md:text-base">Konsultasi Gratis</h4>
+                        <p class="text-xs text-blue-100 hidden sm:block">Hubungi kami via WA</p>
+                    </div>
                 </div>
                 <div class="flex items-center space-x-4 border-r border-blue-400/30 pr-4 last:border-0 md:last:border-r-0">
                     <i class="fa-solid fa-clock-rotate-left text-3xl"></i>
-                    <div><h4 class="font-bold text-sm md:text-base">Pengerjaan Kilat</h4></div>
+                    <div>
+                        <h4 class="font-bold text-sm md:text-base">Pengerjaan Kilat</h4>
+                        <p class="text-xs text-blue-100 hidden sm:block">Selesai dalam 1-3 hari</p>
+                    </div>
                 </div>
                 <div class="flex items-center space-x-4 border-r border-blue-400/30 pr-4 last:border-0 md:last:border-r-0">
                     <i class="fa-solid fa-shield-halved text-3xl"></i>
-                    <div><h4 class="font-bold text-sm md:text-base">Garansi 100%</h4></div>
+                    <div>
+                        <h4 class="font-bold text-sm md:text-base">Garansi 100%</h4>
+                        <p class="text-xs text-blue-100 hidden sm:block">Aman dari error & bugs</p>
+                    </div>
                 </div>
                 <div class="flex items-center space-x-4">
                     <i class="fa-solid fa-headset text-3xl"></i>
-                    <div><h4 class="font-bold text-sm md:text-base">Support Bantuan</h4></div>
+                    <div>
+                        <h4 class="font-bold text-sm md:text-base">Support Bantuan</h4>
+                        <p class="text-xs text-blue-100 hidden sm:block">Purna jual selamanya</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -160,14 +260,32 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div class="space-y-4">
                 <h3 class="text-xl font-bold text-itb-tabActive">Eri Web Kilat Studio - Partner Transformasi Digital Anda</h3>
-                <p class="text-gray-600 leading-relaxed">Kami merupakan sebuah studio pembuatan website profesional yang berbasis di Bandung...</p>
+                <p class="text-gray-600 leading-relaxed">
+                    Kami merupakan sebuah studio pembuatan website profesional yang berbasis di Bandung, Indonesia, dengan misi menghadirkan platform digital terbaik, cepat, dan responsif. Sejak didirikan oleh <strong>Eri Husyaeri</strong>, kami telah berkolaborasi dengan ratusan pengusaha, pelaku UMKM, hingga skala Corporate untuk mengembangkan platform terbaik yang mendukung efektivitas pemasaran mereka.
+                </p>
+                <p class="text-gray-600 leading-relaxed">
+                    Mulai dari Landing Page interaktif, profil perusahaan (Company Profile), hingga sistem E-Commerce kustom, semua dikembangkan secara terstruktur agar tahan uji, modern, dan dioptimasi secara penuh oleh para ahli kami sehingga ramah terhadap mesin pencari Google (SEO Friendly).
+                </p>
                 <div class="flex space-x-4 pt-2">
-                    <div class="text-center bg-white p-3 rounded-lg shadow-sm border border-gray-100 w-28"><span class="block text-2xl font-bold text-orange-500">200+</span><span class="text-[10px] text-gray-500 font-semibold">Projek Selesai</span></div>
-                    <div class="text-center bg-white p-3 rounded-lg shadow-sm border border-gray-100 w-28"><span class="block text-2xl font-bold text-orange-500">99%</span><span class="text-[10px] text-gray-500 font-semibold">Klien Puas</span></div>
+                    <div class="text-center bg-white p-3 rounded-lg shadow-sm border border-gray-100 w-28">
+                        <span class="block text-2xl font-bold text-orange-500">200+</span>
+                        <span class="text-[10px] text-gray-500 font-semibold">Projek Selesai</span>
+                    </div>
+                    <div class="text-center bg-white p-3 rounded-lg shadow-sm border border-gray-100 w-28">
+                        <span class="block text-2xl font-bold text-orange-500">99%</span>
+                        <span class="text-[10px] text-gray-500 font-semibold">Klien Puas</span>
+                    </div>
+                    <div class="text-center bg-white p-3 rounded-lg shadow-sm border border-gray-100 w-28">
+                        <span class="block text-2xl font-bold text-orange-500">1-3</span>
+                        <span class="text-[10px] text-gray-500 font-semibold">Hari Proses</span>
+                    </div>
                 </div>
             </div>
             <div class="relative rounded-xl overflow-hidden shadow-lg h-64 sm:h-96">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tentang" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tentang Eri Web Kilat Studio" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-6">
+                    <p class="text-white font-semibold text-sm">Proses diskusi dan kolaborasi intensif bersama tim ahli Eri Web Kilat Studio.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -177,19 +295,61 @@
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 border-b border-gray-300 pb-2">
                 <h2 class="text-2xl text-gray-700 font-semibold">Layanan & Blog Terbaru</h2>
+                <!-- Filter Kategori -->
                 <div class="flex flex-wrap gap-2 mt-2 sm:mt-0" id="category-filters">
                     <button class="category-filter active-filter bg-blue-600 text-white text-xs px-3 py-1 rounded-full font-semibold transition hover:bg-blue-700" data-cat="all">Semua</button>
-                    <button class="category-filter bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full font-semibold transition hover:bg-blue-100" data-cat="Paket Basic">Basic</button>
-                    <button class="category-filter bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full font-semibold transition hover:bg-blue-100" data-cat="Paket UMKM">UMKM</button>
-                    <button class="category-filter bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full font-semibold transition hover:bg-blue-100" data-cat="E-Commerce">Toko Online</button>
-                    <button class="category-filter bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full font-semibold transition hover:bg-blue-100" data-cat="Artikel & Berita">Artikel & Berita</button>
+                    <button class="category-filter bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full font-semibold transition hover:bg-blue-100 hover:text-blue-700" data-cat="Paket Basic">Basic</button>
+                    <button class="category-filter bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full font-semibold transition hover:bg-blue-100 hover:text-blue-700" data-cat="Paket UMKM">UMKM</button>
+                    <button class="category-filter bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full font-semibold transition hover:bg-blue-100 hover:text-blue-700" data-cat="E-Commerce">Toko Online</button>
+                    <button class="category-filter bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full font-semibold transition hover:bg-blue-100 hover:text-blue-700" data-cat="Artikel & Berita">Artikel & Berita</button>
                 </div>
             </div>
             
+            <!-- Target List untuk Dynamic Cards -->
             <div id="dynamic-cards-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Data akan dimuat disini -->
                 <div class="col-span-full py-12 flex flex-col items-center justify-center space-y-3">
                     <i class="fa-solid fa-spinner animate-spin text-3xl text-blue-600"></i>
                     <p class="text-sm text-gray-500">Sedang memuat data...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: PORTFOLIO -->
+    <section id="portofolio" class="max-w-7xl mx-auto px-4 py-16 scroll-mt-24">
+        <h2 class="text-2xl text-gray-700 font-semibold mb-6 border-b border-gray-300 pb-2">Portofolio Kami</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg overflow-hidden border border-gray-150 shadow-sm group">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Portofolio 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <span class="text-xs font-semibold text-itb-header block mb-1 uppercase">Landing Page</span>
+                    <h3 class="font-bold text-gray-800 text-md mb-2">Situs Profil & Penjualan Hijab Ar-Rayya</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Menggunakan desain responsif yang modern, Tombol WhatsApp terintegrasi, dan loading kilat untuk promosi produk fashion.</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg overflow-hidden border border-gray-150 shadow-sm group">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Portofolio 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <span class="text-xs font-semibold text-itb-header block mb-1 uppercase">Situs Profil Bisnis</span>
+                    <h3 class="font-bold text-gray-800 text-md mb-2">Web Profil Konstruksi Graha Mulya</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Situs multi-halaman profesional dengan fitur portofolio projek yang interaktif serta form penawaran kustom.</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg overflow-hidden border border-gray-150 shadow-sm group">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Portofolio 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <span class="text-xs font-semibold text-itb-header block mb-1 uppercase">E-Commerce</span>
+                    <h3 class="font-bold text-gray-800 text-md mb-2">Sistem Toko Online "Berkah Jaya"</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">E-Commerce mandiri dengan kalkulator ongkos kirim otomatis yang terhubung ke kurir lokal serta sistem pembayaran.</p>
                 </div>
             </div>
         </div>
@@ -203,22 +363,69 @@
                     <span class="text-orange-500 uppercase font-semibold text-xs tracking-wider block mb-1">Hubungi Kami</span>
                     <h2 class="text-3xl font-bold">Mulai Projek Website Anda Hari Ini!</h2>
                 </div>
+                <p class="text-gray-400 leading-relaxed">
+                    Punya ide brilian untuk bisnis Anda atau butuh solusi cepat untuk peluncuran kampanye iklan produk? Hubungi tim desainer & developer kami sekarang. Kami siap membantu dari ide awal hingga go-online!
+                </p>
                 <div class="space-y-4 text-sm">
-                    <div class="flex items-center space-x-3"><i class="fa-solid fa-phone-volume text-orange-500 w-5 text-lg"></i> <span>+62 822-1647-9053</span></div>
-                    <div class="flex items-center space-x-3"><i class="fa-solid fa-envelope text-orange-500 w-5 text-lg"></i> <span>admin@webkilat.com</span></div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-location-dot text-orange-500 w-5 text-lg"></i>
+                        <span>Jl. Antapani Kidul No. 204, Antapani, Kota Bandung, Jawa Barat 40291, Indonesia</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-phone-volume text-orange-500 w-5 text-lg"></i>
+                        <span>+62 822-1647-9053</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-envelope text-orange-500 w-5 text-lg"></i>
+                        <span>admin@webkilat.com</span>
+                    </div>
+                </div>
+                <div class="flex space-x-4 pt-2">
+                    <a href="https://twitter.com/EriHusyaeri" target="_blank" class="w-10 h-10 bg-gray-800 hover:bg-orange-500 hover:text-white transition rounded-full flex items-center justify-center text-lg"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/EriHusyaeri" target="_blank" class="w-10 h-10 bg-gray-800 hover:bg-orange-500 hover:text-white transition rounded-full flex items-center justify-center text-lg"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/EriHusyaeri" target="_blank" class="w-10 h-10 bg-gray-800 hover:bg-orange-500 hover:text-white transition rounded-full flex items-center justify-center text-lg"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.youtube.com/@eri_husyaeri" target="_blank" class="w-10 h-10 bg-gray-800 hover:bg-orange-500 hover:text-white transition rounded-full flex items-center justify-center text-lg"><i class="fa-brands fa-youtube"></i></a>
                 </div>
             </div>
+            
+            <form id="kontak-form" class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700/50 space-y-4" onsubmit="event.preventDefault(); alert('Terima kasih! Pesan Anda telah diterima tim Eri Web Kilat Studio.');">
+                <h3 class="text-lg font-bold text-orange-500">Kirim Penawaran & Konsultasi</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-1">Nama Lengkap</label>
+                        <input type="text" required class="w-full bg-gray-900 border border-gray-700 rounded p-2 text-sm text-white focus:outline-none focus:border-orange-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-1">Nomor WhatsApp</label>
+                        <input type="tel" required class="w-full bg-gray-900 border border-gray-700 rounded p-2 text-sm text-white focus:outline-none focus:border-orange-500">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-1">Jenis Website / Kebutuhan</label>
+                    <select class="w-full bg-gray-900 border border-gray-700 rounded p-2 text-sm text-gray-300 focus:outline-none focus:border-orange-500">
+                        <option>Landing Page (Promo Produk)</option>
+                        <option>Company Profile (Profil Perusahaan)</option>
+                        <option>Toko Online (E-Commerce)</option>
+                        <option>Web Custom / Lainnya</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-1">Pesan / Detail Kebutuhan</label>
+                    <textarea rows="3" required class="w-full bg-gray-900 border border-gray-700 rounded p-2 text-sm text-white focus:outline-none focus:border-orange-500" placeholder="Jelaskan kebutuhan projek Anda secara singkat..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 rounded shadow-md transition text-sm">Kirim Pesan Konsultasi</button>
+            </form>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="bg-black text-gray-500 py-6 px-4 text-center text-xs">
-        <p>&copy; 2026 Eri Web Kilat Studio.</p>
+        <p>&copy; 2026 Eri Web Kilat Studio. Seluruh hak cipta dilindungi. Dikembangkan oleh <a href="https://instagram.com/EriHusyaeri" target="_blank" class="text-orange-500 hover:underline">Eri Husyaeri</a>.</p>
     </footer>
 
     <!-- DETAIL CARD MODAL -->
     <div id="detail-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 backdrop-blur-sm px-4">
-        <div class="modal-enter bg-white rounded-xl max-w-3xl w-full overflow-hidden shadow-2xl relative max-h-[90vh] flex flex-col">
+        <div class="modal-enter bg-white rounded-xl max-w-2xl w-full overflow-hidden shadow-2xl relative max-h-[90vh] flex flex-col">
             <button id="close-modal" aria-label="Tutup" class="absolute top-4 right-4 z-10 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/80 transition cursor-pointer">
                 <i class="fa-solid fa-xmark"></i>
             </button>
@@ -229,7 +436,7 @@
                 <span id="modal-category" class="text-red-600 text-xs font-bold mb-1 uppercase tracking-wider block"></span>
                 <h2 id="modal-title" class="text-2xl font-bold text-gray-800 mb-1"></h2>
                 <span id="modal-price" class="text-blue-600 font-bold text-lg mb-4 block"></span>
-                <!-- Deskripsi HTML Support -->
+                <!-- InnerHTML digunakan disini untuk membaca format tulisan dari Summernote (Admin) -->
                 <div id="modal-desc" class="text-gray-600 leading-relaxed text-sm overflow-y-auto pr-2" style="max-height: 40vh;"></div>
                 
                 <div class="flex justify-end space-x-3 border-t border-gray-100 pt-4 mt-4 shrink-0">
@@ -246,29 +453,139 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            // MASUKKAN URL & KEY SUPABASE ANDA DISINI (PASTIKAN SAMA DENGAN DI ADMIN.HTML)
+            // ==========================================
+            // KONFIGURASI SUPABASE (PASTIKAN SAMA DENGAN ADMIN.HTML)
+            // ==========================================
             const SUPABASE_URL = "https://koderahasianya.supabase.co"; 
             const SUPABASE_ANON_KEY = "sb_publishable_tCwTxG62nKMkL38d5NtBIg_icxsH1oQ";
 
             let supabase = null;
-            try { supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); } catch(err) {}
+            try { 
+                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); 
+            } catch(err) {
+                console.warn("Kesalahan konfigurasi Supabase Client:", err);
+            }
 
-            let blogsData = [];
+            // ==========================================
+            // DATA DEFAULT (JIKA DATABASE KOSONG)
+            // ==========================================
+            const DEFAULT_BLOGS = [
+                {
+                    id: 1,
+                    category: "Paket Basic",
+                    price: "Rp 500.000",
+                    title: "Pembuatan Landing Page responsif untuk promosi satu produk.",
+                    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    description: "<p>Pembuatan Landing Page responsif untuk promosi satu produk. Cocok untuk Anda yang baru memulai kampanye iklan. Fitur termasuk: 1 Halaman, Tombol WA, Gratis Domain .my.id 1 Tahun, dan pengerjaan 1-2 hari.</p>"
+                },
+                {
+                    id: 2,
+                    category: "Paket UMKM",
+                    price: "Rp 1.200.000",
+                    title: "Company Profile lengkap hingga 5 halaman + Gratis Domain .com.",
+                    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    description: "<p>Solusi lengkap untuk perusahaan atau bisnis skala menengah. Fitur termasuk: Pembuatan hingga 5 halaman (Beranda, Tentang Kami, Layanan, Kontak, Galeri), Gratis Domain .com 1 Tahun, Integrasi Google Maps & Sosmed, dan pengerjaan 2-3 hari.</p>"
+                }
+            ];
+
+            let blogsData = [...DEFAULT_BLOGS];
 
             async function fetchBlogs() {
-                try {
-                    const { data, error } = await supabase.from('blogs').select('*').order('created_at', { ascending: false });
-                    if (error) throw error;
-                    if (data && data.length > 0) {
-                        blogsData = data;
-                        renderCards(blogsData);
+                if(supabase) {
+                    try {
+                        const { data, error } = await supabase.from('blogs').select('*').order('created_at', { ascending: false });
+                        if (error) throw error;
+                        if (data && data.length > 0) {
+                            blogsData = data;
+                        }
+                    } catch (err) {
+                        console.warn("Gagal memuat dari Supabase, menggunakan data default.");
                     }
-                } catch (err) {
-                    console.error("Gagal memuat data dari Supabase:", err.message);
-                    document.getElementById('dynamic-cards-container').innerHTML = '<p class="col-span-full text-center py-10 text-red-500">Gagal memuat layanan.</p>';
+                }
+                renderCards(blogsData);
+            }
+
+            // ==========================================
+            // LOGIKA SLIDER GAMBAR & TAB
+            // ==========================================
+            const slides = document.querySelectorAll('.slide');
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            let slideInterval;
+
+            function updateSlider(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('opacity-0', i !== index);
+                    slide.classList.toggle('opacity-100', i === index);
+                });
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('bg-white', i !== index);
+                    dot.classList.toggle('opacity-50', i !== index);
+                    dot.classList.toggle('bg-transparent', i === index);
+                });
+                tabBtns.forEach((tab, i) => {
+                    if (i === index) {
+                        tab.className = 'tab-btn tab-active-shape bg-itb-tabActive text-white font-bold text-sm sm:text-lg px-8 py-3 pb-4 cursor-pointer transition relative';
+                        tab.style.zIndex = "40";
+                    } else {
+                        let z = 30 - i;
+                        tab.className = 'tab-btn tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer transition relative';
+                        tab.style.zIndex = z;
+                        if (i === 3) tab.classList.add('hidden', 'md:block');
+                    }
+                });
+                currentSlide = index;
+            }
+
+            function showNext() { updateSlider((currentSlide + 1) % totalSlides); resetInterval(); }
+            function showPrev() { updateSlider((currentSlide - 1 + totalSlides) % totalSlides); resetInterval(); }
+            function resetInterval() { clearInterval(slideInterval); slideInterval = setInterval(showNext, 5000); }
+
+            if(prevBtn) prevBtn.addEventListener('click', showPrev);
+            if(nextBtn) nextBtn.addEventListener('click', showNext);
+            
+            tabBtns.forEach(btn => btn.addEventListener('click', (e) => { 
+                updateSlider(parseInt(e.currentTarget.getAttribute('data-index'))); resetInterval(); 
+            }));
+            dots.forEach(dot => dot.addEventListener('click', (e) => { 
+                updateSlider(parseInt(e.currentTarget.getAttribute('data-index'))); resetInterval(); 
+            }));
+            
+            slideInterval = setInterval(showNext, 5000);
+
+            // ==========================================
+            // HAMBURGER MENU MOBILE
+            // ==========================================
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileIcon = document.getElementById('mobile-icon');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            function toggleMenu() {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileIcon.classList.remove('fa-xmark');
+                    mobileIcon.classList.add('fa-bars');
+                } else {
+                    mobileIcon.classList.remove('fa-bars');
+                    mobileIcon.classList.add('fa-xmark');
                 }
             }
 
+            if(mobileToggle) mobileToggle.addEventListener('click', toggleMenu);
+            mobileNavLinks.forEach(link => link.addEventListener('click', () => {
+                if(!mobileMenu.classList.contains('hidden')) toggleMenu();
+            }));
+
+            // ==========================================
+            // RENDER KARTU LAYANAN & BLOG
+            // ==========================================
             const dynamicContainer = document.getElementById('dynamic-cards-container');
             let activeCategory = 'all';
 
@@ -277,22 +594,34 @@
                 dynamicContainer.innerHTML = '';
                 let filtered = dataToRender;
 
-                if (filterCategory !== 'all') filtered = filtered.filter(item => item.category === filterCategory);
+                if (filterCategory !== 'all') {
+                    filtered = filtered.filter(item => item.category === filterCategory);
+                }
+                
                 if (searchQuery.trim() !== '') {
                     const q = searchQuery.toLowerCase();
-                    filtered = filtered.filter(item => item.title.toLowerCase().includes(q) || item.category.toLowerCase().includes(q));
+                    filtered = filtered.filter(item => 
+                        item.title.toLowerCase().includes(q) || 
+                        item.category.toLowerCase().includes(q)
+                    );
                 }
 
                 if (filtered.length === 0) {
-                    dynamicContainer.innerHTML = `<div class="col-span-full py-12 text-center text-gray-500"><i class="fa-regular fa-folder-open text-3xl mb-2 block"></i><p>Belum ada data.</p></div>`;
+                    dynamicContainer.innerHTML = `
+                        <div class="col-span-full py-12 text-center text-gray-500">
+                            <i class="fa-regular fa-folder-open text-3xl mb-2 block"></i>
+                            <p class="text-sm">Tidak ada Paket Layanan atau Artikel Blog yang cocok.</p>
+                        </div>
+                    `;
                     return;
                 }
 
                 filtered.forEach(item => {
                     const card = document.createElement('div');
                     card.className = "bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1 flex flex-col h-full";
-                    // Menghilangkan tag HTML untuk preview deskripsi singkat
-                    const plainTextDesc = item.description.replace(/<[^>]+>/g, ' '); 
+                    
+                    // Hilangkan tag HTML untuk teks preview di kartu
+                    const plainTextDesc = item.description ? item.description.replace(/<[^>]+>/g, ' ') : ''; 
                     
                     card.innerHTML = `
                         <div class="h-40 overflow-hidden relative shrink-0">
@@ -309,24 +638,41 @@
                     card.addEventListener('click', () => {
                         openDetailModal(item.title, item.price, item.description, item.image, item.category);
                     });
+                    
                     dynamicContainer.appendChild(card);
                 });
             }
 
+            // ==========================================
             // FILTER & SEARCH LOGIC
+            // ==========================================
             const filters = document.querySelectorAll('.category-filter');
             filters.forEach(filter => {
                 filter.addEventListener('click', (e) => {
-                    filters.forEach(f => { f.classList.remove('active-filter', 'bg-blue-600', 'text-white'); f.classList.add('bg-gray-200', 'text-gray-700'); });
+                    filters.forEach(f => { 
+                        f.classList.remove('active-filter', 'bg-blue-600', 'text-white'); 
+                        f.classList.add('bg-gray-200', 'text-gray-700'); 
+                    });
                     e.currentTarget.classList.add('active-filter', 'bg-blue-600', 'text-white');
+                    e.currentTarget.classList.remove('bg-gray-200', 'text-gray-700');
                     activeCategory = e.currentTarget.getAttribute('data-cat');
                     renderCards(blogsData, activeCategory);
                 });
             });
 
-            document.getElementById('desktop-search-btn')?.addEventListener('click', () => { renderCards(blogsData, activeCategory, document.getElementById('desktop-search').value); });
-            
-            // MODAL LOGIC
+            document.getElementById('desktop-search-btn')?.addEventListener('click', () => { 
+                renderCards(blogsData, activeCategory, document.getElementById('desktop-search').value); 
+                document.getElementById('layanan').scrollIntoView({ behavior: 'smooth' });
+            });
+            document.getElementById('mobile-search-btn')?.addEventListener('click', () => { 
+                renderCards(blogsData, activeCategory, document.getElementById('mobile-search').value); 
+                toggleMenu();
+                document.getElementById('layanan').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // ==========================================
+            // MODAL DETAIL LOGIC
+            // ==========================================
             const detailModal = document.getElementById('detail-modal');
             function openDetailModal(title, price, desc, image, category) {
                 document.getElementById('modal-img').src = image;
@@ -334,18 +680,30 @@
                 document.getElementById('modal-title').textContent = title;
                 document.getElementById('modal-price').textContent = price || 'Gratis';
                 
-                // MENGGUNAKAN innerHTML AGAR FORMAT SUMMERNOTE (HTML) TERBACA
+                // Gunakan innerHTML agar tag tulisan tebal/miring dari Admin terbaca
                 document.getElementById('modal-desc').innerHTML = desc; 
 
-                const encodedMsg = encodeURIComponent(`Halo Eri Web Kilat, saya tertarik dengan "${title}".`);
+                const encodedMsg = encodeURIComponent(`Halo Eri Web Kilat, saya tertarik dengan "${title}" (${price}). Bisa dibantu info selengkapnya?`);
                 document.getElementById('wa-action-btn').href = `https://wa.me/6282216479053?text=${encodedMsg}`;
-                detailModal.classList.remove('hidden'); detailModal.classList.add('flex'); document.body.style.overflow = 'hidden';
+                
+                detailModal.classList.remove('hidden'); 
+                detailModal.classList.add('flex'); 
+                document.body.style.overflow = 'hidden';
             }
 
-            function closeDetailModal() { detailModal.classList.add('hidden'); detailModal.classList.remove('flex'); document.body.style.overflow = ''; }
+            function closeDetailModal() { 
+                detailModal.classList.add('hidden'); 
+                detailModal.classList.remove('flex'); 
+                document.body.style.overflow = ''; 
+            }
+            
             document.getElementById('close-modal')?.addEventListener('click', closeDetailModal);
             document.getElementById('close-modal-txt')?.addEventListener('click', closeDetailModal);
+            window.addEventListener('click', (e) => { 
+                if(e.target === detailModal) closeDetailModal(); 
+            });
 
+            // Panggil fungsi awal
             fetchBlogs();
         });
     </script>
