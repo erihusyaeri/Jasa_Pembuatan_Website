@@ -448,7 +448,7 @@
                     <p class="text-xs text-blue-100 leading-relaxed">Kelola semua artikel blog, penawaran, paket promo, dan jasa kilat realtime.</p>
                 </div>
                 <div class="border-t border-white/20 pt-4 mt-6 text-[10px] text-blue-200">
-                    Supabase ID: tCwTxG62nKM...
+                    Supabase Secured Auth
                 </div>
             </div>
 
@@ -562,11 +562,11 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             /* =========================================================
-               A. INISIALISASI SUPABASE (MENGGUNAKAN API KEY & PUBLISHABLE KEY ANDA)
+               A. INISIALISASI SUPABASE (GANTI URL DI BAWAH INI)
                ========================================================= */
-            // Karena tidak ada URL spesifik yang diberikan, maka infer-url atau letakan endpoint default tCwTxG62nKMkL38d5NtBIg.
-            // Anda bisa mengganti URL di bawah ini dengan Supabase URL Project Anda sendiri.
-            const SUPABASE_URL = "https://tCwTxG62nKMkL38d5NtBIg.supabase.co"; 
+            // SILAKAN GANTI URL INI DENGAN PROJECT URL SUPABASE ANDA
+            // Bisa dilihat di Dashboard Supabase -> Project Settings -> API -> Project URL
+            const SUPABASE_URL = "https://GANTI_DENGAN_PROJECT_URL_SUPABASE_ANDA.supabase.co"; 
             const SUPABASE_ANON_KEY = "sb_publishable_tCwTxG62nKMkL38d5NtBIg_icxsH1oQ";
 
             let supabase = null;
@@ -574,7 +574,7 @@
 
             // Inisialisasi Supabase Client dengan validasi
             try {
-                if (window.supabase && SUPABASE_URL && SUPABASE_ANON_KEY) {
+                if (window.supabase && SUPABASE_URL !== "https://GANTI_DENGAN_PROJECT_URL_SUPABASE_ANDA.supabase.co") {
                     supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
                     isSupabaseOnline = true;
                 }
@@ -596,14 +596,13 @@
                 } else if (status === 'offline') {
                     dbStatusBar.className = "bg-gray-600 text-white text-xs py-1.5 px-4 text-center z-40 relative flex justify-center items-center space-x-2";
                     dbStatusIcon.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
-                    dbStatusText.textContent = `Menggunakan Offline Fallback Mode (Local Database Aktif).`;
+                    dbStatusText.textContent = `Menggunakan Offline Fallback Mode (URL Belum Diganti / Local Database Aktif).`;
                 } else {
                     dbStatusBar.className = "bg-red-500 text-white text-xs py-1.5 px-4 text-center z-40 relative flex justify-center items-center space-x-2";
                     dbStatusIcon.innerHTML = `<i class="fa-solid fa-triangle-exclamation animate-pulse"></i>`;
                     dbStatusText.textContent = message || `Gagal terhubung ke Supabase.`;
                 }
             }
-
 
             /* =========================================================
                B. DOCK & DATA DEFAULT (FALLBACK)
@@ -645,7 +644,6 @@
 
             let blogsData = [];
 
-            // Inisialisasi Lokal / Offline
             function loadLocalFallback() {
                 const stored = localStorage.getItem('eri_web_blogs');
                 if (stored) {
@@ -656,12 +654,11 @@
                 }
             }
 
-
             /* =========================================================
                C. INTEGRASI REALTIME AMBIL & TULIS DATA (READ & CREATE)
                ========================================================= */
             async function fetchBlogs() {
-                loadLocalFallback(); // Muat data offline terlebih dahulu sebagai cadangan instan
+                loadLocalFallback(); 
 
                 if (!isSupabaseOnline || !supabase) {
                     updateDbStatus('offline');
@@ -670,7 +667,6 @@
                 }
 
                 try {
-                    // Cek koneksi ke Supabase dengan membaca tabel "blogs"
                     const { data, error } = await supabase
                         .from('blogs')
                         .select('*')
@@ -682,13 +678,12 @@
 
                     if (data && data.length > 0) {
                         blogsData = data;
-                        localStorage.setItem('eri_web_blogs', JSON.stringify(blogsData)); // Perbarui cadangan lokal
+                        localStorage.setItem('eri_web_blogs', JSON.stringify(blogsData));
                     }
                     updateDbStatus('online');
                 } catch (err) {
                     console.error("Supabase Error / Fallback on Error:", err.message);
-                    // Gunakan mode offline fallback jika ada error
-                    updateDbStatus('failed', "Koneksi Supabase gagal. Silakan periksa URL & Kebijakan RLS Anda.");
+                    updateDbStatus('offline');
                 }
 
                 renderCards(blogsData);
@@ -713,8 +708,6 @@
                             .select();
 
                         if (error) throw error;
-                        
-                        // Sukses insert ke database online
                         success = true;
                     } catch (err) {
                         console.error("Gagal menyimpan ke Supabase online:", err);
@@ -722,15 +715,13 @@
                     }
                 }
 
-                // Terlepas dari status online, kita amankan ke Local fallback agar proses demo & uji coba tidak terganggu
-                newBlog.id = Date.now(); // Beri ID unik
+                newBlog.id = Date.now(); 
                 blogsData.unshift(newBlog);
                 localStorage.setItem('eri_web_blogs', JSON.stringify(blogsData));
                 
-                await fetchBlogs(); // Refresh View
+                await fetchBlogs(); 
                 return true;
             }
-
 
             /* =========================================================
                D. FUNGSI VIEW: RENDERING & FILTRASI KARTU
@@ -741,7 +732,6 @@
                 if (!dynamicContainer) return;
                 dynamicContainer.innerHTML = '';
 
-                // Proses Filter & Pencarian
                 let filtered = dataToRender;
 
                 if (filterCategory !== 'all') {
@@ -767,15 +757,12 @@
                     return;
                 }
 
-                // Loop & render HTML
                 filtered.forEach(item => {
                     const card = document.createElement('div');
                     card.className = "bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1";
                     
-                    // Escape data attribute strings to prevent HTML breakage
                     const safeTitle = item.title.replace(/"/g, '&quot;');
                     const safePrice = (item.price || "Gratis").replace(/"/g, '&quot;');
-                    const safeDesc = item.description.replace(/"/g, '&quot;');
                     
                     card.innerHTML = `
                         <div class="h-40 overflow-hidden relative">
@@ -788,7 +775,6 @@
                         </div>
                     `;
 
-                    // Handle card click to open detail modal
                     card.addEventListener('click', () => {
                         openDetailModal(item.title, item.price, item.description, item.image, item.category);
                     });
@@ -797,29 +783,22 @@
                 });
             }
 
-
             /* =========================================================
                E. MANAJEMEN AUTENTIKASI ADMIN & PANEL CMS
                ========================================================= */
             let isAdminLoggedIn = false;
-
             const adminGateBtn = document.getElementById('admin-gate-btn');
             const adminStatusText = document.getElementById('admin-status-text');
             const mobileAdminBtn = document.getElementById('mobile-admin-btn');
-            
             const adminModal = document.getElementById('admin-modal');
             const closeAdminBtn = document.getElementById('close-admin');
-            
             const adminLoginView = document.getElementById('admin-login-view');
             const adminDashboardView = document.getElementById('admin-dashboard-view');
-            
             const loginForm = document.getElementById('login-form');
             const loginEmailInput = document.getElementById('login-email');
             const loginPasswordInput = document.getElementById('login-password');
-            
             const logoutBtn = document.getElementById('logout-btn');
 
-            // Cek Status Autentikasi Admin dari Storage lokal
             if (localStorage.getItem('eri_admin_authed') === 'true') {
                 isAdminLoggedIn = true;
                 setAdminMode(true);
@@ -832,8 +811,6 @@
                     adminStatusText.textContent = "Dashboard Admin";
                     adminGateBtn.classList.remove('bg-blue-600');
                     adminGateBtn.classList.add('bg-green-600');
-                    
-                    // Ubah View di Admin Modal
                     adminLoginView.classList.add('hidden');
                     adminDashboardView.classList.remove('hidden');
                 } else {
@@ -841,14 +818,11 @@
                     adminStatusText.textContent = "Admin Login";
                     adminGateBtn.classList.remove('bg-green-600');
                     adminGateBtn.classList.add('bg-blue-600');
-                    
-                    // Ubah View ke Login
                     adminLoginView.classList.remove('hidden');
                     adminDashboardView.classList.add('hidden');
                 }
             }
 
-            // Gate Handler
             function showAdminPanel() {
                 adminModal.classList.remove('hidden');
                 adminModal.classList.add('flex');
@@ -866,32 +840,23 @@
                 });
             }
 
-            // Aksi Login
             if (loginForm) {
                 loginForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    
                     const email = loginEmailInput.value.trim();
                     const password = loginPasswordInput.value;
 
-                    // Validasi Akun Melalui Supabase Auth
                     if (isSupabaseOnline && supabase) {
                         try {
                             const { data, error } = await supabase.auth.signInWithPassword({
                                 email: email,
                                 password: password
                             });
-
-                            if (error) {
-                                throw error;
-                            }
-
+                            if (error) throw error;
                             alert("Login Admin Supabase berhasil!");
                             setAdminMode(true);
                         } catch (err) {
                             console.warn("Login Supabase gagal:", err.message);
-                            
-                            // Demo / offline fallback: Bypass Login dengan admin apa saja
                             if (email === "admin@webkilat.com" && password === "12345678") {
                                 alert("Menggunakan Offline Fallback Login (Akses diberikan).");
                                 setAdminMode(true);
@@ -900,7 +865,6 @@
                             }
                         }
                     } else {
-                        // Jika offline, bypass bypass email
                         if (email === "admin@webkilat.com" && password === "12345678") {
                             alert("Login berhasil (Offline Bypass Mode aktif).");
                             setAdminMode(true);
@@ -911,12 +875,9 @@
                 });
             }
 
-            // Aksi Logout
             if (logoutBtn) {
                 logoutBtn.addEventListener('click', async () => {
-                    if (isSupabaseOnline && supabase) {
-                        await supabase.auth.signOut();
-                    }
+                    if (isSupabaseOnline && supabase) await supabase.auth.signOut();
                     setAdminMode(false);
                     alert("Berhasil keluar dari administrator.");
                     adminModal.classList.add('hidden');
@@ -924,7 +885,6 @@
                     document.body.style.overflow = '';
                 });
             }
-
 
             /* =========================================================
                F. INPUT FORM SUBMIT & PUBLISH REALTIME
@@ -952,18 +912,13 @@
                     publishBtn.disabled = true;
                     publishBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> <span>Menerbitkan...</span>`;
 
-                    // Masukkan Data Baru ke Supabase / Lokal
                     const done = await addBlog(newBlog);
 
                     if (done) {
                         alert("Sukses! Postingan Anda berhasil dipublish dan langsung muncul di browser Klien.");
-                        
-                        // Reset field
                         bTitle.value = '';
                         bPrice.value = '';
                         bDescription.value = '';
-                        
-                        // Tutup Modal
                         adminModal.classList.add('hidden');
                         adminModal.classList.remove('flex');
                         document.body.style.overflow = '';
@@ -974,12 +929,9 @@
                 });
             }
 
-
             /* =========================================================
                G. LOGIKA SECTIONS, SLIDER, FILTERS, SEARCH, & MODAL
                ========================================================= */
-            
-            // Hamburger Mobile Menu
             const mobileToggle = document.getElementById('mobile-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileIcon = document.getElementById('mobile-icon');
@@ -1002,7 +954,6 @@
                 if(!mobileMenu.classList.contains('hidden')) toggleMenu();
             }));
 
-            // Slider & Tabs Sinkronisasi
             const slides = document.querySelectorAll('.slide');
             const tabBtns = document.querySelectorAll('.tab-btn');
             const dots = document.querySelectorAll('.dot');
@@ -1047,7 +998,6 @@
             dots.forEach(dot => dot.addEventListener('click', (e) => { updateSlider(parseInt(e.currentTarget.getAttribute('data-index'))); resetInterval(); }));
             slideInterval = setInterval(showNext, 5000);
 
-            // Filter Kategori Postingan
             const filters = document.querySelectorAll('.category-filter');
             let activeCategory = 'all';
 
@@ -1067,7 +1017,6 @@
                 });
             });
 
-            // Input Pencarian
             const desktopSearch = document.getElementById('desktop-search');
             const desktopSearchBtn = document.getElementById('desktop-search-btn');
             const mobileSearch = document.getElementById('mobile-search');
@@ -1075,7 +1024,6 @@
 
             function triggerSearch(term) {
                 renderCards(blogsData, activeCategory, term);
-                // Langsung Scroll ke Layanan/Blog untuk melihat hasil
                 const target = document.getElementById('layanan');
                 if(target) target.scrollIntoView({ behavior: 'smooth' });
             }
@@ -1086,7 +1034,6 @@
                 toggleMenu();
             });
 
-            // Modal Detail Info Kartu
             const detailModal = document.getElementById('detail-modal');
             const mImg = document.getElementById('modal-img');
             const mCategory = document.getElementById('modal-category');
@@ -1102,7 +1049,6 @@
                 mPrice.textContent = price || 'Gratis';
                 mDesc.textContent = desc;
 
-                // Dinamis pesan WA, melampirkan Judul Projek
                 const encodedMsg = encodeURIComponent(`Halo Eri Web Kilat Studio, saya tertarik dengan "${title}" (${price}). Bisa dibantu info selengkapnya?`);
                 waActionBtn.href = `https://wa.me/6282216479053?text=${encodedMsg}`;
 
@@ -1124,7 +1070,6 @@
             if(closeBtn) closeBtn.addEventListener('click', closeDetailModal);
             window.addEventListener('click', (e) => { if(e.target === detailModal) closeDetailModal(); });
 
-            // Inisialisasi Ambil Data Pertama
             fetchBlogs();
         });
     </script>
