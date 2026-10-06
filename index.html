@@ -1,375 +1,417 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebKilat Studio - Jasa Pembuatan Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebKilat Studio - Jasa Pembuatan Website</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        cream: {
-                            100: '#f9f6f0',
-                        },
-                        itb: {
-                            header: '#539ed6', /* Biru Header */
-                            tabActive: '#1d4d82', /* Biru Gelap Tab */
-                            tabInactive: '#e9da8b', /* Kuning Tab */
-                            infobar: '#007bb5', /* Biru Baris Bawah Hero */
-                        }
-                    },
-                    fontFamily: {
-                        'sans': ['Open Sans', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            100: '#f9f6f0',
+                        },
+                        itb: {
+                            header: '#539ed6', /* Biru Header */
+                            tabActive: '#1d4d82', /* Biru Gelap Tab */
+                            tabInactive: '#e9da8b', /* Kuning Tab */
+                            infobar: '#007bb5', /* Biru Baris Bawah Hero */
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Open Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #f9f6f0;
-            color: #333333;
-        }
-        
-        /* Bentuk Tab Khusus */
-        .tab-active-shape {
-            clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
-            border-bottom-right-radius: 1.5rem;
-        }
-        .tab-inactive-shape {
-            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
-            margin-left: -1rem;
-            padding-left: 2rem;
-            border-bottom-right-radius: 1.5rem;
-        }
-        
-        /* Animasi Transisi Slider & Modal */
-        .slide {
-            transition: opacity 0.5s ease-in-out;
-        }
-        .modal-enter {
-            animation: fadeIn 0.3s ease-out forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-    </style>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f9f6f0;
+            color: #333333;
+        }
+        
+        /* Bentuk Tab Khusus */
+        .tab-active-shape {
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+            border-bottom-right-radius: 1.5rem;
+        }
+        .tab-inactive-shape {
+            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+            margin-left: -1rem;
+            padding-left: 2rem;
+            border-bottom-right-radius: 1.5rem;
+        }
+        
+        /* Animasi Transisi Slider & Modal */
+        .slide {
+            transition: opacity 0.5s ease-in-out;
+        }
+        .modal-enter {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
 </head>
 <body class="antialiased">
 
-    <!-- Top Bar (Desktop) -->
-    <div class="bg-gray-800 text-gray-300 text-[11px] py-1.5 px-4 hidden md:flex justify-between items-center z-50 relative">
-        <div class="flex space-x-4 max-w-7xl mx-auto w-full px-4">
-            <a href="#" class="hover:text-white transition">Beranda</a>
-            <a href="#" class="hover:text-white transition">Tentang Kami</a>
-            <a href="#" class="hover:text-white transition">Layanan</a>
-            <a href="#" class="hover:text-white transition">Portofolio</a>
-            <a href="#" class="hover:text-white transition">Kontak</a>
-        </div>
-        <div class="flex space-x-2 mr-8">
-            <input type="text" placeholder="Search..." class="bg-gray-700 text-white px-2 py-0.5 rounded text-xs border-none outline-none">
-            <button class="bg-orange-500 text-white px-3 py-0.5 rounded hover:bg-orange-600 transition">Search</button>
-            <button class="bg-blue-600 text-white px-3 py-0.5 rounded flex items-center space-x-1 hover:bg-blue-700 transition">
-                <i class="fa-solid fa-user text-[10px]"></i> <span>Login</span>
-            </button>
-        </div>
-    </div>
+    <!-- Top Bar -->
+    <div class="bg-gray-800 text-gray-300 text-[11px] py-1.5 px-4 hidden md:flex justify-between items-center z-50 relative">
+        <div class="flex space-x-4 max-w-7xl mx-auto w-full px-4">
+            <a href="#" class="hover:text-white">Beranda</a>
+            <a href="#" class="hover:text-white">Tentang Kami</a>
+            <a href="#" class="hover:text-white">Layanan</a>
+            <a href="#" class="hover:text-white">Portofolio</a>
+            <a href="#" class="hover:text-white">Kontak</a>
+        </div>
+        <div class="flex space-x-2 mr-8">
+            <input type="text" placeholder="Search..." class="bg-gray-700 text-white px-2 py-0.5 rounded text-xs border-none outline-none">
+            <button class="bg-orange-500 text-white px-3 py-0.5 rounded">Search</button>
+            <button class="bg-blue-600 text-white px-3 py-0.5 rounded flex items-center space-x-1">
+                <i class="fa-solid fa-user text-[10px]"></i> <span>Login</span>
+            </button>
+        </div>
+    </div>
 
-    <!-- Main Header -->
-    <header class="bg-itb-header text-white py-4 shadow-md relative z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-            <!-- Logo Area -->
-            <div class="flex items-center space-x-4">
-                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-itb-header shadow-inner">
-                    <i class="fa-solid fa-bolt-lightning text-2xl"></i>
-                </div>
-                <div class="flex flex-col">
-                    <span class="text-2xl font-semibold tracking-wide">WebKilat Studio</span>
-                    <span class="text-xs text-blue-100">Jasa Pembuatan Website Profesional</span>
-                </div>
-            </div>
+    <!-- Main Header -->
+    <header class="bg-itb-header text-white py-4 shadow-md relative z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <!-- Logo Area -->
+            <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-itb-header shadow-inner">
+                    <i class="fa-solid fa-bolt-lightning text-2xl"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-semibold tracking-wide">WebKilat Studio</span>
+                    <span class="text-xs text-blue-100">Jasa Pembuatan Website Profesional</span>
+                </div>
+            </div>
 
-            <!-- Kanan Header (Desktop Sosial Media) -->
-            <div class="hidden md:flex items-center space-x-6">
-                <div class="flex items-center space-x-2 text-sm font-semibold">
-                    <span class="border-b-2 border-white pb-0.5">ID</span>
-                    <span class="text-blue-200">EN</span>
-                </div>
-                <div class="flex space-x-3 text-lg">
-                    <a href="https://twitter.com/EriHusyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition" title="Twitter @Eri Husyaeri"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/EriHusyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition" title="Instagram @Eri Husyaeri"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/EriHusyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition" title="Facebook @Eri Husyaeri"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://www.youtube.com/@eri_husyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition" title="YouTube @eri_husyaeri"><i class="fa-brands fa-youtube"></i></a>
-                </div>
-            </div>
-            
-            <!-- Tombol Hamburger (Mobile) -->
-            <button id="mobileMenuBtn" aria-label="Toggle navigation menu" class="md:hidden text-white text-2xl p-2 rounded focus:outline-none hover:bg-white/10 transition">
-                <i id="menuIcon" class="fa-solid fa-bars"></i>
-            </button>
-        </div>
+            <!-- Kanan Header (Sosial Media Diperbarui) -->
+            <div class="hidden md:flex items-center space-x-6">
+                <div class="flex items-center space-x-2 text-sm font-semibold">
+                    <span class="border-b-2 border-white pb-0.5">ID</span>
+                    <span class="text-blue-200">EN</span>
+                </div>
+                <div class="flex space-x-3 text-lg">
+                    <a href="https://twitter.com/EriHusyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200" title="Twitter @Eri Husyaeri"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/EriHusyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200" title="Instagram @Eri Husyaeri"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/EriHusyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200" title="Facebook @Eri Husyaeri"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.youtube.com/@eri_husyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200" title="YouTube @eri_husyaeri"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <button class="md:hidden text-white text-2xl"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
 
-        <!-- Menu Dropdown Mobile -->
-        <div id="mobileMenu" class="hidden md:hidden bg-blue-700/95 border-t border-blue-400/40 px-4 pt-3 pb-6 transition-all duration-300">
-            <!-- Navigasi Utama Mobile -->
-            <nav class="flex flex-col space-y-2 mb-4 font-semibold text-sm">
-                <a href="#" class="py-2 px-3 rounded hover:bg-blue-600 transition">Beranda</a>
-                <a href="#" class="py-2 px-3 rounded hover:bg-blue-600 transition">Tentang Kami</a>
-                <a href="#" class="py-2 px-3 rounded hover:bg-blue-600 transition">Layanan</a>
-                <a href="#" class="py-2 px-3 rounded hover:bg-blue-600 transition">Portofolio</a>
-                <a href="#" class="py-2 px-3 rounded hover:bg-blue-600 transition">Kontak</a>
-            </nav>
+    <!-- TAB BUTTONS & HERO SLIDER -->
+    <main class="relative bg-cream-100">
+        
+        <!-- Tab Buttons Interactive -->
+        <div class="w-full bg-itb-header">
+            <div class="max-w-7xl mx-auto flex flex-wrap items-end relative z-30 overflow-hidden" id="tabContainer">
+                <!-- Tabs will be controlled by JS, index 0 to 3 -->
+                <div onclick="goToSlide(0)" class="hero-tab tab-active-shape bg-itb-tabActive text-white font-bold text-sm sm:text-lg px-8 py-3 pb-4 cursor-pointer hover:bg-blue-900 transition relative z-40">
+                    WebKilat <br class="hidden sm:block"> Studio
+                </div>
+                
+                <div onclick="goToSlide(1)" class="hero-tab tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer hover:bg-yellow-400 transition relative z-30">
+                    Desain <br> Responsif
+                </div>
+                
+                <div onclick="goToSlide(2)" class="hero-tab tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer hover:bg-yellow-400 transition relative z-20">
+                    Performa <br> Cepat
+                </div>
+                
+                <div onclick="goToSlide(3)" class="hero-tab tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer hover:bg-yellow-400 transition relative z-10 hidden md:block">
+                    Optimasi <br> SEO Google
+                </div>
+            </div>
+        </div>
 
-            <!-- Search & Login Mobile -->
-            <div class="flex flex-col space-y-3 pt-3 border-t border-blue-500/50">
-                <div class="flex space-x-2">
-                    <input type="text" placeholder="Search..." class="w-full bg-blue-900/60 text-white placeholder-blue-200 px-3 py-1.5 rounded text-sm outline-none border border-blue-400/40 focus:border-white">
-                    <button class="bg-orange-500 text-white px-4 py-1.5 rounded text-sm font-semibold hover:bg-orange-600 transition">Search</button>
-                </div>
-                <button class="w-full bg-gray-900 text-white py-2 rounded text-sm flex items-center justify-center space-x-2 hover:bg-black transition">
-                    <i class="fa-solid fa-user text-xs"></i> <span>Login</span>
-                </button>
-            </div>
+        <!-- Slider Image Area -->
+        <div class="relative w-full h-[300px] md:h-[500px] bg-gray-900 overflow-hidden group z-10 -mt-2">
+            
+            <!-- Slide 1 -->
+            <div class="slide absolute inset-0 w-full h-full opacity-100">
+                <img src="/bacround.jpeg" alt="Background Jasa Web 1" class="w-full h-full object-cover" />
+            </div>
 
-            <!-- Sosmed & Bahasa Mobile -->
-            <div class="flex items-center justify-between pt-4 mt-3 border-t border-blue-500/50 text-sm">
-                <div class="flex items-center space-x-3 text-sm font-semibold">
-                    <span class="border-b-2 border-white pb-0.5">ID</span>
-                    <span class="text-blue-200">EN</span>
-                </div>
-                <div class="flex space-x-4 text-lg">
-                    <a href="https://twitter.com/EriHusyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/EriHusyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/EriHusyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://www.youtube.com/@eri_husyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200"><i class="fa-brands fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
-    </header>
+            <!-- Slide 2 -->
+            <div class="slide absolute inset-0 w-full h-full opacity-0">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80" alt="Background Jasa Web 2" class="w-full h-full object-cover" />
+            </div>
 
-    <!-- TAB BUTTONS & HERO SLIDER -->
-    <main class="relative bg-cream-100">
-        
-        <!-- Tab Buttons Interactive -->
-        <div class="w-full bg-itb-header">
-            <div class="max-w-7xl mx-auto flex flex-wrap items-end relative z-30 overflow-hidden" id="tabContainer">
-                <!-- Tabs index 0 sampai 3 -->
-                <div onclick="goToSlide(0)" class="hero-tab tab-active-shape bg-itb-tabActive text-white font-bold text-sm sm:text-lg px-8 py-3 pb-4 cursor-pointer hover:bg-blue-900 transition relative z-40">
-                    WebKilat <br class="hidden sm:block"> Studio
-                </div>
-                
-                <div onclick="goToSlide(1)" class="hero-tab tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer hover:bg-yellow-400 transition relative z-30">
-                    Desain <br> Responsif
-                </div>
-                
-                <div onclick="goToSlide(2)" class="hero-tab tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer hover:bg-yellow-400 transition relative z-20">
-                    Performa <br> Cepat
-                </div>
-                
-                <div onclick="goToSlide(3)" class="hero-tab tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer hover:bg-yellow-400 transition relative z-10 hidden md:block">
-                    Optimasi <br> SEO Google
-                </div>
-            </div>
-        </div>
+            <!-- Slide 3 -->
+            <div class="slide absolute inset-0 w-full h-full opacity-0">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Background Jasa Web 3" class="w-full h-full object-cover" />
+            </div>
 
-        <!-- Slider Image Area -->
-        <div class="relative w-full h-[300px] md:h-[500px] bg-gray-900 overflow-hidden group z-10 -mt-2">
-            
-            <!-- Slide 1 -->
-            <div class="slide absolute inset-0 w-full h-full opacity-100">
-                <img src="/bacround.jpeg" alt="Background Jasa Web 1" class="w-full h-full object-cover" />
-            </div>
+            <!-- Slide 4 -->
+            <div class="slide absolute inset-0 w-full h-full opacity-0">
+                <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80" alt="Background Jasa Web 4" class="w-full h-full object-cover" />
+            </div>
 
-            <!-- Slide 2 -->
-            <div class="slide absolute inset-0 w-full h-full opacity-0">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80" alt="Background Jasa Web 2" class="w-full h-full object-cover" />
-            </div>
+            <!-- Panah Navigasi Slider -->
+            <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-3xl opacity-70 hover:opacity-100 transition z-20">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-3xl opacity-70 hover:opacity-100 transition z-20">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
 
-            <!-- Slide 3 -->
-            <div class="slide absolute inset-0 w-full h-full opacity-0">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Background Jasa Web 3" class="w-full h-full object-cover" />
-            </div>
+            <!-- Titik-Titik Bawah (Pagination) -->
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+                <button class="dot w-3 h-3 rounded-full border-2 border-white bg-transparent" onclick="goToSlide(0)"></button>
+                <button class="dot w-3 h-3 rounded-full border-2 border-white bg-white opacity-50" onclick="goToSlide(1)"></button>
+                <button class="dot w-3 h-3 rounded-full border-2 border-white bg-white opacity-50" onclick="goToSlide(2)"></button>
+                <button class="dot w-3 h-3 rounded-full border-2 border-white bg-white opacity-50" onclick="goToSlide(3)"></button>
+            </div>
+        </div>
 
-            <!-- Slide 4 -->
-            <div class="slide absolute inset-0 w-full h-full opacity-0">
-                <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80" alt="Background Jasa Web 4" class="w-full h-full object-cover" />
-            </div>
+        <!-- Info Bar -->
+        <div class="bg-itb-infobar w-full">
+            <div class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-white">
+                <div class="flex items-center space-x-4 border-r border-blue-400/30 pr-4 last:border-0 md:last:border-r-0">
+                    <i class="fa-brands fa-whatsapp text-3xl"></i>
+                    <div>
+                        <h4 class="font-bold text-sm md:text-base">Konsultasi Gratis</h4>
+                        <p class="text-xs text-blue-100 hidden sm:block">Hubungi kami via WA</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 border-r border-blue-400/30 pr-4 last:border-0 md:last:border-r-0">
+                    <i class="fa-solid fa-clock-rotate-left text-3xl"></i>
+                    <div>
+                        <h4 class="font-bold text-sm md:text-base">Pengerjaan Kilat</h4>
+                        <p class="text-xs text-blue-100 hidden sm:block">Selesai dalam 1-3 hari</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 border-r border-blue-400/30 pr-4 last:border-0 md:last:border-r-0">
+                    <i class="fa-solid fa-shield-halved text-3xl"></i>
+                    <div>
+                        <h4 class="font-bold text-sm md:text-base">Garansi 100%</h4>
+                        <p class="text-xs text-blue-100 hidden sm:block">Aman dari error & bugs</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <i class="fa-solid fa-headset text-3xl"></i>
+                    <div>
+                        <h4 class="font-bold text-sm md:text-base">Support Bantuan</h4>
+                        <p class="text-xs text-blue-100 hidden sm:block">Purna jual selamanya</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-            <!-- Panah Navigasi Slider -->
-            <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-3xl opacity-70 hover:opacity-100 transition z-20">
-                <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-3xl opacity-70 hover:opacity-100 transition z-20">
-                <i class="fa-solid fa-chevron-right"></i>
-            </button>
+    <!-- Konten Layanan (Kartu Clickable) -->
+    <section class="max-w-7xl mx-auto px-4 py-16 bg-cream-100">
+        <h2 class="text-2xl text-gray-700 font-semibold mb-6 border-b border-gray-300 pb-2">Paket Layanan / Berita</h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            
+            <!-- Kartu 1 -->
+            <div onclick="openModal('Paket Basic', 'Rp 500.000', 'Pembuatan Landing Page responsif untuk promosi satu produk. Cocok untuk Anda yang baru memulai kampanye iklan. Fitur termasuk: 1 Halaman, Tombol WA, Gratis Domain .my.id 1 Tahun, dan pengerjaan 1-2 hari.', 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', 'Paket Basic')" class="bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1">
+                <div class="h-40 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket Basic" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <span class="text-red-600 text-xs font-semibold block mb-1">Paket Basic</span>
+                    <span class="text-gray-400 text-[11px] block mb-2">Rp 500.000</span>
+                    <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Pembuatan Landing Page responsif untuk promosi satu produk.</h3>
+                </div>
+            </div>
 
-            <!-- Titik-Titik Bawah (Pagination) -->
-            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
-                <button class="dot w-3 h-3 rounded-full border-2 border-white bg-transparent" onclick="goToSlide(0)"></button>
-                <button class="dot w-3 h-3 rounded-full border-2 border-white bg-white opacity-50" onclick="goToSlide(1)"></button>
-                <button class="dot w-3 h-3 rounded-full border-2 border-white bg-white opacity-50" onclick="goToSlide(2)"></button>
-                <button class="dot w-3 h-3 rounded-full border-2 border-white bg-white opacity-50" onclick="goToSlide(3)"></button>
-            </div>
-        </div>
+            <!-- Kartu 2 -->
+            <div onclick="openModal('Paket UMKM', 'Rp 1.200.000', 'Solusi lengkap untuk perusahaan atau bisnis skala menengah. Fitur termasuk: Pembuatan hingga 5 halaman (Beranda, Tentang Kami, Layanan, Kontak, Galeri), Gratis Domain .com 1 Tahun, Integrasi Google Maps & Sosmed, dan pengerjaan 2-3 hari.', 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', 'Paket UMKM')" class="bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1">
+                <div class="h-40 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket UMKM" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <span class="text-red-600 text-xs font-semibold block mb-1">Paket UMKM</span>
+                    <span class="text-gray-400 text-[11px] block mb-2">Rp 1.200.000</span>
+                    <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Company Profile lengkap hingga 5 halaman + Gratis Domain .com.</h3>
+                </div>
+            </div>
 
-        <!-- Info Bar -->
-        <div class="bg-itb-infobar w-full">
-            <div class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-white">
-                <div class="flex items-center space-x-4 border-r border-blue-400/30 pr-4 last:border-0 md:last:border-r-0">
-                    <i class="fa-brands fa-whatsapp text-3xl"></i>
-                    <div>
-                        <h4 class="font-bold text-sm md:text-base">Konsultasi Gratis</h4>
-                        <p class="text-xs text-blue-100 hidden sm:block">Hubungi kami via WA</p>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-4 border-r border-blue-400/30 pr-4 last:border-0 md:last:border-r-0">
-                    <i class="fa-solid fa-clock-rotate-left text-3xl"></i>
-                    <div>
-                        <h4 class="font-bold text-sm md:text-base">Pengerjaan Kilat</h4>
-                        <p class="text-xs text-blue-100 hidden sm:block">Selesai dalam 1-3 hari</p>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-4 border-r border-blue-400/30 pr-4 last:border-0 md:last:border-r-0">
-                    <i class="fa-solid fa-shield-halved text-3xl"></i>
-                    <div>
-                        <h4 class="font-bold text-sm md:text-base">Garansi 100%</h4>
-                        <p class="text-xs text-blue-100 hidden sm:block">Aman dari error & bugs</p>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <i class="fa-solid fa-headset text-3xl"></i>
-                    <div>
-                        <h4 class="font-bold text-sm md:text-base">Support Bantuan</h4>
-                        <p class="text-xs text-blue-100 hidden sm:block">Purna jual selamanya</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+            <!-- Kartu 3 -->
+            <div onclick="openModal('Paket Toko Online', 'Rp 2.500.000', 'Sistem Toko Online/E-commerce mandiri. Fitur termasuk: Katalog Produk tidak terbatas, Keranjang Belanja & Checkout Otomatis, Dashboard Admin, Perhitungan Ongkir Otomatis, dan Gratis Hosting + Domain 1 Tahun.', 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', 'E-Commerce')" class="bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1">
+                <div class="h-40 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket Toko Online" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <span class="text-red-600 text-xs font-semibold block mb-1">E-Commerce</span>
+                    <span class="text-gray-400 text-[11px] block mb-2">Rp 2.500.000</span>
+                    <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Sistem Toko Online lengkap dengan keranjang belanja otomatis.</h3>
+                </div>
+            </div>
 
-    <!-- Konten Layanan (Kartu Clickable) -->
-    <section class="max-w-7xl mx-auto px-4 py-16 bg-cream-100">
-        <h2 class="text-2xl text-gray-700 font-semibold mb-6 border-b border-gray-300 pb-2">Paket Layanan / Berita</h2>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            
-            <!-- Kartu 1 -->
-            <div onclick="openModal('Paket Basic', 'Rp 500.000', 'Pembuatan Landing Page responsif untuk promosi satu produk. Cocok untuk Anda yang baru memulai kampanye iklan. Fitur termasuk: 1 Halaman, Tombol WA, Gratis Domain .my.id 1 Tahun, dan pengerjaan 1-2 hari.', 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', 'Paket Basic')" class="bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1">
-                <div class="h-40 overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket Basic" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <div class="p-4">
-                    <span class="text-red-600 text-xs font-semibold block mb-1">Paket Basic</span>
-                    <span class="text-gray-400 text-[11px] block mb-2">Rp 500.000</span>
-                    <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Pembuatan Landing Page responsif untuk promosi satu produk.</h3>
-                </div>
-            </div>
+            <!-- Kartu 4 -->
+            <div onclick="openModal('Promo Spesial Corporate', 'Diskon 20%', 'Promo spesial bulan ini! Dapatkan diskon 20% khusus untuk pembuatan website Corporate Premium. Desain eksklusif, performa maksimal, keamanan berlapis, dan fitur kustom sesuai kebutuhan perusahaan Anda.', 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', 'Promo Bulan Ini')" class="bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1">
+                <div class="h-40 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Promo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <span class="text-red-600 text-xs font-semibold block mb-1">Promo Bulan Ini</span>
+                    <span class="text-gray-400 text-[11px] block mb-2">Terbatas</span>
+                    <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Diskon 20% untuk pembuatan website Corporate. Pesan sekarang!</h3>
+                </div>
+            </div>
 
-            <!-- Kartu 2 -->
-            <div onclick="openModal('Paket UMKM', 'Rp 1.200.000', 'Solusi lengkap untuk perusahaan atau bisnis skala menengah. Fitur termasuk: Pembuatan hingga 5 halaman (Beranda, Tentang Kami, Layanan, Kontak, Galeri), Gratis Domain .com 1 Tahun, Integrasi Google Maps & Sosmed, dan pengerjaan 2-3 hari.', 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', 'Paket UMKM')" class="bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1">
-                <div class="h-40 overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket UMKM" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <div class="p-4">
-                    <span class="text-red-600 text-xs font-semibold block mb-1">Paket UMKM</span>
-                    <span class="text-gray-400 text-[11px] block mb-2">Rp 1.200.000</span>
-                    <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Company Profile lengkap hingga 5 halaman + Gratis Domain .com.</h3>
-                </div>
-            </div>
+        </div>
+    </section>
 
-            <!-- Kartu 3 -->
-            <div onclick="openModal('Paket Toko Online', 'Rp 2.500.000', 'Sistem Toko Online/E-commerce mandiri. Fitur termasuk: Katalog Produk tidak terbatas, Keranjang Belanja & Checkout Otomatis, Dashboard Admin, Perhitungan Ongkir Otomatis, dan Gratis Hosting + Domain 1 Tahun.', 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', 'E-Commerce')" class="bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1">
-                <div class="h-40 overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket Toko Online" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <div class="p-4">
-                    <span class="text-red-600 text-xs font-semibold block mb-1">E-Commerce</span>
-                    <span class="text-gray-400 text-[11px] block mb-2">Rp 2.500.000</span>
-                    <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Sistem Toko Online lengkap dengan keranjang belanja otomatis.</h3>
-                </div>
-            </div>
+    <!-- Modal Pop-up (Jendela Detail) -->
+    <div id="detailModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-sm px-4">
+        <div class="modal-enter bg-white rounded-xl max-w-2xl w-full overflow-hidden shadow-2xl relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/80 transition cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="relative h-48 sm:h-64">
+                <img id="modalImg" src="" alt="Detail Image" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6 sm:p-8">
+                <span id="modalCategory" class="text-red-600 text-sm font-semibold mb-1 block uppercase tracking-wider"></span>
+                <h2 id="modalTitle" class="text-2xl font-bold text-gray-800 mb-1"></h2>
+                <span id="modalPrice" class="text-blue-600 font-bold text-lg mb-4 block"></span>
+                <p id="modalDesc" class="text-gray-600 leading-relaxed text-sm sm:text-base mb-6"></p>
+                <div class="flex justify-end space-x-3 border-t border-gray-100 pt-4">
+                    <button onclick="closeModal()" class="px-4 py-2 text-gray-500 font-semibold hover:text-gray-800 transition">Tutup</button>
+                    <a href="https://wa.me/6282216479053" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded font-semibold transition flex items-center space-x-2 shadow-md">
+                        <i class="fa-brands fa-whatsapp"></i> <span>Tanya via WA</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            <!-- Kartu 4 -->
-            <div onclick="openModal('Promo Spesial Corporate', 'Diskon 20%', 'Promo spesial bulan ini! Dapatkan diskon 20% khusus untuk pembuatan website Corporate Premium. Desain eksklusif, performa maksimal, keamanan berlapis, dan fitur kustom sesuai kebutuhan perusahaan Anda.', 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80', 'Promo Bulan Ini')" class="bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1">
-                <div class="h-40 overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Promo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <div class="p-4">
-                    <span class="text-red-600 text-xs font-semibold block mb-1">Promo Bulan Ini</span>
-                    <span class="text-gray-400 text-[11px] block mb-2">Terbatas</span>
-                    <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Diskon 20% untuk pembuatan website Corporate. Pesan sekarang!</h3>
-                </div>
-            </div>
+    <!-- Script Logika -->
+    <script>
+        // Logika Slider & Sinkronisasi Tab
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const tabs = document.querySelectorAll('.hero-tab');
+        const totalSlides = slides.length;
+        let slideInterval;
 
-        </div>
-    </section>
+        // Fungsi untuk memperbarui tampilan titik dan tab
+        function updateIndicators(index) {
+            // Update Titik
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.remove('bg-white', 'opacity-50');
+                    dot.classList.add('bg-transparent'); 
+                } else {
+                    dot.classList.remove('bg-transparent');
+                    dot.classList.add('bg-white', 'opacity-50'); 
+                }
+            });
 
-    <!-- Modal Pop-up (Jendela Detail) -->
-    <div id="detailModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-sm px-4">
-        <div class="modal-enter bg-white rounded-xl max-w-2xl w-full overflow-hidden shadow-2xl relative">
-            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/80 transition cursor-pointer">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="relative h-48 sm:h-64">
-                <img id="modalImg" src="" alt="Detail Image" class="w-full h-full object-cover">
-            </div>
-            <div class="p-6 sm:p-8">
-                <span id="modalCategory" class="text-red-600 text-sm font-semibold mb-1 block uppercase tracking-wider"></span>
-                <h2 id="modalTitle" class="text-2xl font-bold text-gray-800 mb-1"></h2>
-                <span id="modalPrice" class="text-blue-600 font-bold text-lg mb-4 block"></span>
-                <p id="modalDesc" class="text-gray-600 leading-relaxed text-sm sm:text-base mb-6"></p>
-                <div class="flex justify-end space-x-3 border-t border-gray-100 pt-4">
-                    <button onclick="closeModal()" class="px-4 py-2 text-gray-500 font-semibold hover:text-gray-800 transition">Tutup</button>
-                    <a href="https://wa.me/6282216479053" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded font-semibold transition flex items-center space-x-2 shadow-md">
-                        <i class="fa-brands fa-whatsapp"></i> <span>Tanya via WA</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+            // Update Tab di atas slider
+            tabs.forEach((tab, i) => {
+                if (i === index) {
+                    // Kelas untuk Tab Aktif (Biru)
+                    tab.className = 'hero-tab tab-active-shape bg-itb-tabActive text-white font-bold text-sm sm:text-lg px-8 py-3 pb-4 cursor-pointer hover:bg-blue-900 transition relative z-40';
+                } else {
+                    // Kelas untuk Tab Tidak Aktif (Kuning)
+                    let zIndex = 30 - i; // Mengatur z-index agar tab bertumpuk dengan benar
+                    tab.className = `hero-tab tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer hover:bg-yellow-400 transition relative z-[${zIndex}]`;
+                    if (i === 3) tab.classList.add('hidden', 'md:block'); // Sembunyikan tab ke-4 di mobile
+                }
+            });
+        }
 
-    <!-- Script Logika -->
-    <script>
-        // Logika Toggle Menu Burger Smartphone
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuIcon = document.getElementById('menuIcon');
+        function showSlide(index) {
+            slides.forEach((slide) => {
+                slide.classList.remove('opacity-100');
+                slide.classList.add('opacity-0');
+            });
+            slides[index].classList.remove('opacity-0');
+            slides[index].classList.add('opacity-100');
+            
+            updateIndicators(index);
+            currentSlide = index;
+        }
 
-        mobileMenuBtn.addEventListener('click', () => {
-            const isClosed = mobileMenu.classList.contains('hidden');
-            if (isClosed) {
-                mobileMenu.classList.remove('hidden');
-                menuIcon.classList.remove('fa-bars');
-                menuIcon.classList.add('fa-xmark');
-            } else {
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.remove('fa-xmark');
-                menuIcon.classList.add('fa-bars');
-            }
-        });
+        function nextSlide() {
+            showSlide((currentSlide + 1) % totalSlides);
+        }
 
-        // Logika Slider & Sinkronisasi Tab
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        const tabs = document.querySelectorAll('.hero-tab');
-        const totalSlides = slides.length;
-        let slideInterval;
+        function prevSlide() {
+            showSlide((currentSlide - 1 + totalSlides) % totalSlides);
+        }
 
-        function updateIndicators(index) {
-            // Update Titik
-            dots.forEach((dot, i) => {
-                if (i === index) {
-                    dot.classList.remove('bg-white', 'opacity-50');
-                    dot.classList.add('bg-transparent'); 
-                } else {
-                    dot.classList.remove('bg-transparent');
+        // Dipanggil saat titik atau tab diklik
+        function goToSlide(index) {
+            showSlide(index);
+            resetInterval();
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            nextSlide();
+            resetInterval();
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            prevSlide();
+            resetInterval();
+        });
+
+        // Inisialisasi Auto Slide
+        slideInterval = setInterval(nextSlide, 5000);
+
+        // ==========================================
+        // Logika Pop-up Modal untuk Detail Kartu
+        // ==========================================
+        const modal = document.getElementById('detailModal');
+        const mTitle = document.getElementById('modalTitle');
+        const mPrice = document.getElementById('modalPrice');
+        const mDesc = document.getElementById('modalDesc');
+        const mImg = document.getElementById('modalImg');
+        const mCategory = document.getElementById('modalCategory');
+
+        function openModal(title, price, desc, imgSrc, category) {
+            mTitle.innerText = title;
+            mPrice.innerText = price;
+            mDesc.innerText = desc;
+            mImg.src = imgSrc;
+            mCategory.innerText = category;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Kunci scroll layar utama
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto'; // Buka kunci scroll
+        }
+
+        // Tutup modal jika area luar (backdrop hitam) diklik
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
