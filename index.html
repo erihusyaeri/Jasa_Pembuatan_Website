@@ -71,11 +71,11 @@
     <!-- Top Bar (Desktop) -->
     <div class="bg-gray-800 text-gray-300 text-[11px] py-1.5 px-4 hidden md:flex justify-between items-center z-50 relative">
         <div class="flex space-x-4 max-w-7xl mx-auto w-full px-4">
-            <a href="#" class="hover:text-white transition">Beranda</a>
-            <a href="#" class="hover:text-white transition">Tentang Kami</a>
-            <a href="#" class="hover:text-white transition">Layanan</a>
-            <a href="#" class="hover:text-white transition">Portofolio</a>
-            <a href="#" class="hover:text-white transition">Kontak</a>
+            <a href="#beranda" class="hover:text-white transition">Beranda</a>
+            <a href="#tentang-kami" class="hover:text-white transition">Tentang Kami</a>
+            <a href="#layanan" class="hover:text-white transition">Layanan</a>
+            <a href="#portofolio" class="hover:text-white transition">Portofolio</a>
+            <a href="#kontak" class="hover:text-white transition">Kontak</a>
         </div>
         <div class="flex space-x-2 mr-8">
             <input type="text" placeholder="Search..." class="bg-gray-700 text-white px-2 py-0.5 rounded text-xs border-none outline-none">
@@ -86,11 +86,11 @@
         </div>
     </div>
 
-    <!-- Main Header (Wajib Relative untuk posisi dropdown menu) -->
-    <header class="bg-itb-header text-white py-4 shadow-md relative z-50">
+    <!-- Main Header (Sticky Navigation) -->
+    <header class="bg-itb-header text-white py-4 shadow-md sticky top-0 md:relative z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
             <!-- Logo Area -->
-            <div class="flex items-center space-x-4">
+            <a href="#beranda" class="flex items-center space-x-4 focus:outline-none">
                 <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-itb-header shadow-inner">
                     <i class="fa-solid fa-bolt-lightning text-2xl"></i>
                 </div>
@@ -98,13 +98,21 @@
                     <span class="text-2xl font-semibold tracking-wide">WebKilat Studio</span>
                     <span class="text-xs text-blue-100">Jasa Pembuatan Website Profesional</span>
                 </div>
-            </div>
+            </a>
 
-            <!-- Kanan Header (Desktop Sosmed) -->
+            <!-- Menu Kanan & Sosial Media Desktop -->
             <div class="hidden md:flex items-center space-x-6">
-                <div class="flex items-center space-x-2 text-sm font-semibold">
+                <!-- Tambahan Menu Link Utama di Header (Desktop) -->
+                <nav class="flex space-x-4 text-sm font-semibold mr-4">
+                    <a href="#beranda" class="hover:text-blue-900 transition">Beranda</a>
+                    <a href="#tentang-kami" class="hover:text-blue-900 transition">Tentang Kami</a>
+                    <a href="#layanan" class="hover:text-blue-900 transition">Layanan</a>
+                    <a href="#portofolio" class="hover:text-blue-900 transition">Portofolio</a>
+                    <a href="#kontak" class="hover:text-blue-900 transition">Kontak</a>
+                </nav>
+                <div class="flex items-center space-x-2 text-sm font-semibold border-l border-white/30 pl-4">
                     <span class="border-b-2 border-white pb-0.5">ID</span>
-                    <span class="text-blue-200">EN</span>
+                    <span class="text-blue-200 cursor-pointer hover:text-white transition">EN</span>
                 </div>
                 <div class="flex space-x-3 text-lg">
                     <a href="https://twitter.com/EriHusyaeri" target="_blank" rel="noopener noreferrer" class="hover:text-gray-200 transition"><i class="fa-brands fa-twitter"></i></a>
@@ -120,15 +128,15 @@
             </button>
         </div>
 
-        <!-- Dropdown Menu Mobile (Absolute di bawah header) -->
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-blue-700 shadow-xl border-t border-blue-400/40 px-4 pt-3 pb-6 flex-col">
+        <!-- Dropdown Menu Mobile -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-blue-700 shadow-xl border-t border-blue-400/40 px-4 pt-3 pb-6 flex-col max-h-[85vh] overflow-y-auto">
             <!-- Navigasi Utama Mobile -->
-            <nav class="flex flex-col space-y-2 mb-4 font-semibold text-sm">
-                <a href="#" class="py-2 px-3 rounded hover:bg-blue-600 transition">Beranda</a>
-                <a href="#" class="py-2 px-3 rounded hover:bg-blue-600 transition">Tentang Kami</a>
-                <a href="#" class="py-2 px-3 rounded hover:bg-blue-600 transition">Layanan</a>
-                <a href="#" class="py-2 px-3 rounded hover:bg-blue-600 transition">Portofolio</a>
-                <a href="#" class="py-2 px-3 rounded hover:bg-blue-600 transition">Kontak</a>
+            <nav class="flex flex-col space-y-1 mb-4 font-semibold text-sm">
+                <a href="#beranda" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition flex items-center space-x-3"><i class="fa-solid fa-house w-5"></i> <span>Beranda</span></a>
+                <a href="#tentang-kami" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition flex items-center space-x-3"><i class="fa-solid fa-circle-info w-5"></i> <span>Tentang Kami</span></a>
+                <a href="#layanan" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition flex items-center space-x-3"><i class="fa-solid fa-screwdriver-wrench w-5"></i> <span>Layanan</span></a>
+                <a href="#portofolio" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition flex items-center space-x-3"><i class="fa-solid fa-images w-5"></i> <span>Portofolio</span></a>
+                <a href="#kontak" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition flex items-center space-x-3"><i class="fa-solid fa-address-book w-5"></i> <span>Kontak</span></a>
             </nav>
 
             <!-- Search & Login Mobile -->
@@ -137,7 +145,7 @@
                     <input type="text" placeholder="Search..." class="w-full bg-blue-900/60 text-white placeholder-blue-200 px-3 py-2 rounded text-sm outline-none border border-blue-400/40">
                     <button class="bg-orange-500 text-white px-4 py-2 rounded text-sm font-semibold hover:bg-orange-600 transition">Search</button>
                 </div>
-                <button class="w-full bg-gray-900 text-white py-2 rounded text-sm flex items-center justify-center space-x-2 hover:bg-black transition">
+                <button class="w-full bg-gray-900 text-white py-2.5 rounded text-sm flex items-center justify-center space-x-2 hover:bg-black transition">
                     <i class="fa-solid fa-user text-xs"></i> <span>Login</span>
                 </button>
             </div>
@@ -158,27 +166,23 @@
         </div>
     </header>
 
-    <!-- MAIN SLIDER & TABS -->
-    <main class="relative bg-cream-100 z-10">
+    <!-- SECTION: BERANDA (MAIN SLIDER & TABS) -->
+    <section id="beranda" class="relative bg-cream-100 z-10 scroll-mt-24">
         <!-- Tab Container -->
         <div class="w-full bg-itb-header">
             <div class="max-w-7xl mx-auto flex flex-wrap items-end relative z-30 overflow-hidden">
-                
                 <!-- Tab 1 -->
                 <button data-index="0" class="tab-btn tab-active-shape bg-itb-tabActive text-white font-bold text-sm sm:text-lg px-8 py-3 pb-4 cursor-pointer transition relative" style="z-index: 40;">
                     WebKilat <br class="hidden sm:block"> Studio
                 </button>
-                
                 <!-- Tab 2 -->
                 <button data-index="1" class="tab-btn tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer transition relative" style="z-index: 30;">
                     Desain <br> Responsif
                 </button>
-                
                 <!-- Tab 3 -->
                 <button data-index="2" class="tab-btn tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer transition relative" style="z-index: 20;">
                     Performa <br> Cepat
                 </button>
-                
                 <!-- Tab 4 -->
                 <button data-index="3" class="tab-btn tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer transition relative hidden md:block" style="z-index: 10;">
                     Optimasi <br> SEO Google
@@ -226,7 +230,7 @@
         <div class="bg-itb-infobar w-full">
             <div class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-white">
                 <div class="flex items-center space-x-4 border-r border-blue-400/30 pr-4 last:border-0 md:last:border-r-0">
-                    <i class="fa-brands fa-whatsapp text-3xl"></i>
+                    <i class="fa-brands fa-whatsapp text-3xl animate-pulse"></i>
                     <div>
                         <h4 class="font-bold text-sm md:text-base">Konsultasi Gratis</h4>
                         <p class="text-xs text-blue-100 hidden sm:block">Hubungi kami via WA</p>
@@ -255,84 +259,234 @@
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <!-- KONTEN LAYANAN KARTU (Clickable via Data Attributes) -->
-    <section class="max-w-7xl mx-auto px-4 py-16 bg-cream-100">
-        <h2 class="text-2xl text-gray-700 font-semibold mb-6 border-b border-gray-300 pb-2">Paket Layanan / Berita</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            
-            <!-- Kartu 1 -->
-            <div class="card-trigger bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
-                 data-title="Paket Basic"
-                 data-price="Rp 500.000"
-                 data-desc="Pembuatan Landing Page responsif untuk promosi satu produk. Cocok untuk Anda yang baru memulai kampanye iklan. Fitur termasuk: 1 Halaman, Tombol WA, Gratis Domain .my.id 1 Tahun, dan pengerjaan 1-2 hari."
-                 data-img="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                 data-category="Paket Basic">
-                <div class="h-40 overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket Basic" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <div class="p-4">
-                    <span class="text-red-600 text-xs font-semibold block mb-1">Paket Basic</span>
-                    <span class="text-gray-400 text-[11px] block mb-2">Rp 500.000</span>
-                    <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Pembuatan Landing Page responsif untuk promosi satu produk.</h3>
+    <!-- SECTION: TENTANG KAMI -->
+    <section id="tentang-kami" class="max-w-7xl mx-auto px-4 py-16 scroll-mt-24">
+        <h2 class="text-2xl text-gray-700 font-semibold mb-6 border-b border-gray-300 pb-2">Tentang Kami</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-4">
+                <h3 class="text-xl font-bold text-itb-tabActive">WebKilat Studio - Partner Transformasi Digital Anda</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Kami merupakan sebuah studio pembuatan website profesional yang berbasis di Bandung, Indonesia, dengan misi menghadirkan platform digital terbaik, cepat, dan responsif. Sejak didirikan oleh <strong>Eri Husyaeri</strong>, kami telah berkolaborasi dengan ratusan pengusaha, pelaku UMKM, hingga skala Corporate untuk mengembangkan platform terbaik yang mendukung efektivitas pemasaran mereka.
+                </p>
+                <p class="text-gray-600 leading-relaxed">
+                    Mulai dari Landing Page interaktif, profil perusahaan (Company Profile), hingga sistem E-Commerce kustom, semua dikembangkan secara terstruktur agar tahan uji, modern, dan dioptimasi secara penuh oleh para ahli kami sehingga ramah terhadap mesin pencari Google (SEO Friendly).
+                </p>
+                <div class="flex space-x-4 pt-2">
+                    <div class="text-center bg-white p-3 rounded-lg shadow-sm border border-gray-100 w-28">
+                        <span class="block text-2xl font-bold text-orange-500">200+</span>
+                        <span class="text-[10px] text-gray-500 font-semibold">Projek Selesai</span>
+                    </div>
+                    <div class="text-center bg-white p-3 rounded-lg shadow-sm border border-gray-100 w-28">
+                        <span class="block text-2xl font-bold text-orange-500">99%</span>
+                        <span class="text-[10px] text-gray-500 font-semibold">Klien Puas</span>
+                    </div>
+                    <div class="text-center bg-white p-3 rounded-lg shadow-sm border border-gray-100 w-28">
+                        <span class="block text-2xl font-bold text-orange-500">1-3</span>
+                        <span class="text-[10px] text-gray-500 font-semibold">Hari Proses</span>
+                    </div>
                 </div>
             </div>
-
-            <!-- Kartu 2 -->
-            <div class="card-trigger bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
-                 data-title="Paket UMKM"
-                 data-price="Rp 1.200.000"
-                 data-desc="Solusi lengkap untuk perusahaan atau bisnis skala menengah. Fitur termasuk: Pembuatan hingga 5 halaman (Beranda, Tentang Kami, Layanan, Kontak, Galeri), Gratis Domain .com 1 Tahun, Integrasi Google Maps & Sosmed, dan pengerjaan 2-3 hari."
-                 data-img="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                 data-category="Paket UMKM">
-                <div class="h-40 overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket UMKM" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <div class="p-4">
-                    <span class="text-red-600 text-xs font-semibold block mb-1">Paket UMKM</span>
-                    <span class="text-gray-400 text-[11px] block mb-2">Rp 1.200.000</span>
-                    <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Company Profile lengkap hingga 5 halaman + Gratis Domain .com.</h3>
-                </div>
-            </div>
-
-            <!-- Kartu 3 -->
-            <div class="card-trigger bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
-                 data-title="Paket Toko Online"
-                 data-price="Rp 2.500.000"
-                 data-desc="Sistem Toko Online/E-commerce mandiri. Fitur termasuk: Katalog Produk tidak terbatas, Keranjang Belanja & Checkout Otomatis, Dashboard Admin, Perhitungan Ongkir Otomatis, dan Gratis Hosting + Domain 1 Tahun."
-                 data-img="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                 data-category="E-Commerce">
-                <div class="h-40 overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket Toko Online" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <div class="p-4">
-                    <span class="text-red-600 text-xs font-semibold block mb-1">E-Commerce</span>
-                    <span class="text-gray-400 text-[11px] block mb-2">Rp 2.500.000</span>
-                    <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Sistem Toko Online lengkap dengan keranjang belanja otomatis.</h3>
-                </div>
-            </div>
-
-            <!-- Kartu 4 -->
-            <div class="card-trigger bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
-                 data-title="Promo Spesial Corporate"
-                 data-price="Diskon 20%"
-                 data-desc="Promo spesial bulan ini! Dapatkan diskon 20% khusus untuk pembuatan website Corporate Premium. Desain eksklusif, performa maksimal, keamanan berlapis, dan fitur kustom sesuai kebutuhan perusahaan Anda."
-                 data-img="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                 data-category="Promo Bulan Ini">
-                <div class="h-40 overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Promo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                </div>
-                <div class="p-4">
-                    <span class="text-red-600 text-xs font-semibold block mb-1">Promo Bulan Ini</span>
-                    <span class="text-gray-400 text-[11px] block mb-2">Terbatas</span>
-                    <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Diskon 20% untuk pembuatan website Corporate. Pesan sekarang!</h3>
+            <div class="relative rounded-xl overflow-hidden shadow-lg h-64 sm:h-96">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tentang WebKilat Studio" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-6">
+                    <p class="text-white font-semibold text-sm">Proses diskusi dan kolaborasi intensif bersama tim ahli WebKilat Studio.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- MODAL POP-UP -->
+    <!-- SECTION: LAYANAN -->
+    <section id="layanan" class="bg-cream-100 py-16 scroll-mt-24 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-2xl text-gray-700 font-semibold mb-6 border-b border-gray-300 pb-2">Layanan & Estimasi Biaya</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                
+                <!-- Kartu Paket 1 -->
+                <div class="card-trigger bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
+                     data-title="Paket Basic"
+                     data-price="Rp 500.000"
+                     data-desc="Pembuatan Landing Page responsif untuk promosi satu produk. Cocok untuk Anda yang baru memulai kampanye iklan. Fitur termasuk: 1 Halaman, Tombol WA, Gratis Domain .my.id 1 Tahun, dan pengerjaan 1-2 hari."
+                     data-img="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                     data-category="Paket Basic">
+                    <div class="h-40 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket Basic" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-4">
+                        <span class="text-red-600 text-xs font-semibold block mb-1">Paket Basic</span>
+                        <span class="text-gray-400 text-[11px] block mb-2">Rp 500.000</span>
+                        <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Pembuatan Landing Page responsif untuk promosi satu produk.</h3>
+                    </div>
+                </div>
+
+                <!-- Kartu Paket 2 -->
+                <div class="card-trigger bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
+                     data-title="Paket UMKM"
+                     data-price="Rp 1.200.000"
+                     data-desc="Solusi lengkap untuk perusahaan atau bisnis skala menengah. Fitur termasuk: Pembuatan hingga 5 halaman (Beranda, Tentang Kami, Layanan, Kontak, Galeri), Gratis Domain .com 1 Tahun, Integrasi Google Maps & Sosmed, dan pengerjaan 2-3 hari."
+                     data-img="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                     data-category="Paket UMKM">
+                    <div class="h-40 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket UMKM" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-4">
+                        <span class="text-red-600 text-xs font-semibold block mb-1">Paket UMKM</span>
+                        <span class="text-gray-400 text-[11px] block mb-2">Rp 1.200.000</span>
+                        <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Company Profile lengkap hingga 5 halaman + Gratis Domain .com.</h3>
+                    </div>
+                </div>
+
+                <!-- Kartu Paket 3 -->
+                <div class="card-trigger bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
+                     data-title="Paket Toko Online"
+                     data-price="Rp 2.500.000"
+                     data-desc="Sistem Toko Online/E-commerce mandiri. Fitur termasuk: Katalog Produk tidak terbatas, Keranjang Belanja & Checkout Otomatis, Dashboard Admin, Perhitungan Ongkir Otomatis, dan Gratis Hosting + Domain 1 Tahun."
+                     data-img="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                     data-category="E-Commerce">
+                    <div class="h-40 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket Toko Online" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-4">
+                        <span class="text-red-600 text-xs font-semibold block mb-1">E-Commerce</span>
+                        <span class="text-gray-400 text-[11px] block mb-2">Rp 2.500.000</span>
+                        <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Sistem Toko Online lengkap dengan keranjang belanja otomatis.</h3>
+                    </div>
+                </div>
+
+                <!-- Kartu Paket 4 -->
+                <div class="card-trigger bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
+                     data-title="Promo Spesial Corporate"
+                     data-price="Diskon 20%"
+                     data-desc="Promo spesial bulan ini! Dapatkan diskon 20% khusus untuk pembuatan website Corporate Premium. Desain eksklusif, performa maksimal, keamanan berlapis, dan fitur kustom sesuai kebutuhan perusahaan Anda."
+                     data-img="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                     data-category="Promo Bulan Ini">
+                    <div class="h-40 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Promo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-4">
+                        <span class="text-red-600 text-xs font-semibold block mb-1">Promo Bulan Ini</span>
+                        <span class="text-gray-400 text-[11px] block mb-2">Terbatas</span>
+                        <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Diskon 20% untuk pembuatan website Corporate. Pesan sekarang!</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: PORTFOLIO -->
+    <section id="portofolio" class="max-w-7xl mx-auto px-4 py-16 scroll-mt-24">
+        <h2 class="text-2xl text-gray-700 font-semibold mb-6 border-b border-gray-300 pb-2">Portofolio Kami</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <!-- Projek 1 -->
+            <div class="bg-white rounded-lg overflow-hidden border border-gray-150 shadow-sm group">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Portofolio 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <span class="text-xs font-semibold text-itb-header block mb-1 uppercase">Landing Page</span>
+                    <h3 class="font-bold text-gray-800 text-md mb-2">Situs Profil & Penjualan Hijab Ar-Rayya</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Menggunakan desain responsif yang modern, Tombol WhatsApp terintegrasi, dan loading kilat untuk promosi produk fashion.</p>
+                </div>
+            </div>
+
+            <!-- Projek 2 -->
+            <div class="bg-white rounded-lg overflow-hidden border border-gray-150 shadow-sm group">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Portofolio 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <span class="text-xs font-semibold text-itb-header block mb-1 uppercase">Situs Profil Bisnis</span>
+                    <h3 class="font-bold text-gray-800 text-md mb-2">Web Profil Konstruksi Graha Mulya</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Situs multi-halaman profesional dengan fitur portofolio projek yang interaktif serta form penawaran kustom.</p>
+                </div>
+            </div>
+
+            <!-- Projek 3 -->
+            <div class="bg-white rounded-lg overflow-hidden border border-gray-150 shadow-sm group">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Portofolio 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="p-4">
+                    <span class="text-xs font-semibold text-itb-header block mb-1 uppercase">E-Commerce</span>
+                    <span class="text-gray-400 text-[10px] bg-red-100 text-red-700 px-2 py-0.5 rounded ml-1 uppercase inline-block">Online Shop</span>
+                    <h3 class="font-bold text-gray-800 text-md mb-2">Sistem Toko Online Sembako "Berkah Jaya"</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">E-Commerce mandiri dengan kalkulator ongkos kirim (ongkir) otomatis yang terhubung ke kurir lokal serta sistem pembayaran transfer bank/E-Wallet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: KONTAK -->
+    <section id="kontak" class="bg-gray-900 text-white py-16 scroll-mt-24 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+                <div>
+                    <span class="text-orange-500 uppercase font-semibold text-xs tracking-wider block mb-1">Hubungi Kami</span>
+                    <h2 class="text-3xl font-bold">Mulai Projek Website Anda Hari Ini!</h2>
+                </div>
+                <p class="text-gray-400 leading-relaxed">
+                    Punya ide brilian untuk bisnis Anda atau butuh solusi cepat untuk peluncuran kampanye iklan produk? Hubungi tim desainer & developer kami sekarang. Kami siap membantu dari ide awal hingga go-online!
+                </p>
+                <div class="space-y-4 text-sm">
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-location-dot text-orange-500 w-5 text-lg"></i>
+                        <span>Jl. Antapani Kidul No. 204, Antapani, Kota Bandung, Jawa Barat 40291, Indonesia</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-phone-volume text-orange-500 w-5 text-lg"></i>
+                        <span>+62 822-1647-9053</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-envelope text-orange-500 w-5 text-lg"></i>
+                        <span>admin@webkilat.com</span>
+                    </div>
+                </div>
+                <div class="flex space-x-4 pt-2">
+                    <a href="https://twitter.com/EriHusyaeri" target="_blank" class="w-10 h-10 bg-gray-800 hover:bg-orange-500 hover:text-white transition rounded-full flex items-center justify-center text-lg"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/EriHusyaeri" target="_blank" class="w-10 h-10 bg-gray-800 hover:bg-orange-500 hover:text-white transition rounded-full flex items-center justify-center text-lg"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/EriHusyaeri" target="_blank" class="w-10 h-10 bg-gray-800 hover:bg-orange-500 hover:text-white transition rounded-full flex items-center justify-center text-lg"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.youtube.com/@eri_husyaeri" target="_blank" class="w-10 h-10 bg-gray-800 hover:bg-orange-500 hover:text-white transition rounded-full flex items-center justify-center text-lg"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <!-- Formulir Kontak / Pesan Fast Response -->
+            <form id="kontak-form" class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700/50 space-y-4" onsubmit="event.preventDefault(); alert('Terima kasih! Pesan Anda telah diterima tim WebKilat Studio.');">
+                <h3 class="text-lg font-bold text-orange-500">Kirim Penawaran & Konsultasi</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-1">Nama Lengkap</label>
+                        <input type="text" required class="w-full bg-gray-900 border border-gray-700 rounded p-2 text-sm text-white focus:outline-none focus:border-orange-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-1">Nomor WhatsApp</label>
+                        <input type="tel" required class="w-full bg-gray-900 border border-gray-700 rounded p-2 text-sm text-white focus:outline-none focus:border-orange-500">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-1">Jenis Website / Kebutuhan</label>
+                    <select class="w-full bg-gray-900 border border-gray-700 rounded p-2 text-sm text-gray-300 focus:outline-none focus:border-orange-500">
+                        <option>Landing Page (Promo Produk)</option>
+                        <option>Company Profile (Profil Perusahaan)</option>
+                        <option>Toko Online (E-Commerce)</option>
+                        <option>Web Custom / Lainnya</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-1">Pesan / Detail Kebutuhan</label>
+                    <textarea rows="3" required class="w-full bg-gray-900 border border-gray-700 rounded p-2 text-sm text-white focus:outline-none focus:border-orange-500" placeholder="Jelaskan kebutuhan projek Anda secara singkat..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 rounded shadow-md transition text-sm">Kirim Pesan Konsultasi</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-gray-500 py-6 px-4 text-center text-xs">
+        <p>&copy; 2026 WebKilat Studio. Seluruh hak cipta dilindungi. Dikembangkan oleh <a href="https://instagram.com/EriHusyaeri" target="_blank" class="text-orange-500 hover:underline">Eri Husyaeri</a>.</p>
+    </footer>
+
+    <!-- MODAL POP-UP DETAIL KARTU -->
     <div id="detail-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 backdrop-blur-sm px-4">
         <div class="modal-enter bg-white rounded-xl max-w-2xl w-full overflow-hidden shadow-2xl relative">
             <button id="close-modal" class="absolute top-4 right-4 z-10 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/80 transition cursor-pointer">
@@ -356,34 +510,44 @@
         </div>
     </div>
 
-    <!-- SCRIPT JAVASCRIPT: Unobtrusive Method (Event Listener) -->
+    <!-- JAVASCRIPT: Unobtrusive Event Handling & Smooth Scrolling -->
     <script>
-        // Memastikan Javascript baru berjalan setelah semua kode HTML selesai dirender
         document.addEventListener('DOMContentLoaded', () => {
             
             /* =========================================================
-               1. LOGIKA MENU BURGER (MOBILE MENU)
+               1. LOGIKA MENU BURGER (MOBILE MENU) & TUTUP PADA KLIK LINK
                ========================================================= */
             const mobileToggle = document.getElementById('mobile-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileIcon = document.getElementById('mobile-icon');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            function toggleMenu() {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileIcon.classList.remove('fa-xmark');
+                    mobileIcon.classList.add('fa-bars');
+                } else {
+                    mobileIcon.classList.remove('fa-bars');
+                    mobileIcon.classList.add('fa-xmark');
+                }
+            }
 
             if (mobileToggle && mobileMenu) {
-                mobileToggle.addEventListener('click', () => {
-                    // Toggle Class Hidden menjadi Flex
-                    mobileMenu.classList.toggle('hidden');
-                    mobileMenu.classList.toggle('flex');
-                    
-                    // Ganti Ikon Burger (Buka/Tutup)
-                    if (mobileMenu.classList.contains('hidden')) {
-                        mobileIcon.classList.remove('fa-xmark');
-                        mobileIcon.classList.add('fa-bars');
-                    } else {
-                        mobileIcon.classList.remove('fa-bars');
-                        mobileIcon.classList.add('fa-xmark');
+                mobileToggle.addEventListener('click', toggleMenu);
+            }
+
+            // Otomatis menutup dropdown menu setelah salah satu anchor mobile diklik
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        toggleMenu();
                     }
                 });
-            }
+            });
+
 
             /* =========================================================
                2. LOGIKA SLIDER & SINKRONISASI TABS
@@ -399,7 +563,7 @@
             let slideInterval;
 
             function updateSlider(index) {
-                // Update Visibilitas Gambar
+                // Update Visibilitas Gambar Slider
                 slides.forEach((slide, i) => {
                     if(i === index) {
                         slide.classList.remove('opacity-0');
@@ -452,11 +616,10 @@
                 slideInterval = setInterval(nextSlide, 5000);
             }
 
-            // Pasang Event Klik pada Tombol Prev/Next Slider
             if (prevBtn) prevBtn.addEventListener('click', prevSlide);
             if (nextBtn) nextBtn.addEventListener('click', nextSlide);
 
-            // Pasang Event Klik pada Tabs
+            // Tab click handling
             tabBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     const idx = parseInt(e.currentTarget.getAttribute('data-index'));
@@ -465,7 +628,7 @@
                 });
             });
 
-            // Pasang Event Klik pada Dots
+            // Dots click handling
             dots.forEach(dot => {
                 dot.addEventListener('click', (e) => {
                     const idx = parseInt(e.currentTarget.getAttribute('data-index'));
@@ -474,62 +637,56 @@
                 });
             });
 
-            // Jalankan Slider Otomatis di awal
+            // Auto slide interval
             slideInterval = setInterval(nextSlide, 5000);
 
+
             /* =========================================================
-               3. LOGIKA POPUP MODAL (KARTU)
+               3. LOGIKA POPUP MODAL (KARTU PELAYANAN)
                ========================================================= */
             const modal = document.getElementById('detail-modal');
             const cardTriggers = document.querySelectorAll('.card-trigger');
             
-            // Elemen di dalam modal
             const mTitle = document.getElementById('modal-title');
             const mPrice = document.getElementById('modal-price');
             const mDesc = document.getElementById('modal-desc');
             const mImg = document.getElementById('modal-img');
             const mCategory = document.getElementById('modal-category');
 
-            // Tombol untuk menutup
             const btnCloseIcon = document.getElementById('close-modal');
             const btnCloseTxt = document.getElementById('close-modal-txt');
 
-            // Buka Modal ketika Kartu diKlik
             cardTriggers.forEach(card => {
                 card.addEventListener('click', (e) => {
                     const targetCard = e.currentTarget;
-                    // Ambil info dari Data Attribute HTML
                     mTitle.textContent = targetCard.getAttribute('data-title');
                     mPrice.textContent = targetCard.getAttribute('data-price');
                     mDesc.textContent = targetCard.getAttribute('data-desc');
                     mImg.src = targetCard.getAttribute('data-img');
                     mCategory.textContent = targetCard.getAttribute('data-category');
                     
-                    // Tampilkan Modal
                     modal.classList.remove('hidden');
                     modal.classList.add('flex');
-                    document.body.style.overflow = 'hidden'; // Kunci Scroll Website
+                    document.body.style.overflow = 'hidden'; 
                 });
             });
 
-            // Fungsi Menutup Modal
             function closeModal() {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
-                document.body.style.overflow = ''; // Lepas Kunci Scroll Website
+                document.body.style.overflow = ''; 
             }
 
             if(btnCloseIcon) btnCloseIcon.addEventListener('click', closeModal);
             if(btnCloseTxt) btnCloseTxt.addEventListener('click', closeModal);
 
-            // Tutup Modal jika meng-klik latar belakang/background hitam
             window.addEventListener('click', (e) => {
                 if (e.target === modal) {
                     closeModal();
                 }
             });
 
-        }); // Akhir DOMContentLoaded
+        });
     </script>
 </body>
 </html>
