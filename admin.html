@@ -5,22 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Eri Web Kilat Studio</title>
 
-    <!-- Tailwind & FontAwesome -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Supabase SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- jQuery & Summernote Lite -->
+    <!-- jQuery & Summernote Lite (Text Editor) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
     <style>
         body { font-family: 'Open Sans', sans-serif; background-color: #f3f4f6; }
-        /* Perbaikan Z-Index Summernote Fullscreen agar tidak tertutup Tailwind */
+        /* Perbaikan tampilan Summernote agar tidak tertimpa Tailwind */
         .note-editor.note-frame.fullscreen { z-index: 1050; background: white; }
     </style>
 </head>
@@ -29,22 +31,26 @@
     <!-- Container Utama -->
     <div class="bg-white rounded-xl shadow-xl w-full max-w-4xl overflow-hidden border border-gray-200">
         
-        <!-- Header -->
+        <!-- Header Panel Admin -->
         <div class="bg-blue-700 p-4 text-white flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <i class="fa-solid fa-lock text-xl"></i>
                 <h1 class="font-bold text-lg">Eri Web Kilat - Dashboard Admin</h1>
             </div>
-            <a href="index.html" class="text-sm text-blue-200 hover:text-white underline"><i class="fa-solid fa-arrow-left"></i> Ke Web Utama</a>
+            <a href="index.html" class="text-sm text-blue-200 hover:text-white underline transition">
+                <i class="fa-solid fa-arrow-left"></i> Ke Web Utama
+            </a>
         </div>
 
         <div class="p-6 md:p-8">
-            <!-- VIEW: LOGIN -->
+            
+            <!-- VIEW 1: FORM LOGIN -->
             <div id="login-view" class="max-w-md mx-auto space-y-6">
                 <div class="text-center">
                     <h2 class="text-2xl font-bold text-gray-800">Login Admin</h2>
-                    <p class="text-sm text-gray-500 mt-1">Gunakan akun email Supabase Anda.</p>
+                    <p class="text-sm text-gray-500 mt-1">Gunakan <strong>admin@webkilat.com</strong> & pass: <strong>12345678</strong> untuk akses cepat.</p>
                 </div>
+                
                 <form id="login-form" class="space-y-4">
                     <div>
                         <label class="block text-sm font-semibold text-gray-600 mb-1">Email</label>
@@ -54,20 +60,25 @@
                         <label class="block text-sm font-semibold text-gray-600 mb-1">Password</label>
                         <input type="password" id="login-password" required class="w-full border border-gray-300 rounded p-3 text-sm focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600" placeholder="••••••••">
                     </div>
-                    <button type="submit" id="btn-login" class="w-full bg-blue-600 text-white font-bold py-3 rounded hover:bg-blue-700 transition">Masuk</button>
+                    <button type="submit" id="btn-login" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded shadow transition">Masuk Panel</button>
                 </form>
             </div>
 
-            <!-- VIEW: DASHBOARD (Tersembunyi sampai login berhasil) -->
+            <!-- VIEW 2: DASHBOARD UTAMA (Muncul setelah login) -->
             <div id="dashboard-view" class="hidden space-y-6">
-                <div class="flex justify-between items-end border-b border-gray-200 pb-4">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end border-b border-gray-200 pb-4 gap-4">
                     <div>
                         <h2 class="text-xl font-bold text-gray-800">Tulis / Input Layanan Baru</h2>
-                        <p class="text-xs text-green-600 font-semibold mt-1"><i class="fa-solid fa-circle-check"></i> Sistem Terkoneksi</p>
+                        <p id="status-koneksi" class="text-xs text-yellow-600 font-semibold mt-1">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Mode Offline Aktif
+                        </p>
                     </div>
-                    <button id="logout-btn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded text-sm font-semibold transition">Logout</button>
+                    <button id="logout-btn" class="bg-red-50 text-red-600 border border-red-200 hover:bg-red-500 hover:text-white px-4 py-2 rounded text-sm font-semibold transition">
+                        Logout
+                    </button>
                 </div>
 
+                <!-- Form Input Artikel -->
                 <form id="blog-form" class="space-y-4">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
@@ -95,9 +106,9 @@
                         <input type="url" id="blog-image" class="w-full border border-gray-300 rounded p-3 text-sm focus:border-blue-600 outline-none" placeholder="https://contohgambar.com/gambar.jpg" value="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
                     </div>
 
-                    <!-- Summernote Text Editor -->
+                    <!-- Editor Teks Summernote -->
                     <div>
-                        <label class="block text-sm font-semibold text-gray-600 mb-1">Isi Lengkap (Mendukung Format Text HTML)</label>
+                        <label class="block text-sm font-semibold text-gray-600 mb-1">Isi Lengkap (Desain Suka-suka)</label>
                         <textarea id="blog-description" name="editordata"></textarea>
                     </div>
 
@@ -112,12 +123,12 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT ADMIN -->
+    <!-- JAVASCRIPT LOGIC & DATABASE -->
     <script>
-        // INISIALISASI SUMMERNOTE
         $(document).ready(function() {
+            // 1. INISIALISASI TEXT EDITOR
             $('#blog-description').summernote({
-                placeholder: 'Tuliskan deskripsi lengkap, keuntungan, atau isi artikel di sini...',
+                placeholder: 'Tuliskan deskripsi lengkap, keuntungan, gambar, atau isi artikel di sini...',
                 tabsize: 2,
                 height: 300,
                 toolbar: [
@@ -130,92 +141,158 @@
                   ['view', ['fullscreen', 'codeview', 'help']]
                 ]
             });
-        });
 
-        // ==========================================
-        // KONFIGURASI SUPABASE (SAMAKAN DENGAN INDEX.HTML)
-        // ==========================================
-        const SUPABASE_URL = "https://koderahasianya.supabase.co"; 
-        const SUPABASE_ANON_KEY = "sb_publishable_tCwTxG62nKMkL38d5NtBIg_icxsH1oQ";
-        
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-        // UI Elements
-        const loginView = document.getElementById('login-view');
-        const dashboardView = document.getElementById('dashboard-view');
-        
-        // Logika Pemeriksaan Sesi Admin (Apakah sudah login?)
-        async function checkAuth() {
-            const { data: { session } } = await supabase.auth.getSession();
-            if (session) {
-                loginView.classList.add('hidden');
-                dashboardView.classList.remove('hidden');
-            } else {
-                loginView.classList.remove('hidden');
-                dashboardView.classList.add('hidden');
-            }
-        }
-        checkAuth(); // Jalankan saat halaman dibuka
-
-        // Logika Submit Login
-        document.getElementById('login-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const btn = document.getElementById('btn-login');
-            btn.innerHTML = "Memeriksa..."; btn.disabled = true;
-
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-
-            const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+            // 2. KONFIGURASI DATABASE SUPABASE
+            const SUPABASE_URL = "https://koderahasianya.supabase.co"; 
+            const SUPABASE_ANON_KEY = "sb_publishable_tCwTxG62nKMkL38d5NtBIg_icxsH1oQ";
             
-            if (error) {
-                alert("Login Gagal: " + error.message);
-                btn.innerHTML = "Masuk"; btn.disabled = false;
-            } else {
-                checkAuth(); // Jika sukses, ubah tampilan ke dashboard
+            let supabase = null;
+            try { supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); } catch(e) {}
+
+            const loginView = document.getElementById('login-view');
+            const dashboardView = document.getElementById('dashboard-view');
+            const statusKoneksi = document.getElementById('status-koneksi');
+
+            // 3. FUNGSI CEK LOGIN
+            async function checkAuth() {
+                // Cek apakah pakai Bypass Mode (Offline)
+                const isBypass = localStorage.getItem('admin_bypass_login') === 'true';
+                
+                // Cek Supabase
+                let hasSupabaseSession = false;
+                if (supabase) {
+                    try {
+                        const { data } = await supabase.auth.getSession();
+                        if(data && data.session) hasSupabaseSession = true;
+                    } catch(e) {}
+                }
+
+                if (hasSupabaseSession || isBypass) {
+                    loginView.classList.add('hidden');
+                    dashboardView.classList.remove('hidden');
+
+                    if (hasSupabaseSession) {
+                        statusKoneksi.innerHTML = '<i class="fa-solid fa-circle-check"></i> Terkoneksi Supabase Online';
+                        statusKoneksi.className = "text-xs text-green-600 font-semibold mt-1";
+                    } else {
+                        statusKoneksi.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Mode Local Offline Aktif';
+                        statusKoneksi.className = "text-xs text-yellow-600 font-semibold mt-1";
+                    }
+                } else {
+                    loginView.classList.remove('hidden');
+                    dashboardView.classList.add('hidden');
+                }
             }
-        });
 
-        // Logika Logout
-        document.getElementById('logout-btn').addEventListener('click', async () => {
-            await supabase.auth.signOut();
-            checkAuth(); // Kembali ke halaman login
-        });
+            checkAuth(); // Panggil saat web dimuat
 
-        // Logika Submit Artikel / Layanan ke Database
-        document.getElementById('blog-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const btn = document.getElementById('btn-publish');
-            btn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> Menyimpan...';
-            btn.disabled = true;
+            // 4. LOGIKA TOMBOL LOGIN (DENGAN BYPASS)
+            document.getElementById('login-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btn = document.getElementById('btn-login');
+                btn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> Memeriksa...'; 
+                btn.disabled = true;
 
-            // Ambil HTML dari Summernote Text Editor
-            const htmlContent = $('#blog-description').summernote('code');
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
 
-            const newBlog = {
-                category: document.getElementById('blog-category').value,
-                price: document.getElementById('blog-price').value || "Gratis",
-                title: document.getElementById('blog-title').value,
-                image: document.getElementById('blog-image').value,
-                description: htmlContent // Simpan format HTML
-            };
+                try {
+                    // Coba login online
+                    if (!supabase) throw new Error("Client Supabase tidak valid");
+                    const { error } = await supabase.auth.signInWithPassword({ email, password });
+                    if (error) throw error;
+                    
+                    localStorage.setItem('admin_bypass_login', 'false');
+                    checkAuth();
+                } catch (err) {
+                    // JIKA GAGAL ONLINE, CEK APAKAH PAKAI AKUN OFFLINE
+                    if (email === 'admin@webkilat.com' && password === '12345678') {
+                        alert("Berhasil masuk menggunakan Mode Offline (Local Storage).");
+                        localStorage.setItem('admin_bypass_login', 'true');
+                        checkAuth();
+                    } else {
+                        alert("Login Gagal! Jika Anda belum mensetting database, gunakan email: admin@webkilat.com dan pass: 12345678");
+                    }
+                }
+                
+                btn.innerHTML = 'Masuk Panel'; 
+                btn.disabled = false;
+            });
 
-            const { data, error } = await supabase.from('blogs').insert([newBlog]);
+            // 5. LOGIKA LOGOUT
+            document.getElementById('logout-btn').addEventListener('click', async () => {
+                if (supabase) {
+                    try { await supabase.auth.signOut(); } catch(e) {}
+                }
+                localStorage.removeItem('admin_bypass_login');
+                checkAuth(); 
+            });
 
-            if (error) {
-                alert("Gagal mempublikasikan: " + error.message);
-            } else {
-                alert("Berhasil! Konten Anda telah ditambahkan ke database.");
-                // Reset form kecuali teks editor
+            // 6. LOGIKA PUBLISH ARTIKEL (ONLINE / OFFLINE)
+            document.getElementById('blog-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const btn = document.getElementById('btn-publish');
+                btn.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> Menyimpan...';
+                btn.disabled = true;
+
+                // Ambil format HTML dari editor
+                const htmlContent = $('#blog-description').summernote('code');
+
+                const newBlog = {
+                    id: Date.now(), // Digunakan untuk ID unik saat offline
+                    category: document.getElementById('blog-category').value,
+                    price: document.getElementById('blog-price').value || "Gratis",
+                    title: document.getElementById('blog-title').value,
+                    image: document.getElementById('blog-image').value,
+                    description: htmlContent
+                };
+
+                const isBypass = localStorage.getItem('admin_bypass_login') === 'true';
+
+                if (!isBypass && supabase) {
+                    // SIMPAN KE SUPABASE ONLINE
+                    try {
+                        const { error } = await supabase.from('blogs').insert([{
+                            category: newBlog.category,
+                            price: newBlog.price,
+                            title: newBlog.title,
+                            image: newBlog.image,
+                            description: newBlog.description
+                        }]);
+                        if (error) throw error;
+                        alert("Berhasil! Konten Anda telah diterbitkan ke Database Online.");
+                        resetForm();
+                    } catch (err) {
+                        simpanOffline(newBlog, "Gagal simpan online, dialihkan ke penyimpanan Offline.");
+                    }
+                } else {
+                    // SIMPAN KE LOCAL STORAGE (OFFLINE)
+                    simpanOffline(newBlog, "Berhasil diterbitkan! (Disimpan di memori browser Offline)");
+                }
+
+                btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span>Terbitkan ke Website</span>';
+                btn.disabled = false;
+            });
+
+            // Fungsi Bantuan Simpan Offline
+            function simpanOffline(dataBlog, pesan) {
+                // Ambil data lama
+                let dataLama = JSON.parse(localStorage.getItem('eri_web_blogs') || '[]');
+                // Masukkan data baru di posisi paling atas
+                dataLama.unshift(dataBlog);
+                // Simpan kembali
+                localStorage.setItem('eri_web_blogs', JSON.stringify(dataLama));
+                alert(pesan);
+                resetForm();
+            }
+
+            // Fungsi Reset Tampilan
+            function resetForm() {
                 document.getElementById('blog-form').reset();
                 $('#blog-description').summernote('reset');
             }
-
-            btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span>Terbitkan ke Website</span>';
-            btn.disabled = false;
         });
-
     </script>
 </body>
 </html>
