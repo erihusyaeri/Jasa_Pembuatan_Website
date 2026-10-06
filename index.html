@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eri Web Kilat Studio - Jasa Pembuatan Website</title>
+    <title>Eri Web Kilat Studio - Jasa Pembuatan Website & Blog</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- SDK Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script>
         tailwind.config = {
@@ -39,7 +42,6 @@
             color: #333333;
         }
         
-        /* Bentuk Tab Khusus */
         .tab-active-shape {
             clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
             border-bottom-right-radius: 1.5rem;
@@ -51,12 +53,10 @@
             border-bottom-right-radius: 1.5rem;
         }
         
-        /* Transisi Default Slider */
         .slide {
             transition: opacity 0.5s ease-in-out;
         }
         
-        /* Animasi Modal */
         .modal-enter {
             animation: fadeIn 0.3s ease-out forwards;
         }
@@ -73,15 +73,15 @@
         <div class="flex space-x-4 max-w-7xl mx-auto w-full px-4">
             <a href="#beranda" class="hover:text-white transition">Beranda</a>
             <a href="#tentang-kami" class="hover:text-white transition">Tentang Kami</a>
-            <a href="#layanan" class="hover:text-white transition">Layanan</a>
+            <a href="#layanan" class="hover:text-white transition">Layanan & Blog</a>
             <a href="#portofolio" class="hover:text-white transition">Portofolio</a>
             <a href="#kontak" class="hover:text-white transition">Kontak</a>
         </div>
         <div class="flex space-x-2 mr-8">
-            <input type="text" placeholder="Search..." class="bg-gray-700 text-white px-2 py-0.5 rounded text-xs border-none outline-none">
-            <button class="bg-orange-500 text-white px-3 py-0.5 rounded hover:bg-orange-600 transition">Search</button>
-            <button class="bg-blue-600 text-white px-3 py-0.5 rounded flex items-center space-x-1 hover:bg-blue-700 transition">
-                <i class="fa-solid fa-user text-[10px]"></i> <span>Login</span>
+            <input type="text" id="desktop-search" placeholder="Cari layanan/artikel..." class="bg-gray-700 text-white px-2 py-0.5 rounded text-xs border-none outline-none">
+            <button id="desktop-search-btn" class="bg-orange-500 text-white px-3 py-0.5 rounded hover:bg-orange-600 transition">Cari</button>
+            <button id="admin-gate-btn" class="bg-blue-600 text-white px-3 py-0.5 rounded flex items-center space-x-1 hover:bg-blue-700 transition">
+                <i class="fa-solid fa-lock text-[10px]"></i> <span id="admin-status-text">Admin Login</span>
             </button>
         </div>
     </div>
@@ -92,11 +92,11 @@
             <!-- Logo Area -->
             <a href="#beranda" class="flex items-center space-x-4 focus:outline-none">
                 <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-itb-header shadow-inner">
-                    <i class="fa-solid fa-bolt-lightning text-2xl"></i>
+                    <i class="fa-solid fa-bolt-lightning text-2xl animate-pulse"></i>
                 </div>
                 <div class="flex flex-col">
                     <span class="text-2xl font-semibold tracking-wide">Eri Web Kilat Studio</span>
-                    <span class="text-xs text-blue-100">Jasa Pembuatan Website Profesional</span>
+                    <span class="text-xs text-blue-100">Jasa Pembuatan Website & CMS Realtime</span>
                 </div>
             </a>
 
@@ -106,7 +106,7 @@
                 <nav class="flex space-x-4 text-sm font-semibold mr-4">
                     <a href="#beranda" class="hover:text-blue-900 transition">Beranda</a>
                     <a href="#tentang-kami" class="hover:text-blue-900 transition">Tentang Kami</a>
-                    <a href="#layanan" class="hover:text-blue-900 transition">Layanan</a>
+                    <a href="#layanan" class="hover:text-blue-900 transition">Layanan & Blog</a>
                     <a href="#portofolio" class="hover:text-blue-900 transition">Portofolio</a>
                     <a href="#kontak" class="hover:text-blue-900 transition">Kontak</a>
                 </nav>
@@ -130,24 +130,21 @@
 
         <!-- Dropdown Menu Mobile -->
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-blue-700 shadow-xl border-t border-blue-400/40 px-4 pt-3 pb-6 flex-col max-h-[85vh] overflow-y-auto">
-            <!-- Navigasi Utama Mobile -->
             <nav class="flex flex-col space-y-1 mb-4 font-semibold text-sm">
                 <a href="#beranda" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition flex items-center space-x-3"><i class="fa-solid fa-house w-5"></i> <span>Beranda</span></a>
                 <a href="#tentang-kami" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition flex items-center space-x-3"><i class="fa-solid fa-circle-info w-5"></i> <span>Tentang Kami</span></a>
-                <a href="#layanan" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition flex items-center space-x-3"><i class="fa-solid fa-screwdriver-wrench w-5"></i> <span>Layanan</span></a>
+                <a href="#layanan" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition flex items-center space-x-3"><i class="fa-solid fa-screwdriver-wrench w-5"></i> <span>Layanan & Blog</span></a>
                 <a href="#portofolio" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition flex items-center space-x-3"><i class="fa-solid fa-images w-5"></i> <span>Portofolio</span></a>
                 <a href="#kontak" class="mobile-nav-link py-3 px-3 rounded hover:bg-blue-600 transition flex items-center space-x-3"><i class="fa-solid fa-address-book w-5"></i> <span>Kontak</span></a>
+                <a href="#" id="mobile-admin-btn" class="mobile-nav-link py-3 px-3 rounded bg-blue-900 hover:bg-blue-950 transition flex items-center space-x-3 text-yellow-300"><i class="fa-solid fa-lock w-5"></i> <span>Panel Admin</span></a>
             </nav>
 
-            <!-- Search & Login Mobile -->
+            <!-- Search Mobile -->
             <div class="flex flex-col space-y-3 pt-3 border-t border-blue-500/50">
                 <div class="flex space-x-2">
-                    <input type="text" placeholder="Search..." class="w-full bg-blue-900/60 text-white placeholder-blue-200 px-3 py-2 rounded text-sm outline-none border border-blue-400/40">
-                    <button class="bg-orange-500 text-white px-4 py-2 rounded text-sm font-semibold hover:bg-orange-600 transition">Search</button>
+                    <input type="text" id="mobile-search" placeholder="Cari layanan/artikel..." class="w-full bg-blue-900/60 text-white placeholder-blue-200 px-3 py-2 rounded text-sm outline-none border border-blue-400/40">
+                    <button id="mobile-search-btn" class="bg-orange-500 text-white px-4 py-2 rounded text-sm font-semibold hover:bg-orange-600 transition">Search</button>
                 </div>
-                <button class="w-full bg-gray-900 text-white py-2.5 rounded text-sm flex items-center justify-center space-x-2 hover:bg-black transition">
-                    <i class="fa-solid fa-user text-xs"></i> <span>Login</span>
-                </button>
             </div>
 
             <!-- Sosmed & Bahasa Mobile -->
@@ -166,24 +163,26 @@
         </div>
     </header>
 
+    <!-- KONEKSI STATUS SUPABASE FLOATING BAR -->
+    <div id="db-status-bar" class="bg-yellow-500 text-white text-xs py-1.5 px-4 text-center z-40 relative flex justify-center items-center space-x-2 transition-all">
+        <span id="db-status-icon" class="animate-spin text-sm"><i class="fa-solid fa-spinner"></i></span>
+        <span id="db-status-text">Menghubungkan ke Supabase Database Anda...</span>
+    </div>
+
     <!-- SECTION: BERANDA (MAIN SLIDER & TABS) -->
     <section id="beranda" class="relative bg-cream-100 z-10 scroll-mt-24">
         <!-- Tab Container -->
         <div class="w-full bg-itb-header">
             <div class="max-w-7xl mx-auto flex flex-wrap items-end relative z-30 overflow-hidden">
-                <!-- Tab 1 -->
                 <button data-index="0" class="tab-btn tab-active-shape bg-itb-tabActive text-white font-bold text-sm sm:text-lg px-8 py-3 pb-4 cursor-pointer transition relative" style="z-index: 40;">
                     Eri Web <br class="hidden sm:block"> Kilat Studio
                 </button>
-                <!-- Tab 2 -->
                 <button data-index="1" class="tab-btn tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer transition relative" style="z-index: 30;">
                     Desain <br> Responsif
                 </button>
-                <!-- Tab 3 -->
                 <button data-index="2" class="tab-btn tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer transition relative" style="z-index: 20;">
                     Performa <br> Cepat
                 </button>
-                <!-- Tab 4 -->
                 <button data-index="3" class="tab-btn tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer transition relative hidden md:block" style="z-index: 10;">
                     Optimasi <br> SEO Google
                 </button>
@@ -297,78 +296,27 @@
         </div>
     </section>
 
-    <!-- SECTION: LAYANAN -->
+    <!-- SECTION: LAYANAN & BLOG (DYNAMIC & PERSISTENT) -->
     <section id="layanan" class="bg-cream-100 py-16 scroll-mt-24 border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-2xl text-gray-700 font-semibold mb-6 border-b border-gray-300 pb-2">Layanan & Estimasi Biaya</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                
-                <!-- Kartu Paket 1 -->
-                <div class="card-trigger bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
-                     data-title="Paket Basic"
-                     data-price="Rp 500.000"
-                     data-desc="Pembuatan Landing Page responsif untuk promosi satu produk. Cocok untuk Anda yang baru memulai kampanye iklan. Fitur termasuk: 1 Halaman, Tombol WA, Gratis Domain .my.id 1 Tahun, dan pengerjaan 1-2 hari."
-                     data-img="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                     data-category="Paket Basic">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket Basic" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="p-4">
-                        <span class="text-red-600 text-xs font-semibold block mb-1">Paket Basic</span>
-                        <span class="text-gray-400 text-[11px] block mb-2">Rp 500.000</span>
-                        <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Pembuatan Landing Page responsif untuk promosi satu produk.</h3>
-                    </div>
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 border-b border-gray-300 pb-2">
+                <h2 class="text-2xl text-gray-700 font-semibold">Layanan & Blog Terbaru</h2>
+                <!-- Filter Kategori -->
+                <div class="flex flex-wrap gap-2 mt-2 sm:mt-0" id="category-filters">
+                    <button class="category-filter active-filter bg-blue-600 text-white text-xs px-3 py-1 rounded-full font-semibold transition hover:bg-blue-700" data-cat="all">Semua</button>
+                    <button class="category-filter bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full font-semibold transition hover:bg-blue-100 hover:text-blue-700" data-cat="Paket Basic">Basic</button>
+                    <button class="category-filter bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full font-semibold transition hover:bg-blue-100 hover:text-blue-700" data-cat="Paket UMKM">UMKM</button>
+                    <button class="category-filter bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full font-semibold transition hover:bg-blue-100 hover:text-blue-700" data-cat="E-Commerce">Toko Online</button>
+                    <button class="category-filter bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full font-semibold transition hover:bg-blue-100 hover:text-blue-700" data-cat="Artikel & Berita">Artikel & Berita</button>
                 </div>
-
-                <!-- Kartu Paket 2 -->
-                <div class="card-trigger bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
-                     data-title="Paket UMKM"
-                     data-price="Rp 1.200.000"
-                     data-desc="Solusi lengkap untuk perusahaan atau bisnis skala menengah. Fitur termasuk: Pembuatan hingga 5 halaman (Beranda, Tentang Kami, Layanan, Kontak, Galeri), Gratis Domain .com 1 Tahun, Integrasi Google Maps & Sosmed, dan pengerjaan 2-3 hari."
-                     data-img="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                     data-category="Paket UMKM">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket UMKM" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="p-4">
-                        <span class="text-red-600 text-xs font-semibold block mb-1">Paket UMKM</span>
-                        <span class="text-gray-400 text-[11px] block mb-2">Rp 1.200.000</span>
-                        <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Company Profile lengkap hingga 5 halaman + Gratis Domain .com.</h3>
-                    </div>
-                </div>
-
-                <!-- Kartu Paket 3 -->
-                <div class="card-trigger bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
-                     data-title="Paket Toko Online"
-                     data-price="Rp 2.500.000"
-                     data-desc="Sistem Toko Online/E-commerce mandiri. Fitur termasuk: Katalog Produk tidak terbatas, Keranjang Belanja & Checkout Otomatis, Dashboard Admin, Perhitungan Ongkir Otomatis, dan Gratis Hosting + Domain 1 Tahun."
-                     data-img="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                     data-category="E-Commerce">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paket Toko Online" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="p-4">
-                        <span class="text-red-600 text-xs font-semibold block mb-1">E-Commerce</span>
-                        <span class="text-gray-400 text-[11px] block mb-2">Rp 2.500.000</span>
-                        <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Sistem Toko Online lengkap dengan keranjang belanja otomatis.</h3>
-                    </div>
-                </div>
-
-                <!-- Kartu Paket 4 -->
-                <div class="card-trigger bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1"
-                     data-title="Promo Spesial Corporate"
-                     data-price="Diskon 20%"
-                     data-desc="Promo spesial bulan ini! Dapatkan diskon 20% khusus untuk pembuatan website Corporate Premium. Desain eksklusif, performa maksimal, keamanan berlapis, dan fitur kustom sesuai kebutuhan perusahaan Anda."
-                     data-img="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                     data-category="Promo Bulan Ini">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Promo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="p-4">
-                        <span class="text-red-600 text-xs font-semibold block mb-1">Promo Bulan Ini</span>
-                        <span class="text-gray-400 text-[11px] block mb-2">Terbatas</span>
-                        <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600">Diskon 20% untuk pembuatan website Corporate. Pesan sekarang!</h3>
-                    </div>
+            </div>
+            
+            <!-- Target List untuk Dynamic Cards -->
+            <div id="dynamic-cards-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Data akan dimuat disini dari Supabase / Local Fallback -->
+                <div class="col-span-full py-12 flex flex-col items-center justify-center space-y-3">
+                    <i class="fa-solid fa-spinner animate-spin text-3xl text-blue-600"></i>
+                    <p class="text-sm text-gray-500">Sedang memuat data terpercaya...</p>
                 </div>
             </div>
         </div>
@@ -378,7 +326,6 @@
     <section id="portofolio" class="max-w-7xl mx-auto px-4 py-16 scroll-mt-24">
         <h2 class="text-2xl text-gray-700 font-semibold mb-6 border-b border-gray-300 pb-2">Portofolio Kami</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <!-- Projek 1 -->
             <div class="bg-white rounded-lg overflow-hidden border border-gray-150 shadow-sm group">
                 <div class="h-48 overflow-hidden relative">
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Portofolio 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
@@ -390,7 +337,6 @@
                 </div>
             </div>
 
-            <!-- Projek 2 -->
             <div class="bg-white rounded-lg overflow-hidden border border-gray-150 shadow-sm group">
                 <div class="h-48 overflow-hidden relative">
                     <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Portofolio 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
@@ -402,14 +348,13 @@
                 </div>
             </div>
 
-            <!-- Projek 3 -->
             <div class="bg-white rounded-lg overflow-hidden border border-gray-150 shadow-sm group">
                 <div class="h-48 overflow-hidden relative">
                     <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Portofolio 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                 </div>
                 <div class="p-4">
                     <span class="text-xs font-semibold text-itb-header block mb-1 uppercase">E-Commerce</span>
-                    <span class="text-gray-400 text-[10px] bg-red-100 text-red-700 px-2 py-0.5 rounded ml-1 uppercase inline-block">Online Shop</span>
+                    <span class="text-gray-400 text-[10px] bg-red-100 text-red-700 px-2 py-0.5 rounded ml-1 uppercase inline-block font-semibold">Online Shop</span>
                     <h3 class="font-bold text-gray-800 text-md mb-2">Sistem Toko Online Sembako "Berkah Jaya"</h3>
                     <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">E-Commerce mandiri dengan kalkulator ongkos kirim (ongkir) otomatis yang terhubung ke kurir lokal serta sistem pembayaran transfer bank/E-Wallet.</p>
                 </div>
@@ -450,7 +395,6 @@
                 </div>
             </div>
             
-            <!-- Formulir Kontak / Pesan Fast Response -->
             <form id="kontak-form" class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700/50 space-y-4" onsubmit="event.preventDefault(); alert('Terima kasih! Pesan Anda telah diterima tim Eri Web Kilat Studio.');">
                 <h3 class="text-lg font-bold text-orange-500">Kirim Penawaran & Konsultasi</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -486,23 +430,126 @@
         <p>&copy; 2026 Eri Web Kilat Studio. Seluruh hak cipta dilindungi. Dikembangkan oleh <a href="https://instagram.com/EriHusyaeri" target="_blank" class="text-orange-500 hover:underline">Eri Husyaeri</a>.</p>
     </footer>
 
-    <!-- MODAL POP-UP DETAIL KARTU -->
+    <!-- INTERFACE: MODAL ADMIN LOGIN & INPUT DASHBOARD -->
+    <div id="admin-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-md px-4">
+        <div class="bg-white rounded-2xl max-w-4xl w-full overflow-hidden shadow-2xl relative max-h-[90vh] flex flex-col md:flex-row modal-enter">
+            
+            <!-- Tombol Keluar Overlay -->
+            <button id="close-admin" aria-label="Tutup" class="absolute top-4 right-4 z-50 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/85 transition cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Kiri: Banner Info -->
+            <div class="md:w-1/3 bg-itb-tabActive text-white p-6 md:p-8 flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full"></div>
+                <div class="space-y-4">
+                    <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-xl"><i class="fa-solid fa-lock"></i></div>
+                    <h3 class="text-xl font-bold">Eri Web Kilat Admin</h3>
+                    <p class="text-xs text-blue-100 leading-relaxed">Kelola semua artikel blog, penawaran, paket promo, dan jasa kilat realtime.</p>
+                </div>
+                <div class="border-t border-white/20 pt-4 mt-6 text-[10px] text-blue-200">
+                    Supabase ID: tCwTxG62nKM...
+                </div>
+            </div>
+
+            <!-- Kanan: Konten Dinamis (Form Login vs Form Control Input) -->
+            <div class="md:w-2/3 p-6 md:p-8 overflow-y-auto max-h-[70vh] md:max-h-[90vh] flex flex-col justify-center">
+                
+                <!-- SUB-VIEW 1: FORM LOGIN ADMIN -->
+                <div id="admin-login-view" class="space-y-4">
+                    <div class="text-center md:text-left">
+                        <h2 class="text-xl font-bold text-gray-800">Login Administrator</h2>
+                        <p class="text-xs text-gray-500">Gunakan akun admin Supabase Anda.</p>
+                    </div>
+
+                    <form id="login-form" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-500 mb-1">Email Admin</label>
+                            <input type="email" id="login-email" required class="w-full border border-gray-300 rounded p-2.5 text-sm focus:outline-none focus:border-blue-600" placeholder="admin@webkilat.com" value="admin@webkilat.com">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-500 mb-1">Password</label>
+                            <input type="password" id="login-password" required class="w-full border border-gray-300 rounded p-2.5 text-sm focus:outline-none focus:border-blue-600" placeholder="••••••••" value="12345678">
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-2.5 rounded shadow-md hover:bg-blue-700 transition text-sm">Masuk Panel Admin</button>
+                    </form>
+                    
+                    <div class="flex items-center justify-between text-xs border-t border-gray-150 pt-4 mt-4">
+                        <span class="text-gray-400">Offline demo bypass code? gunakan apa saja jika koneksi database dibatalkan.</span>
+                    </div>
+                </div>
+
+                <!-- SUB-VIEW 2: DASHBOARD INPUT & EDIT DATA -->
+                <div id="admin-dashboard-view" class="hidden space-y-4">
+                    <div class="flex justify-between items-center border-b border-gray-150 pb-2">
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-800">Panel Kontrol Eri Web Kilat</h2>
+                            <p class="text-[11px] text-green-600 font-semibold"><i class="fa-solid fa-circle-check"></i> Terhubung Terkoneksi (Role: Admin)</p>
+                        </div>
+                        <button id="logout-btn" class="text-xs text-red-500 font-semibold hover:underline bg-red-50 px-2 py-1 rounded">Logout</button>
+                    </div>
+
+                    <!-- Formulir Input Blog / Jasa Baru -->
+                    <form id="input-blog-form" class="space-y-3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-[11px] font-semibold text-gray-500 mb-1">Kategori</label>
+                                <select id="blog-category" class="w-full border border-gray-300 rounded p-2 text-xs focus:outline-none focus:border-blue-600">
+                                    <option value="Paket Basic">Paket Basic (Landing Page)</option>
+                                    <option value="Paket UMKM">Paket UMKM (Company Profile)</option>
+                                    <option value="E-Commerce">E-Commerce (Toko Online)</option>
+                                    <option value="Artikel & Berita">Artikel & Berita (Blog)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-semibold text-gray-500 mb-1">Harga (Opsional untuk Artikel)</label>
+                                <input type="text" id="blog-price" class="w-full border border-gray-300 rounded p-2 text-xs focus:outline-none focus:border-blue-600" placeholder="Contoh: Rp 500.000 / Gratis">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-500 mb-1">Judul Blog / Paket Layanan</label>
+                            <input type="text" id="blog-title" required class="w-full border border-gray-300 rounded p-2 text-xs focus:outline-none focus:border-blue-600" placeholder="Masukkan judul menarik">
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-500 mb-1">URL Gambar Preview</label>
+                            <input type="url" id="blog-image" class="w-full border border-gray-300 rounded p-2 text-xs focus:outline-none focus:border-blue-600" placeholder="Contoh: https://images.unsplash.com/photo-..." value="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-500 mb-1">Deskripsi & Isi Lengkap</label>
+                            <textarea id="blog-description" rows="3" required class="w-full border border-gray-300 rounded p-2 text-xs focus:outline-none focus:border-blue-600" placeholder="Tuliskan deskripsi lengkap, keuntungan, atau isi artikel blog baru Anda..."></textarea>
+                        </div>
+
+                        <div class="pt-2">
+                            <button type="submit" id="submit-blog-btn" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 rounded text-xs shadow-md transition flex justify-center items-center space-x-2">
+                                <i class="fa-solid fa-plus"></i> <span>Terbitkan (Publish ke Users)</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DETAIL CARD MODAL -->
     <div id="detail-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/70 backdrop-blur-sm px-4">
         <div class="modal-enter bg-white rounded-xl max-w-2xl w-full overflow-hidden shadow-2xl relative">
-            <button id="close-modal" class="absolute top-4 right-4 z-10 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/80 transition cursor-pointer">
+            <button id="close-modal" aria-label="Tutup" class="absolute top-4 right-4 z-10 bg-black/50 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/80 transition cursor-pointer">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div class="relative h-48 sm:h-64">
                 <img id="modal-img" src="" alt="Detail Image" class="w-full h-full object-cover">
             </div>
-            <div class="p-6 sm:p-8">
-                <span id="modal-category" class="text-red-600 text-sm font-semibold mb-1 block uppercase tracking-wider"></span>
+            <div class="p-6 sm:p-8 flex flex-col">
+                <span id="modal-category" class="text-red-600 text-xs font-bold mb-1 uppercase tracking-wider block"></span>
                 <h2 id="modal-title" class="text-2xl font-bold text-gray-800 mb-1"></h2>
                 <span id="modal-price" class="text-blue-600 font-bold text-lg mb-4 block"></span>
-                <p id="modal-desc" class="text-gray-600 leading-relaxed text-sm sm:text-base mb-6"></p>
+                <p id="modal-desc" class="text-gray-600 leading-relaxed text-sm sm:text-base mb-6 max-h-[120px] overflow-y-auto"></p>
                 <div class="flex justify-end space-x-3 border-t border-gray-100 pt-4">
-                    <button id="close-modal-txt" class="px-4 py-2 text-gray-500 font-semibold hover:text-gray-800 transition">Tutup</button>
-                    <a href="https://wa.me/6282216479053" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded font-semibold transition flex items-center space-x-2 shadow-md">
+                    <button id="close-modal-txt" class="px-4 py-2 text-gray-500 font-semibold hover:text-gray-800 transition text-sm">Tutup</button>
+                    <a href="https://wa.me/6282216479053" target="_blank" id="wa-action-btn" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded font-semibold transition flex items-center space-x-2 shadow-md text-sm">
                         <i class="fa-brands fa-whatsapp"></i> <span>Tanya via WA</span>
                     </a>
                 </div>
@@ -510,13 +557,429 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT: Unobtrusive Event Handling & Smooth Scrolling -->
+    <!-- JAVASCRIPT: SUPABASE & FALLBACK LOCAL LOGIC -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
+
             /* =========================================================
-               1. LOGIKA MENU BURGER (MOBILE MENU) & TUTUP PADA KLIK LINK
+               A. INISIALISASI SUPABASE (MENGGUNAKAN API KEY & PUBLISHABLE KEY ANDA)
                ========================================================= */
+            // Karena tidak ada URL spesifik yang diberikan, maka infer-url atau letakan endpoint default tCwTxG62nKMkL38d5NtBIg.
+            // Anda bisa mengganti URL di bawah ini dengan Supabase URL Project Anda sendiri.
+            const SUPABASE_URL = "https://tCwTxG62nKMkL38d5NtBIg.supabase.co"; 
+            const SUPABASE_ANON_KEY = "sb_publishable_tCwTxG62nKMkL38d5NtBIg_icxsH1oQ";
+
+            let supabase = null;
+            let isSupabaseOnline = false;
+
+            // Inisialisasi Supabase Client dengan validasi
+            try {
+                if (window.supabase && SUPABASE_URL && SUPABASE_ANON_KEY) {
+                    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                    isSupabaseOnline = true;
+                }
+            } catch (err) {
+                console.warn("Kesalahan konfigurasi Supabase Client:", err);
+                isSupabaseOnline = false;
+            }
+
+            // Status Bar Connection View
+            const dbStatusBar = document.getElementById('db-status-bar');
+            const dbStatusIcon = document.getElementById('db-status-icon');
+            const dbStatusText = document.getElementById('db-status-text');
+
+            function updateDbStatus(status, message) {
+                if (status === 'online') {
+                    dbStatusBar.className = "bg-green-600 text-white text-xs py-1.5 px-4 text-center z-40 relative flex justify-center items-center space-x-2";
+                    dbStatusIcon.innerHTML = `<i class="fa-solid fa-circle-check"></i>`;
+                    dbStatusText.textContent = `Terkoneksi ke Supabase Database Online.`;
+                } else if (status === 'offline') {
+                    dbStatusBar.className = "bg-gray-600 text-white text-xs py-1.5 px-4 text-center z-40 relative flex justify-center items-center space-x-2";
+                    dbStatusIcon.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
+                    dbStatusText.textContent = `Menggunakan Offline Fallback Mode (Local Database Aktif).`;
+                } else {
+                    dbStatusBar.className = "bg-red-500 text-white text-xs py-1.5 px-4 text-center z-40 relative flex justify-center items-center space-x-2";
+                    dbStatusIcon.innerHTML = `<i class="fa-solid fa-triangle-exclamation animate-pulse"></i>`;
+                    dbStatusText.textContent = message || `Gagal terhubung ke Supabase.`;
+                }
+            }
+
+
+            /* =========================================================
+               B. DOCK & DATA DEFAULT (FALLBACK)
+               ========================================================= */
+            const DEFAULT_BLOGS = [
+                {
+                    id: 1,
+                    category: "Paket Basic",
+                    price: "Rp 500.000",
+                    title: "Pembuatan Landing Page responsif untuk promosi satu produk.",
+                    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    description: "Pembuatan Landing Page responsif untuk promosi satu produk. Cocok untuk Anda yang baru memulai kampanye iklan. Fitur termasuk: 1 Halaman, Tombol WA, Gratis Domain .my.id 1 Tahun, dan pengerjaan 1-2 hari."
+                },
+                {
+                    id: 2,
+                    category: "Paket UMKM",
+                    price: "Rp 1.200.000",
+                    title: "Company Profile lengkap hingga 5 halaman + Gratis Domain .com.",
+                    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    description: "Solusi lengkap untuk perusahaan atau bisnis skala menengah. Fitur termasuk: Pembuatan hingga 5 halaman (Beranda, Tentang Kami, Layanan, Kontak, Galeri), Gratis Domain .com 1 Tahun, Integrasi Google Maps & Sosmed, dan pengerjaan 2-3 hari."
+                },
+                {
+                    id: 3,
+                    category: "E-Commerce",
+                    price: "Rp 2.500.000",
+                    title: "Sistem Toko Online lengkap dengan keranjang belanja otomatis.",
+                    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    description: "Sistem Toko Online/E-commerce mandiri. Fitur termasuk: Katalog Produk tidak terbatas, Keranjang Belanja & Checkout Otomatis, Dashboard Admin, Perhitungan Ongkir Otomatis, dan Gratis Hosting + Domain 1 Tahun."
+                },
+                {
+                    id: 4,
+                    category: "Artikel & Berita",
+                    price: "Gratis Baca",
+                    title: "Diskon 20% untuk pembuatan website Corporate. Pesan sekarang!",
+                    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    description: "Promo spesial bulan ini! Dapatkan diskon 20% khusus untuk pembuatan website Corporate Premium. Desain eksklusif, performa maksimal, keamanan berlapis, dan fitur kustom sesuai kebutuhan perusahaan Anda."
+                }
+            ];
+
+            let blogsData = [];
+
+            // Inisialisasi Lokal / Offline
+            function loadLocalFallback() {
+                const stored = localStorage.getItem('eri_web_blogs');
+                if (stored) {
+                    blogsData = JSON.parse(stored);
+                } else {
+                    blogsData = [...DEFAULT_BLOGS];
+                    localStorage.setItem('eri_web_blogs', JSON.stringify(blogsData));
+                }
+            }
+
+
+            /* =========================================================
+               C. INTEGRASI REALTIME AMBIL & TULIS DATA (READ & CREATE)
+               ========================================================= */
+            async function fetchBlogs() {
+                loadLocalFallback(); // Muat data offline terlebih dahulu sebagai cadangan instan
+
+                if (!isSupabaseOnline || !supabase) {
+                    updateDbStatus('offline');
+                    renderCards(blogsData);
+                    return;
+                }
+
+                try {
+                    // Cek koneksi ke Supabase dengan membaca tabel "blogs"
+                    const { data, error } = await supabase
+                        .from('blogs')
+                        .select('*')
+                        .order('created_at', { ascending: false });
+
+                    if (error) {
+                        throw error;
+                    }
+
+                    if (data && data.length > 0) {
+                        blogsData = data;
+                        localStorage.setItem('eri_web_blogs', JSON.stringify(blogsData)); // Perbarui cadangan lokal
+                    }
+                    updateDbStatus('online');
+                } catch (err) {
+                    console.error("Supabase Error / Fallback on Error:", err.message);
+                    // Gunakan mode offline fallback jika ada error
+                    updateDbStatus('failed', "Koneksi Supabase gagal. Silakan periksa URL & Kebijakan RLS Anda.");
+                }
+
+                renderCards(blogsData);
+            }
+
+            async function addBlog(newBlog) {
+                let success = false;
+
+                if (isSupabaseOnline && supabase) {
+                    try {
+                        const { data, error } = await supabase
+                            .from('blogs')
+                            .insert([
+                                {
+                                    title: newBlog.title,
+                                    price: newBlog.price || "Gratis",
+                                    description: newBlog.description,
+                                    image: newBlog.image,
+                                    category: newBlog.category
+                                }
+                            ])
+                            .select();
+
+                        if (error) throw error;
+                        
+                        // Sukses insert ke database online
+                        success = true;
+                    } catch (err) {
+                        console.error("Gagal menyimpan ke Supabase online:", err);
+                        alert("Gagal terhubung ke Supabase. Menandai dan mengamankan di penyimpanan lokal (Fallback Mode).");
+                    }
+                }
+
+                // Terlepas dari status online, kita amankan ke Local fallback agar proses demo & uji coba tidak terganggu
+                newBlog.id = Date.now(); // Beri ID unik
+                blogsData.unshift(newBlog);
+                localStorage.setItem('eri_web_blogs', JSON.stringify(blogsData));
+                
+                await fetchBlogs(); // Refresh View
+                return true;
+            }
+
+
+            /* =========================================================
+               D. FUNGSI VIEW: RENDERING & FILTRASI KARTU
+               ========================================================= */
+            const dynamicContainer = document.getElementById('dynamic-cards-container');
+
+            function renderCards(dataToRender, filterCategory = 'all', searchQuery = '') {
+                if (!dynamicContainer) return;
+                dynamicContainer.innerHTML = '';
+
+                // Proses Filter & Pencarian
+                let filtered = dataToRender;
+
+                if (filterCategory !== 'all') {
+                    filtered = filtered.filter(item => item.category === filterCategory);
+                }
+
+                if (searchQuery.trim() !== '') {
+                    const q = searchQuery.toLowerCase();
+                    filtered = filtered.filter(item => 
+                        item.title.toLowerCase().includes(q) || 
+                        item.description.toLowerCase().includes(q) ||
+                        item.category.toLowerCase().includes(q)
+                    );
+                }
+
+                if (filtered.length === 0) {
+                    dynamicContainer.innerHTML = `
+                        <div class="col-span-full py-12 text-center text-gray-500">
+                            <i class="fa-regular fa-folder-open text-3xl mb-2 block"></i>
+                            <p class="text-sm">Tidak ada Paket Layanan atau Artikel Blog yang cocok.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Loop & render HTML
+                filtered.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = "bg-white group cursor-pointer shadow-sm hover:shadow-lg transition transform hover:-translate-y-1";
+                    
+                    // Escape data attribute strings to prevent HTML breakage
+                    const safeTitle = item.title.replace(/"/g, '&quot;');
+                    const safePrice = (item.price || "Gratis").replace(/"/g, '&quot;');
+                    const safeDesc = item.description.replace(/"/g, '&quot;');
+                    
+                    card.innerHTML = `
+                        <div class="h-40 overflow-hidden relative">
+                            <img src="${item.image}" alt="${safeTitle}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+                        </div>
+                        <div class="p-4">
+                            <span class="text-red-600 text-xs font-semibold block mb-1 uppercase">${item.category}</span>
+                            <span class="text-gray-400 text-[11px] block mb-2 font-semibold">${item.price || 'Gratis'}</span>
+                            <h3 class="text-sm font-semibold text-gray-800 leading-snug group-hover:text-blue-600 line-clamp-3">${item.title}</h3>
+                        </div>
+                    `;
+
+                    // Handle card click to open detail modal
+                    card.addEventListener('click', () => {
+                        openDetailModal(item.title, item.price, item.description, item.image, item.category);
+                    });
+
+                    dynamicContainer.appendChild(card);
+                });
+            }
+
+
+            /* =========================================================
+               E. MANAJEMEN AUTENTIKASI ADMIN & PANEL CMS
+               ========================================================= */
+            let isAdminLoggedIn = false;
+
+            const adminGateBtn = document.getElementById('admin-gate-btn');
+            const adminStatusText = document.getElementById('admin-status-text');
+            const mobileAdminBtn = document.getElementById('mobile-admin-btn');
+            
+            const adminModal = document.getElementById('admin-modal');
+            const closeAdminBtn = document.getElementById('close-admin');
+            
+            const adminLoginView = document.getElementById('admin-login-view');
+            const adminDashboardView = document.getElementById('admin-dashboard-view');
+            
+            const loginForm = document.getElementById('login-form');
+            const loginEmailInput = document.getElementById('login-email');
+            const loginPasswordInput = document.getElementById('login-password');
+            
+            const logoutBtn = document.getElementById('logout-btn');
+
+            // Cek Status Autentikasi Admin dari Storage lokal
+            if (localStorage.getItem('eri_admin_authed') === 'true') {
+                isAdminLoggedIn = true;
+                setAdminMode(true);
+            }
+
+            function setAdminMode(loggedIn) {
+                isAdminLoggedIn = loggedIn;
+                if (loggedIn) {
+                    localStorage.setItem('eri_admin_authed', 'true');
+                    adminStatusText.textContent = "Dashboard Admin";
+                    adminGateBtn.classList.remove('bg-blue-600');
+                    adminGateBtn.classList.add('bg-green-600');
+                    
+                    // Ubah View di Admin Modal
+                    adminLoginView.classList.add('hidden');
+                    adminDashboardView.classList.remove('hidden');
+                } else {
+                    localStorage.removeItem('eri_admin_authed');
+                    adminStatusText.textContent = "Admin Login";
+                    adminGateBtn.classList.remove('bg-green-600');
+                    adminGateBtn.classList.add('bg-blue-600');
+                    
+                    // Ubah View ke Login
+                    adminLoginView.classList.remove('hidden');
+                    adminDashboardView.classList.add('hidden');
+                }
+            }
+
+            // Gate Handler
+            function showAdminPanel() {
+                adminModal.classList.remove('hidden');
+                adminModal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+
+            if(adminGateBtn) adminGateBtn.addEventListener('click', showAdminPanel);
+            if(mobileAdminBtn) mobileAdminBtn.addEventListener('click', showAdminPanel);
+
+            if(closeAdminBtn) {
+                closeAdminBtn.addEventListener('click', () => {
+                    adminModal.classList.add('hidden');
+                    adminModal.classList.remove('flex');
+                    document.body.style.overflow = '';
+                });
+            }
+
+            // Aksi Login
+            if (loginForm) {
+                loginForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    const email = loginEmailInput.value.trim();
+                    const password = loginPasswordInput.value;
+
+                    // Validasi Akun Melalui Supabase Auth
+                    if (isSupabaseOnline && supabase) {
+                        try {
+                            const { data, error } = await supabase.auth.signInWithPassword({
+                                email: email,
+                                password: password
+                            });
+
+                            if (error) {
+                                throw error;
+                            }
+
+                            alert("Login Admin Supabase berhasil!");
+                            setAdminMode(true);
+                        } catch (err) {
+                            console.warn("Login Supabase gagal:", err.message);
+                            
+                            // Demo / offline fallback: Bypass Login dengan admin apa saja
+                            if (email === "admin@webkilat.com" && password === "12345678") {
+                                alert("Menggunakan Offline Fallback Login (Akses diberikan).");
+                                setAdminMode(true);
+                            } else {
+                                alert(`Gagal Login: ${err.message}. Hubungi admin atau gunakan bypass admin@webkilat.com & pass: 12345678 jika offline.`);
+                            }
+                        }
+                    } else {
+                        // Jika offline, bypass bypass email
+                        if (email === "admin@webkilat.com" && password === "12345678") {
+                            alert("Login berhasil (Offline Bypass Mode aktif).");
+                            setAdminMode(true);
+                        } else {
+                            alert("Bypass Login gagal. Masukkan admin@webkilat.com dan password 12345678.");
+                        }
+                    }
+                });
+            }
+
+            // Aksi Logout
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', async () => {
+                    if (isSupabaseOnline && supabase) {
+                        await supabase.auth.signOut();
+                    }
+                    setAdminMode(false);
+                    alert("Berhasil keluar dari administrator.");
+                    adminModal.classList.add('hidden');
+                    adminModal.classList.remove('flex');
+                    document.body.style.overflow = '';
+                });
+            }
+
+
+            /* =========================================================
+               F. INPUT FORM SUBMIT & PUBLISH REALTIME
+               ========================================================= */
+            const inputForm = document.getElementById('input-blog-form');
+            const bCategory = document.getElementById('blog-category');
+            const bPrice = document.getElementById('blog-price');
+            const bTitle = document.getElementById('blog-title');
+            const bImage = document.getElementById('blog-image');
+            const bDescription = document.getElementById('blog-description');
+            
+            if (inputForm) {
+                inputForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    const newBlog = {
+                        category: bCategory.value,
+                        price: bPrice.value.trim() || "Gratis",
+                        title: bTitle.value.trim(),
+                        image: bImage.value.trim() || "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+                        description: bDescription.value.trim()
+                    };
+
+                    const publishBtn = document.getElementById('submit-blog-btn');
+                    publishBtn.disabled = true;
+                    publishBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> <span>Menerbitkan...</span>`;
+
+                    // Masukkan Data Baru ke Supabase / Lokal
+                    const done = await addBlog(newBlog);
+
+                    if (done) {
+                        alert("Sukses! Postingan Anda berhasil dipublish dan langsung muncul di browser Klien.");
+                        
+                        // Reset field
+                        bTitle.value = '';
+                        bPrice.value = '';
+                        bDescription.value = '';
+                        
+                        // Tutup Modal
+                        adminModal.classList.add('hidden');
+                        adminModal.classList.remove('flex');
+                        document.body.style.overflow = '';
+                    }
+
+                    publishBtn.disabled = false;
+                    publishBtn.innerHTML = `<i class="fa-solid fa-plus"></i> <span>Terbitkan (Publish ke Users)</span>`;
+                });
+            }
+
+
+            /* =========================================================
+               G. LOGIKA SECTIONS, SLIDER, FILTERS, SEARCH, & MODAL
+               ========================================================= */
+            
+            // Hamburger Mobile Menu
             const mobileToggle = document.getElementById('mobile-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileIcon = document.getElementById('mobile-icon');
@@ -525,7 +988,6 @@
             function toggleMenu() {
                 mobileMenu.classList.toggle('hidden');
                 mobileMenu.classList.toggle('flex');
-                
                 if (mobileMenu.classList.contains('hidden')) {
                     mobileIcon.classList.remove('fa-xmark');
                     mobileIcon.classList.add('fa-bars');
@@ -535,23 +997,12 @@
                 }
             }
 
-            if (mobileToggle && mobileMenu) {
-                mobileToggle.addEventListener('click', toggleMenu);
-            }
+            if(mobileToggle) mobileToggle.addEventListener('click', toggleMenu);
+            mobileNavLinks.forEach(link => link.addEventListener('click', () => {
+                if(!mobileMenu.classList.contains('hidden')) toggleMenu();
+            }));
 
-            // Otomatis menutup dropdown menu setelah salah satu anchor mobile diklik
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        toggleMenu();
-                    }
-                });
-            });
-
-
-            /* =========================================================
-               2. LOGIKA SLIDER & SINKRONISASI TABS
-               ========================================================= */
+            // Slider & Tabs Sinkronisasi
             const slides = document.querySelectorAll('.slide');
             const tabBtns = document.querySelectorAll('.tab-btn');
             const dots = document.querySelectorAll('.dot');
@@ -563,129 +1014,118 @@
             let slideInterval;
 
             function updateSlider(index) {
-                // Update Visibilitas Gambar Slider
                 slides.forEach((slide, i) => {
-                    if(i === index) {
-                        slide.classList.remove('opacity-0');
-                        slide.classList.add('opacity-100');
-                    } else {
-                        slide.classList.remove('opacity-100');
-                        slide.classList.add('opacity-0');
-                    }
+                    slide.classList.toggle('opacity-0', i !== index);
+                    slide.classList.toggle('opacity-100', i === index);
                 });
-
-                // Update Style Bulatan/Dot
                 dots.forEach((dot, i) => {
-                    if (i === index) {
-                        dot.classList.remove('bg-white', 'opacity-50');
-                        dot.classList.add('bg-transparent'); 
-                    } else {
-                        dot.classList.remove('bg-transparent');
-                        dot.classList.add('bg-white', 'opacity-50'); 
-                    }
+                    dot.classList.toggle('bg-white', i !== index);
+                    dot.classList.toggle('opacity-50', i !== index);
+                    dot.classList.toggle('bg-transparent', i === index);
                 });
-
-                // Update Style Bentuk Tabs
                 tabBtns.forEach((tab, i) => {
                     if (i === index) {
-                        tab.classList.remove('bg-itb-tabInactive', 'text-gray-800', 'tab-inactive-shape', 'hover:bg-yellow-400');
-                        tab.classList.add('bg-itb-tabActive', 'text-white', 'tab-active-shape', 'hover:bg-blue-900');
+                        tab.className = 'tab-btn tab-active-shape bg-itb-tabActive text-white font-bold text-sm sm:text-lg px-8 py-3 pb-4 cursor-pointer transition relative';
+                        tab.style.zIndex = "40";
                     } else {
-                        tab.classList.remove('bg-itb-tabActive', 'text-white', 'tab-active-shape', 'hover:bg-blue-900');
-                        tab.classList.add('bg-itb-tabInactive', 'text-gray-800', 'tab-inactive-shape', 'hover:bg-yellow-400');
+                        let z = 30 - i;
+                        tab.className = 'tab-btn tab-inactive-shape bg-itb-tabInactive text-gray-800 font-bold text-xs sm:text-sm px-6 py-3 pb-4 cursor-pointer transition relative';
+                        tab.style.zIndex = z;
+                        if (i === 3) tab.classList.add('hidden', 'md:block');
                     }
                 });
-
                 currentSlide = index;
             }
 
-            function nextSlide() {
-                let index = (currentSlide + 1) % totalSlides;
-                updateSlider(index);
-                resetInterval();
-            }
+            function showNext() { updateSlider((currentSlide + 1) % totalSlides); resetInterval(); }
+            function showPrev() { updateSlider((currentSlide - 1 + totalSlides) % totalSlides); resetInterval(); }
+            function resetInterval() { clearInterval(slideInterval); slideInterval = setInterval(showNext, 5000); }
 
-            function prevSlide() {
-                let index = (currentSlide - 1 + totalSlides) % totalSlides;
-                updateSlider(index);
-                resetInterval();
-            }
+            if(prevBtn) prevBtn.addEventListener('click', showPrev);
+            if(nextBtn) nextBtn.addEventListener('click', showNext);
+            tabBtns.forEach(btn => btn.addEventListener('click', (e) => { updateSlider(parseInt(e.currentTarget.getAttribute('data-index'))); resetInterval(); }));
+            dots.forEach(dot => dot.addEventListener('click', (e) => { updateSlider(parseInt(e.currentTarget.getAttribute('data-index'))); resetInterval(); }));
+            slideInterval = setInterval(showNext, 5000);
 
-            function resetInterval() {
-                clearInterval(slideInterval);
-                slideInterval = setInterval(nextSlide, 5000);
-            }
+            // Filter Kategori Postingan
+            const filters = document.querySelectorAll('.category-filter');
+            let activeCategory = 'all';
 
-            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-
-            // Tab click handling
-            tabBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const idx = parseInt(e.currentTarget.getAttribute('data-index'));
-                    updateSlider(idx);
-                    resetInterval();
+            filters.forEach(filter => {
+                filter.addEventListener('click', (e) => {
+                    filters.forEach(f => {
+                        f.classList.remove('active-filter', 'bg-blue-600', 'text-white');
+                        f.classList.add('bg-gray-200', 'text-gray-700');
+                    });
+                    
+                    const el = e.currentTarget;
+                    el.classList.add('active-filter', 'bg-blue-600', 'text-white');
+                    el.classList.remove('bg-gray-200', 'text-gray-700');
+                    
+                    activeCategory = el.getAttribute('data-cat');
+                    renderCards(blogsData, activeCategory);
                 });
             });
 
-            // Dots click handling
-            dots.forEach(dot => {
-                dot.addEventListener('click', (e) => {
-                    const idx = parseInt(e.currentTarget.getAttribute('data-index'));
-                    updateSlider(idx);
-                    resetInterval();
-                });
+            // Input Pencarian
+            const desktopSearch = document.getElementById('desktop-search');
+            const desktopSearchBtn = document.getElementById('desktop-search-btn');
+            const mobileSearch = document.getElementById('mobile-search');
+            const mobileSearchBtn = document.getElementById('mobile-search-btn');
+
+            function triggerSearch(term) {
+                renderCards(blogsData, activeCategory, term);
+                // Langsung Scroll ke Layanan/Blog untuk melihat hasil
+                const target = document.getElementById('layanan');
+                if(target) target.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            if(desktopSearchBtn) desktopSearchBtn.addEventListener('click', () => triggerSearch(desktopSearch.value));
+            if(mobileSearchBtn) mobileSearchBtn.addEventListener('click', () => {
+                triggerSearch(mobileSearch.value);
+                toggleMenu();
             });
 
-            // Auto slide interval
-            slideInterval = setInterval(nextSlide, 5000);
-
-
-            /* =========================================================
-               3. LOGIKA POPUP MODAL (KARTU PELAYANAN)
-               ========================================================= */
-            const modal = document.getElementById('detail-modal');
-            const cardTriggers = document.querySelectorAll('.card-trigger');
-            
+            // Modal Detail Info Kartu
+            const detailModal = document.getElementById('detail-modal');
+            const mImg = document.getElementById('modal-img');
+            const mCategory = document.getElementById('modal-category');
             const mTitle = document.getElementById('modal-title');
             const mPrice = document.getElementById('modal-price');
             const mDesc = document.getElementById('modal-desc');
-            const mImg = document.getElementById('modal-img');
-            const mCategory = document.getElementById('modal-category');
+            const waActionBtn = document.getElementById('wa-action-btn');
 
-            const btnCloseIcon = document.getElementById('close-modal');
-            const btnCloseTxt = document.getElementById('close-modal-txt');
+            function openDetailModal(title, price, desc, image, category) {
+                mImg.src = image;
+                mCategory.textContent = category;
+                mTitle.textContent = title;
+                mPrice.textContent = price || 'Gratis';
+                mDesc.textContent = desc;
 
-            cardTriggers.forEach(card => {
-                card.addEventListener('click', (e) => {
-                    const targetCard = e.currentTarget;
-                    mTitle.textContent = targetCard.getAttribute('data-title');
-                    mPrice.textContent = targetCard.getAttribute('data-price');
-                    mDesc.textContent = targetCard.getAttribute('data-desc');
-                    mImg.src = targetCard.getAttribute('data-img');
-                    mCategory.textContent = targetCard.getAttribute('data-category');
-                    
-                    modal.classList.remove('hidden');
-                    modal.classList.add('flex');
-                    document.body.style.overflow = 'hidden'; 
-                });
-            });
+                // Dinamis pesan WA, melampirkan Judul Projek
+                const encodedMsg = encodeURIComponent(`Halo Eri Web Kilat Studio, saya tertarik dengan "${title}" (${price}). Bisa dibantu info selengkapnya?`);
+                waActionBtn.href = `https://wa.me/6282216479053?text=${encodedMsg}`;
 
-            function closeModal() {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-                document.body.style.overflow = ''; 
+                detailModal.classList.remove('hidden');
+                detailModal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
             }
 
-            if(btnCloseIcon) btnCloseIcon.addEventListener('click', closeModal);
-            if(btnCloseTxt) btnCloseTxt.addEventListener('click', closeModal);
+            function closeDetailModal() {
+                detailModal.classList.add('hidden');
+                detailModal.classList.remove('flex');
+                document.body.style.overflow = '';
+            }
 
-            window.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
+            const closeX = document.getElementById('close-modal');
+            const closeBtn = document.getElementById('close-modal-txt');
+            
+            if(closeX) closeX.addEventListener('click', closeDetailModal);
+            if(closeBtn) closeBtn.addEventListener('click', closeDetailModal);
+            window.addEventListener('click', (e) => { if(e.target === detailModal) closeDetailModal(); });
 
+            // Inisialisasi Ambil Data Pertama
+            fetchBlogs();
         });
     </script>
 </body>
